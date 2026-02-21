@@ -1,5 +1,4 @@
-import 'package:caramelo_app/app/app.dart';
-import 'package:flutter/material.dart';
+import 'util/import/common_libs.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
