@@ -16,11 +16,11 @@ class Bootstrap {
     }
   }
 
-  static Future<void> _configureRouter() async {
-    GoRouter.optionURLReflectsImperativeAPIs = true;
-  }
-
   static Future<void> _registerDependencies() async {
     await di.DependencyInjection.register();
+  }
+
+  static Future<void> _configureRouter() async {
+    GoRouter.optionURLReflectsImperativeAPIs = true;
   }
 }
