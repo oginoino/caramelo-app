@@ -1,9 +1,15 @@
-import '../../import/const.dart';
-
 class AppConstants {
-  String appName = Enviroment.appName ?? 'App';
-  String appVersion = Enviroment.appVersion ?? '1.0.0';
-  String appTitle = Enviroment.appTitle ?? 'App';
-  String appDescription = Enviroment.appDescription ?? 'App Description';
-  String carameloLogoAsset = 'assets/images/Carmelo.png';
+  final String appName;
+  final String appVersion;
+  final String appTitle;
+  final String appDescription;
+  final String carameloLogoAsset;
+
+  const AppConstants({
+    this.appName = 'App',
+    this.appVersion = '1.0.0',
+    this.appTitle = 'App',
+    this.appDescription = 'App Description',
+    this.carameloLogoAsset = 'assets/images/png/logo.png',
+  });
 }

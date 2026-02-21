@@ -1,5 +1,5 @@
-class Enviroment {
-  Enviroment._();
+class Environment {
+  Environment._();
 
   static String? appName = const String.fromEnvironment('APP_NAME');
   static String? appVersion = const String.fromEnvironment('APP_VERSION');
