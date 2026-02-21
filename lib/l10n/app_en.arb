@@ -1,10 +1,10 @@
 {
     "@@locale": "en",
     "appTitle": "Caramelo App",
-    "welcomeMessage": "Welcome to Caramelo!",
     "@appTitle": {
         "description": "The title of the application"
     },
+    "welcomeMessage": "Welcome to Caramelo!",
     "@welcomeMessage": {
         "description": "Welcome message displayed to users"
     }
