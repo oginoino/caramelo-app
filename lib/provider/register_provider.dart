@@ -8,10 +8,10 @@ class RegisterProvider {
   static List<SingleChildWidget> register() {
     return [
       ChangeNotifierProvider(
-        create: (context) => ThemeProvider(storageService),
+        create: (context) => ThemeProvider(persistenceService),
       ),
       ChangeNotifierProvider(
-        create: (context) => LocaleProvider(storageService),
+        create: (context) => LocaleProvider(persistenceService),
       ),
       ChangeNotifierProvider(create: (context) => AuthProvider()),
       ChangeNotifierProvider(
@@ -21,7 +21,7 @@ class RegisterProvider {
       ChangeNotifierProvider(create: (context) => OrderProvider()),
       ChangeNotifierProvider(
         create: (context) =>
-            UserProfileProvider(userRepository, storageService),
+            UserProfileProvider(userRepository, persistenceService),
       ),
     ];
   }

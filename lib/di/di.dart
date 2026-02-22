@@ -90,7 +90,7 @@ class DependencyInjection {
   }
 }
 
-PersistenceService get storageService => GetIt.I<PersistenceService>();
+PersistenceService get persistenseService => GetIt.I<PersistenceService>();
 PersistenceService get persistenceService => GetIt.I<PersistenceService>();
 
 AppConstants get appConstants => GetIt.I<AppConstants>();
