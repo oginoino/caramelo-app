@@ -17,11 +17,6 @@ class HandleRedirect {
     _initialDeepLink = state.uri.toString();
     final path = state.uri.path;
 
-    // Go to home
-    if (path != Routes.home) {
-      return Routes.home;
-    }
-
     return null;
   }
 }
