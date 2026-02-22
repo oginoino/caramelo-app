@@ -1,8 +1,9 @@
+import '../../util/const/ui/ui_token.dart';
 import '../../util/import/packages.dart';
 
 ThemeData _lightTheme = ThemeData(
   brightness: Brightness.light,
-  primarySwatch: Colors.blue,
+  primaryColor: UiToken.primaryLightColor,
   useMaterial3: true,
 );
 

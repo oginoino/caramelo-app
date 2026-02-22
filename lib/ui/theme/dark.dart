@@ -1,8 +1,9 @@
+import '../../util/const/ui/ui_token.dart';
 import '../../util/import/packages.dart';
 
 ThemeData _darkTheme = ThemeData(
   brightness: Brightness.dark,
-  primarySwatch: Colors.blue,
+  primaryColor: UiToken.primaryDarkColor,
   useMaterial3: true,
 );
 
