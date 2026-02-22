@@ -1,3 +1,4 @@
+export '../../provider/register_provider.dart';
 export '../../provider/user_provider/user_profile_provider.dart';
 export '../../provider/cart_provider/cart_provider.dart';
 export '../../provider/theme/theme_provider.dart';
