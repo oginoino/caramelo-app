@@ -7,10 +7,10 @@ Future<void> main() async {
   try {
     WidgetsFlutterBinding.ensureInitialized();
     await Bootstrap.init();
-    MultiProvider(providers: RegisterProvider.register(), child: const App());
+    runApp(
+      MultiProvider(providers: RegisterProvider.register(), child: const App()),
+    );
   } catch (e) {
     ErrorHandler.handleError(e, message: 'App error');
-  } finally {
-    DebugHandler.handleDebug('App finished');
   }
 }
