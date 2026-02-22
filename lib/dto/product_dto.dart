@@ -199,7 +199,7 @@ class ProductDto {
         orElse: () => ProductStatus.active,
       ),
       preparationTime: preparationTimeMinutes != null
-          ? Duration(minutes: preparationTimeMinutes ?? 0)
+          ? Duration(minutes: preparationTimeMinutes!)
           : null,
       warranty: warranty,
       origin: origin,
