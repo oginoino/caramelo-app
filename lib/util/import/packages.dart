@@ -19,3 +19,5 @@ export 'dart:typed_data';
 export 'dart:async';
 
 export 'dart:collection';
+
+export 'package:flutter/services.dart';
