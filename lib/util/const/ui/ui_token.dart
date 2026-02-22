@@ -191,7 +191,4 @@ class UiToken {
   static const double opacity75 = 0.75;
   static const double opacity80 = 0.80;
   static const double opacity100 = 1.0;
-
-  // Font Family
-  static const String fontFamily = 'Nunito';
 }

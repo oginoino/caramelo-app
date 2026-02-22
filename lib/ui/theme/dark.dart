@@ -6,6 +6,7 @@ ThemeData _darkTheme = ThemeData(
   primaryColor: UiToken.primaryDarkColor,
   primarySwatch: UiToken.primaryDarkColorSwatch,
   useMaterial3: true,
+  fontFamily: GoogleFonts.nunito().fontFamily,
 );
 
 ThemeData get darkTheme => _darkTheme;

@@ -6,6 +6,7 @@ ThemeData _lightTheme = ThemeData(
   primaryColor: UiToken.primaryLightColor,
   primarySwatch: UiToken.primaryLightColorSwatch,
   useMaterial3: true,
+  fontFamily: GoogleFonts.nunito().fontFamily,
 );
 
 ThemeData get lightTheme => _lightTheme;

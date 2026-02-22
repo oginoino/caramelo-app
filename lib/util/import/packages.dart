@@ -25,3 +25,5 @@ export 'package:flutter/services.dart';
 export 'package:provider/provider.dart';
 
 export 'package:provider/single_child_widget.dart';
+
+export 'package:google_fonts/google_fonts.dart';
