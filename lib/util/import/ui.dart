@@ -1,2 +1,2 @@
-export '../../ui/pages/home_page.dart';
-export '../../ui/pages/splash_page.dart';
+export '../../ui/page/home_page.dart';
+export '../../ui/page/splash_page.dart';
