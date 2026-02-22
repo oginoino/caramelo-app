@@ -52,6 +52,84 @@ class AuthRepository {
   final Duration _timeout = Duration(milliseconds: Environment.authTimeoutMs);
   String get _prefix => Environment.authApiPrefix;
 
+  int _parseExpiresAtSeconds({
+    required Map<String, dynamic>? data,
+    required String accessToken,
+  }) {
+    final dynamic expiresAtRaw =
+        data?['expires_at'] ??
+        data?['expiresAt'] ??
+        data?['access_token_expires_at'] ??
+        data?['accessTokenExpiresAt'];
+    final parsedExpiresAt = _tryParseEpochSecondsOrIso(expiresAtRaw);
+    if (parsedExpiresAt != null) return parsedExpiresAt;
+
+    final dynamic expiresInRaw =
+        data?['expires_in'] ??
+        data?['expiresIn'] ??
+        data?['access_token_expires_in'] ??
+        data?['accessTokenExpiresIn'];
+    final expiresInSeconds = _tryParseInt(expiresInRaw);
+    if (expiresInSeconds != null) {
+      final nowSeconds = DateTime.now().millisecondsSinceEpoch ~/ 1000;
+      return nowSeconds + expiresInSeconds;
+    }
+
+    final jwtExpSeconds = _tryParseJwtExp(accessToken);
+    if (jwtExpSeconds != null) return jwtExpSeconds;
+
+    throw AuthException(
+      'token_expiry_missing',
+      'Token expiry not provided by server',
+    );
+  }
+
+  int? _tryParseEpochSecondsOrIso(dynamic value) {
+    if (value == null) return null;
+    if (value is num) {
+      final v = value.toInt();
+      return v > 9999999999 ? v ~/ 1000 : v;
+    }
+    if (value is String) {
+      final asInt = int.tryParse(value);
+      if (asInt != null) {
+        return asInt > 9999999999 ? asInt ~/ 1000 : asInt;
+      }
+      try {
+        return DateTime.parse(value).millisecondsSinceEpoch ~/ 1000;
+      } catch (_) {
+        return null;
+      }
+    }
+    return null;
+  }
+
+  int? _tryParseInt(dynamic value) {
+    if (value == null) return null;
+    if (value is num) return value.toInt();
+    if (value is String) return int.tryParse(value);
+    return null;
+  }
+
+  int? _tryParseJwtExp(String accessToken) {
+    final parts = accessToken.split('.');
+    if (parts.length < 2) return null;
+
+    try {
+      final payload = parts[1];
+      final normalized = base64Url.normalize(payload);
+      final decoded = utf8.decode(base64Url.decode(normalized));
+      final obj = jsonDecode(decoded);
+      if (obj is! Map<String, dynamic>) return null;
+      final exp = obj['exp'];
+      if (exp is num) return exp.toInt();
+      if (exp is String) return int.tryParse(exp);
+      return null;
+    } catch (_) {
+      return null;
+    }
+  }
+
   Future<TokenPair> login({
     required String email,
     required String password,
@@ -76,8 +154,10 @@ class AuthRepository {
             'Invalid login response payload',
           );
         }
-        final nowSeconds = DateTime.now().millisecondsSinceEpoch ~/ 1000;
-        final expiresAt = nowSeconds + 15 * 60;
+        final expiresAt = _parseExpiresAtSeconds(
+          data: data,
+          accessToken: accessToken,
+        );
         return TokenPair(
           accessToken: accessToken,
           refreshToken: refreshToken,
@@ -177,8 +257,10 @@ class AuthRepository {
             'Invalid refresh response payload',
           );
         }
-        final nowSeconds = DateTime.now().millisecondsSinceEpoch ~/ 1000;
-        final expiresAt = nowSeconds + 15 * 60;
+        final expiresAt = _parseExpiresAtSeconds(
+          data: data,
+          accessToken: accessToken,
+        );
         return TokenPair(
           accessToken: accessToken,
           refreshToken: refreshToken,
