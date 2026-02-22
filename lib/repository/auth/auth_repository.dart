@@ -48,6 +48,8 @@ class TokenPair {
 }
 
 class AuthRepository {
+  static const int _epochMillisecondsThreshold = 9999999999;
+
   final String _baseUrl = Environment.authBaseUrl ?? '';
   final Duration _timeout = Duration(milliseconds: Environment.authTimeoutMs);
   String get _prefix => Environment.authApiPrefix;
@@ -88,12 +90,12 @@ class AuthRepository {
     if (value == null) return null;
     if (value is num) {
       final v = value.toInt();
-      return v > 9999999999 ? v ~/ 1000 : v;
+      return v > _epochMillisecondsThreshold ? v ~/ 1000 : v;
     }
     if (value is String) {
       final asInt = int.tryParse(value);
       if (asInt != null) {
-        return asInt > 9999999999 ? asInt ~/ 1000 : asInt;
+        return asInt > _epochMillisecondsThreshold ? asInt ~/ 1000 : asInt;
       }
       try {
         return DateTime.parse(value).millisecondsSinceEpoch ~/ 1000;
