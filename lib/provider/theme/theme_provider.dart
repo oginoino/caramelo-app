@@ -1,28 +1,17 @@
 import '../../util/import/packages.dart';
 import '../../util/import/service.dart';
+import '../../ui/theme/light.dart';
+import '../../ui/theme/dark.dart';
 
-ThemeData buildLightTheme({required Color accentColor}) {
-  return ThemeData(
-    brightness: Brightness.light,
-    primarySwatch: Colors.blue,
-    colorScheme: ColorScheme.light(
-      primary: accentColor,
-      secondary: accentColor,
-    ),
-    useMaterial3: true,
-  );
+ThemeData _lightTheme = lightTheme;
+ThemeData _darkTheme = darkTheme;
+
+ThemeData buildLightTheme() {
+  return _lightTheme;
 }
 
-ThemeData buildDarkTheme({required Color accentColor}) {
-  return ThemeData(
-    brightness: Brightness.dark,
-    primarySwatch: Colors.blue,
-    colorScheme: ColorScheme.dark(
-      primary: accentColor,
-      secondary: accentColor,
-    ),
-    useMaterial3: true,
-  );
+ThemeData buildDarkTheme() {
+  return _darkTheme;
 }
 
 class ThemeProvider extends ChangeNotifier {
@@ -32,27 +21,19 @@ class ThemeProvider extends ChangeNotifier {
     _loadThemeSettings();
   }
 
-  static const Color _defaultAccentColor = Color(0xFF58E700);
-  Color _accentColor = _defaultAccentColor;
   bool _isDarkMode = false;
-  ThemeData _currentTheme = buildLightTheme(accentColor: _defaultAccentColor);
+  ThemeData _currentTheme = buildLightTheme();
 
   ThemeData get currentTheme => _currentTheme;
   bool get isDarkMode => _isDarkMode;
-  Color get accentColor => _accentColor;
 
   void _loadThemeSettings() {
     _isDarkMode = _persistenceService.getIsDarkMode() ?? false;
-    final accentColorValue =
-        _persistenceService.getAccentColor() ?? _defaultAccentColor.toARGB32();
-    _accentColor = Color(accentColorValue);
     _applyTheme();
   }
 
   void _applyTheme() {
-    _currentTheme = _isDarkMode
-        ? buildDarkTheme(accentColor: _accentColor)
-        : buildLightTheme(accentColor: _accentColor);
+    _currentTheme = _isDarkMode ? buildDarkTheme() : buildLightTheme();
     notifyListeners();
   }
 
@@ -65,12 +46,6 @@ class ThemeProvider extends ChangeNotifier {
   void setDarkMode(bool value) {
     _isDarkMode = value;
     _persistenceService.setIsDarkMode(_isDarkMode);
-    _applyTheme();
-  }
-
-  void setAccentColor(Color color) {
-    _accentColor = color;
-    _persistenceService.setAccentColor(_accentColor.toARGB32());
     _applyTheme();
   }
 
