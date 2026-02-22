@@ -17,3 +17,5 @@ export 'dart:convert';
 export 'dart:typed_data';
 
 export 'dart:async';
+
+export 'dart:collection';
