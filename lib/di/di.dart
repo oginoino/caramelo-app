@@ -89,3 +89,33 @@ class DependencyInjection {
     GetIt.I.registerLazySingleton<UserRepository>(() => UserRepository());
   }
 }
+
+PersistenceService get storageService => GetIt.I<PersistenceService>();
+PersistenceService get persistenceService => GetIt.I<PersistenceService>();
+
+AppConstants get appConstants => GetIt.I<AppConstants>();
+
+LocalizationService get localizationService => GetIt.I<LocalizationService>();
+
+UiToken get uiToken => GetIt.I<UiToken>();
+
+ProductRepository get productRepository => GetIt.I<ProductRepository>();
+
+AuthRepository get authRepository => GetIt.I<AuthRepository>();
+
+AuthServiceRepository get authServiceRepository =>
+    GetIt.I<AuthServiceRepository>();
+
+UserServiceRepository get userServiceRepository =>
+    GetIt.I<UserServiceRepository>();
+
+UserRepository get userRepository => GetIt.I<UserRepository>();
+
+HttpServiceInterface get authService =>
+    GetIt.I<HttpServiceInterface>(instanceName: 'authService');
+
+HttpServiceInterface get authenticatedService =>
+    GetIt.I<HttpServiceInterface>(instanceName: 'authenticatedService');
+
+HttpServiceInterface get publicService =>
+    GetIt.I<HttpServiceInterface>(instanceName: 'publicService');

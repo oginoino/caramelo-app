@@ -21,3 +21,7 @@ export 'dart:async';
 export 'dart:collection';
 
 export 'package:flutter/services.dart';
+
+export 'package:provider/provider.dart';
+
+export 'package:provider/single_child_widget.dart';
