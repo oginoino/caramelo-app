@@ -1,0 +1,186 @@
+[
+  {
+    "id": "prod_001",
+    "name": "Café Especial Premium",
+    "description": "Café especial de alta qualidade, torrado e moído na hora. Perfeito para quem aprecia um café com sabor marcante e aroma intenso.",
+    "unit": "kg",
+    "images": [
+      "assets/images/png/coffee_beans.jpg"
+    ],
+    "price": {
+      "original": 89.90,
+      "promotional": 79.90,
+      "cost": 45.00,
+      "currency": "BRL"
+    },
+    "categories": [
+      "Bebidas",
+      "Café",
+      "Produtos Naturais"
+    ],
+    "tags": [
+      "premium",
+      "especial",
+      "torrado",
+      "moído"
+    ],
+    "stock": {
+      "available": 150,
+      "reserved": 10,
+      "total": 160,
+      "minStock": 20
+    },
+    "dimensions": {
+      "width": 15.0,
+      "height": 25.0,
+      "depth": 8.0,
+      "weight": 1.0
+    },
+    "sku": "CAF-ESP-001",
+    "seller": {
+      "id": "seller_001",
+      "name": "Café Especial LTDA",
+      "rating": 4.8,
+      "totalSales": 1250
+    },
+    "seo": {
+      "title": "Café Especial Premium - 1kg",
+      "description": "Café especial premium de alta qualidade, torrado e moído",
+      "keywords": "café, especial, premium, torrado, moído"
+    },
+    "shipping": {
+      "free": true,
+      "estimatedDays": 3,
+      "cost": 0.0
+    },
+    "flags": {
+      "featured": true,
+      "new": false,
+      "promotion": true,
+      "available": true
+    },
+    "barcode": "7891234567890",
+    "attributes": [
+      {
+        "name": "Tipo de Grão",
+        "value": "Arábica"
+      },
+      {
+        "name": "Torra",
+        "value": "Média"
+      },
+      {
+        "name": "Origem",
+        "value": "Sul de Minas"
+      }
+    ],
+    "nutrition": {
+      "calories": 2,
+      "protein": 0.3,
+      "carbs": 0.2,
+      "fat": 0.1,
+      "fiber": 0.0,
+      "sodium": 2.0
+    },
+    "rating": 4.7,
+    "salesCount": 342,
+    "status": "active",
+    "preparationTimeMinutes": 24,
+    "warranty": "30 dias",
+    "origin": "Brasil",
+    "createdAt": "2024-01-15T10:30:00Z",
+    "updatedAt": "2024-02-20T15:45:00Z"
+  },
+  {
+    "id": "prod_002",
+    "name": "Chocolate Artesanal 70% Cacau",
+    "description": "Chocolate artesanal com 70% de cacau, produzido com ingredientes selecionados. Sabor intenso e textura suave.",
+    "unit": "g",
+    "images": [
+      "assets/images/png/chocolate.jpg"
+    ],
+    "price": {
+      "original": 35.90,
+      "promotional": 32.90,
+      "cost": 20.00,
+      "currency": "BRL"
+    },
+    "categories": [
+      "Doces",
+      "Chocolate",
+      "Produtos Artesanais"
+    ],
+    "tags": [
+      "artesanal",
+      "70% cacau",
+      "premium",
+      "sem conservantes"
+    ],
+    "stock": {
+      "available": 85,
+      "reserved": 5,
+      "total": 90,
+      "minStock": 15
+    },
+    "dimensions": {
+      "width": 10.0,
+      "height": 15.0,
+      "depth": 2.0,
+      "weight": 0.1
+    },
+    "sku": "CHO-ART-002",
+    "seller": {
+      "id": "seller_002",
+      "name": "Chocolates da Vila",
+      "rating": 4.9,
+      "totalSales": 890
+    },
+    "seo": {
+      "title": "Chocolate Artesanal 70% Cacau - 100g",
+      "description": "Chocolate artesanal premium com 70% de cacau",
+      "keywords": "chocolate, artesanal, 70% cacau, premium"
+    },
+    "shipping": {
+      "free": false,
+      "estimatedDays": 5,
+      "cost": 12.50
+    },
+    "flags": {
+      "featured": false,
+      "new": true,
+      "promotion": false,
+      "available": true
+    },
+    "barcode": "7890987654321",
+    "attributes": [
+      {
+        "name": "Percentual de Cacau",
+        "value": "70%"
+      },
+      {
+        "name": "Tipo",
+        "value": "Amargo"
+      },
+      {
+        "name": "Ingredientes",
+        "value": "Cacau, açúcar, manteiga de cacau"
+      }
+    ],
+    "nutrition": {
+      "calories": 580,
+      "protein": 8.0,
+      "carbs": 45.0,
+      "fat": 42.0,
+      "fiber": 11.0,
+      "sodium": 20.0
+    },
+    "rating": 4.8,
+    "salesCount": 156,
+    "status": "active",
+    "preparationTimeMinutes": 48,
+    "warranty": "60 dias",
+    "origin": "Brasil",
+    "createdAt": "2024-02-01T14:20:00Z",
+    "updatedAt": "2024-02-20T16:30:00Z"
+  }
+]

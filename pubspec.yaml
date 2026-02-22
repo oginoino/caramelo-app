@@ -55,6 +55,7 @@ flutter:
 
   assets:
     - assets/images/png/
+    - assets/data/
 
 # dart run flutter_native_splash:create
 flutter_native_splash:
