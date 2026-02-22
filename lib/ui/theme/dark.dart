@@ -15,10 +15,13 @@ ThemeData _darkTheme = ThemeData(
     onSurface: UiToken.primaryDark50,
     onError: UiToken.primaryDark50,
   ),
-  appBarTheme: const AppBarTheme(elevation: 0, centerTitle: true),
+  appBarTheme: const AppBarTheme(
+    elevation: UiToken.elevationNone,
+    centerTitle: true,
+  ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
-      elevation: 0,
+      elevation: UiToken.elevationNone,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(UiToken.borderRadius8),
       ),
@@ -48,7 +51,7 @@ ThemeData _darkTheme = ThemeData(
     ),
   ),
   cardTheme: CardThemeData(
-    elevation: 0,
+    elevation: UiToken.elevationNone,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(UiToken.borderRadius12),
     ),
