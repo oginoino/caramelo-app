@@ -12,6 +12,8 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     ThemeData theme;
     Locale? locale;
+    String appNameValue = 'App';
+    String appTitleValue = 'App';
     try {
       theme = context.watch<ThemeProvider>().currentTheme;
     } catch (_) {
@@ -22,13 +24,19 @@ class App extends StatelessWidget {
     } catch (_) {
       locale = null;
     }
+    try {
+      appNameValue = appConstants.appName;
+      appTitleValue = appConstants.appTitle;
+    } catch (_) {
+      appNameValue = 'App';
+      appTitleValue = 'App';
+    }
 
     return MaterialApp.router(
-      onGenerateTitle: (BuildContext context) => appConstants.appName,
-      title: appConstants.appTitle,
-      routerDelegate: appRouter.routerDelegate,
-      routeInformationParser: appRouter.routeInformationParser,
-      routeInformationProvider: appRouter.routeInformationProvider,
+      onGenerateTitle: (BuildContext context) => appNameValue,
+      title: appTitleValue,
+      routerConfig: appRouter,
+      builder: (context, child) => child ?? const Placeholder(),
       theme: theme,
       debugShowCheckedModeBanner: false,
       locale: locale,

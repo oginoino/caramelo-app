@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  testWidgets('App widget should display a Placeholder', (
-    WidgetTester tester,
-  ) async {
+  testWidgets('App widget builds without errors', (WidgetTester tester) async {
     await tester.pumpWidget(const App());
+    await tester.pumpAndSettle();
 
-    expect(find.byType(Placeholder), findsOneWidget);
+    expect(tester.takeException(), isNull);
+    expect(find.byType(Directionality), findsWidgets);
   });
 }

@@ -1,27 +1,34 @@
 import '../../util/import/packages.dart';
 import '../../util/import/service.dart';
+import '../../util/const/ui/ui_token.dart';
 
 ThemeData buildLightTheme({required Color accentColor}) {
-  return ThemeData(
+  final colorScheme = ColorScheme.fromSeed(
+    seedColor: accentColor,
     brightness: Brightness.light,
-    primarySwatch: Colors.blue,
-    colorScheme: ColorScheme.light(
-      primary: accentColor,
-      secondary: accentColor,
-    ),
-    useMaterial3: true,
+  );
+  final base = ThemeData(useMaterial3: true, colorScheme: colorScheme);
+  final textTheme = GoogleFonts.interTextTheme(base.textTheme);
+  return base.copyWith(
+    textTheme: textTheme,
+    extensions: const <ThemeExtension<dynamic>>[UiToken()],
   );
 }
 
 ThemeData buildDarkTheme({required Color accentColor}) {
-  return ThemeData(
+  final colorScheme = ColorScheme.fromSeed(
+    seedColor: accentColor,
     brightness: Brightness.dark,
-    primarySwatch: Colors.blue,
-    colorScheme: ColorScheme.dark(
-      primary: accentColor,
-      secondary: accentColor,
-    ),
+  );
+  final base = ThemeData(
     useMaterial3: true,
+    colorScheme: colorScheme,
+    brightness: Brightness.dark,
+  );
+  final textTheme = GoogleFonts.interTextTheme(base.textTheme);
+  return base.copyWith(
+    textTheme: textTheme,
+    extensions: const <ThemeExtension<dynamic>>[UiToken()],
   );
 }
 
