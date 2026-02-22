@@ -18,6 +18,7 @@ ThemeData _lightTheme = ThemeData(
   appBarTheme: const AppBarTheme(
     elevation: UiToken.elevationNone,
     centerTitle: true,
+    backgroundColor: UiToken.primaryLightColor,
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(

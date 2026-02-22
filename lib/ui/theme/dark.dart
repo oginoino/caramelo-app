@@ -18,6 +18,7 @@ ThemeData _darkTheme = ThemeData(
   appBarTheme: const AppBarTheme(
     elevation: UiToken.elevationNone,
     centerTitle: true,
+    backgroundColor: UiToken.primaryDarkColor,
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
