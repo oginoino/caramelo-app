@@ -5,8 +5,53 @@ ThemeData _darkTheme = ThemeData(
   brightness: Brightness.dark,
   useMaterial3: true,
   fontFamily: GoogleFonts.nunito().fontFamily,
-  colorScheme: ColorScheme.fromSwatch(
-    primarySwatch: UiToken.primaryDarkColorSwatch,
+  colorScheme: ColorScheme.dark(
+    primary: UiToken.primaryDarkColor,
+    secondary: UiToken.secondaryDark500,
+    surface: UiToken.primaryDark900,
+    error: UiToken.errorLight500,
+    onPrimary: UiToken.primaryDark50,
+    onSecondary: UiToken.secondaryDark50,
+    onSurface: UiToken.primaryDark50,
+    onError: UiToken.primaryDark50,
+  ),
+  appBarTheme: const AppBarTheme(elevation: 0, centerTitle: true),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(UiToken.borderRadius8),
+      ),
+    ),
+  ),
+  outlinedButtonTheme: OutlinedButtonThemeData(
+    style: OutlinedButton.styleFrom(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(UiToken.borderRadius8),
+      ),
+    ),
+  ),
+  textButtonTheme: TextButtonThemeData(
+    style: TextButton.styleFrom(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(UiToken.borderRadius8),
+      ),
+    ),
+  ),
+  inputDecorationTheme: InputDecorationTheme(
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(UiToken.borderRadius8),
+    ),
+    contentPadding: const EdgeInsets.symmetric(
+      horizontal: UiToken.spacing16,
+      vertical: UiToken.spacing12,
+    ),
+  ),
+  cardTheme: CardThemeData(
+    elevation: 0,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(UiToken.borderRadius12),
+    ),
   ),
 );
 

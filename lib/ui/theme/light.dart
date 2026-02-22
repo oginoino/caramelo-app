@@ -5,8 +5,53 @@ ThemeData _lightTheme = ThemeData(
   brightness: Brightness.light,
   useMaterial3: true,
   fontFamily: GoogleFonts.nunito().fontFamily,
-  colorScheme: ColorScheme.fromSwatch(
-    primarySwatch: UiToken.primaryLightColorSwatch,
+  colorScheme: ColorScheme.light(
+    primary: UiToken.primaryLightColor,
+    secondary: UiToken.secondaryLight500,
+    surface: UiToken.primaryLight50,
+    error: UiToken.errorLight500,
+    onPrimary: UiToken.primaryLight900,
+    onSecondary: UiToken.secondaryLight900,
+    onSurface: UiToken.primaryLight900,
+    onError: UiToken.primaryLight50,
+  ),
+  appBarTheme: const AppBarTheme(elevation: 0, centerTitle: true),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(UiToken.borderRadius8),
+      ),
+    ),
+  ),
+  outlinedButtonTheme: OutlinedButtonThemeData(
+    style: OutlinedButton.styleFrom(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(UiToken.borderRadius8),
+      ),
+    ),
+  ),
+  textButtonTheme: TextButtonThemeData(
+    style: TextButton.styleFrom(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(UiToken.borderRadius8),
+      ),
+    ),
+  ),
+  inputDecorationTheme: InputDecorationTheme(
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(UiToken.borderRadius8),
+    ),
+    contentPadding: const EdgeInsets.symmetric(
+      horizontal: UiToken.spacing16,
+      vertical: UiToken.spacing12,
+    ),
+  ),
+  cardTheme: CardThemeData(
+    elevation: 0,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(UiToken.borderRadius12),
+    ),
   ),
 );
 
