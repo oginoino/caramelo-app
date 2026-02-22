@@ -6,3 +6,6 @@ export '../../service/http/client/http_status.dart';
 export '../../service/http/client/http_response.dart';
 export '../../service/http/client/http_method.dart';
 export '../../service/http/client/http_request.dart';
+export '../../service/http/logger/http_logger.dart';
+
+export '../../service/http/http_service.dart';
