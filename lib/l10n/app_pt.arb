@@ -1,0 +1,11 @@
+{
+  "@@locale": "pt",
+  "appTitle": "Aplicativo Caramelo",
+  "@appTitle": {
+    "description": "O título da aplicação"
+  },
+  "welcomeMessage": "Bem-vindo ao Caramelo!",
+  "@welcomeMessage": {
+    "description": "Mensagem de boas-vindas mostrada aos usuários"
+  }
+}
