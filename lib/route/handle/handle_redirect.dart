@@ -18,7 +18,7 @@ class HandleRedirect {
     final path = state.uri.path;
 
     // Go to home
-    if (path == Routes.home) {
+    if (path != Routes.home) {
       return Routes.home;
     }
 
