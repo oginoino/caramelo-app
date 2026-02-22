@@ -61,13 +61,22 @@ class DependencyInjection {
   }
 
   static void _registerRepositories() {
-    GetIt.I.registerLazySingleton<ProductRepository>(() => ProductRepository());
-
-    GetIt.I.registerLazySingleton<AuthRepository>(() => AuthRepository());
-
     final authService = GetIt.I<HttpServiceInterface>(
       instanceName: 'authService',
     );
+    final authenticatedService = GetIt.I<HttpServiceInterface>(
+      instanceName: 'authenticatedService',
+    );
+    final persistenceService = GetIt.I<PersistenceService>();
+
+    GetIt.I.registerLazySingleton<ProductRepository>(
+      () => ProductRepository(httpService: publicService),
+    );
+
+    GetIt.I.registerLazySingleton<AuthRepository>(
+      () => AuthRepository(httpService: authService),
+    );
+
     GetIt.I.registerLazySingleton<AuthServiceRepository>(
       () => AuthServiceRepository(
         httpService: authService,
@@ -75,9 +84,6 @@ class DependencyInjection {
       ),
     );
 
-    final authenticatedService = GetIt.I<HttpServiceInterface>(
-      instanceName: 'authenticatedService',
-    );
     GetIt.I.registerLazySingleton<UserServiceRepository>(
       () => UserServiceRepository(
         httpService: authenticatedService,
@@ -86,7 +92,12 @@ class DependencyInjection {
       ),
     );
 
-    GetIt.I.registerLazySingleton<UserRepository>(() => UserRepository());
+    GetIt.I.registerLazySingleton<UserRepository>(
+      () => UserRepository(
+        httpService: authenticatedService,
+        persistenceService: persistenceService,
+      ),
+    );
   }
 }
 
