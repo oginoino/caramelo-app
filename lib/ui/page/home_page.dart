@@ -7,6 +7,8 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(slivers: [CustomSliverAppBar(title: 'Início')]);
+    return CustomScrollView(
+      slivers: [CustomSliverAppBar(title: 'Início', child: Search())],
+    );
   }
 }
