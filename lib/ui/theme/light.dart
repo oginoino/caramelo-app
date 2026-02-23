@@ -39,6 +39,13 @@ ThemeData _lightTheme = ThemeData(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(UiToken.borderRadius8),
       ),
+      backgroundColor: UiToken.secondaryLight50,
+      textStyle: TextStyle(
+        color: UiToken.secondaryDark500,
+        fontSize: UiToken.textSize16,
+        fontWeight: FontWeight.w600,
+      ),
+      iconColor: UiToken.secondaryDark500,
     ),
   ),
   textButtonTheme: TextButtonThemeData(
