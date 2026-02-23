@@ -89,12 +89,6 @@ ThemeData _darkTheme = ThemeData(
     ),
     color: UiToken.primaryDark900,
     elevation: UiToken.elevationNone,
-    textStyle: TextStyle(
-      color: UiToken.secondaryLight500,
-      fontSize: UiToken.textSize16,
-      fontWeight: FontWeight.w600,
-    ),
-    iconColor: UiToken.secondaryLight500,
   ),
 );
 
