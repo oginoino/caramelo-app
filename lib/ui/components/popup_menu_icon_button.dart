@@ -9,6 +9,7 @@ class PopupMenuIconButton extends StatelessWidget {
     return PopupMenuButton(
       itemBuilder: (context) => [
         PopupMenuItem(
+          value: 'toggle_theme',
           child: TextButton.icon(
             label: Text('Toggle Theme'),
             icon: Icon(Icons.brightness_6),
