@@ -129,66 +129,66 @@ class UiToken {
   static const Color alertLight950 = Color(0xFF451203);
 
   // Text Sizes
-  static const double textSize8 = 8.0;
-  static const double textSize10 = 10.0;
-  static const double textSize12 = 12.0;
-  static const double textSize14 = 14.0;
-  static const double textSize16 = 16.0;
-  static const double textSize20 = 20.0;
-  static const double textSize24 = 24.0;
-  static const double textSize32 = 32.0;
-  static const double textSize40 = 40.0;
+  static double get textSize8 => 8.0;
+  static double get textSize10 => 10.0;
+  static double get textSize12 => 12.0;
+  static double get textSize14 => 14.0;
+  static double get textSize16 => 16.0;
+  static double get textSize20 => 20.0;
+  static double get textSize24 => 24.0;
+  static double get textSize32 => 32.0;
+  static double get textSize40 => 40.0;
 
   // Border Radius
-  static const double borderRadiusNone = 0.0;
-  static const double borderRadius4 = 4.0;
-  static const double borderRadius8 = 8.0;
-  static const double borderRadius12 = 12.0;
-  static const double borderRadius16 = 16.0;
-  static const double borderRadius24 = 24.0;
-  static const double borderRadiusFull = 50.0;
+  static double get borderRadiusNone => 0.0;
+  static double get borderRadius4 => 4.0;
+  static double get borderRadius8 => 8.0;
+  static double get borderRadius12 => 12.0;
+  static double get borderRadius16 => 16.0;
+  static double get borderRadius24 => 24.0;
+  static double get borderRadiusFull => 50.0;
 
   // Spacing
-  static const double spacingNone = 0.0;
-  static const double spacing4 = 4.0;
-  static const double spacing8 = 8.0;
-  static const double spacing12 = 12.0;
-  static const double spacing16 = 16.0;
-  static const double spacing20 = 20.0;
-  static const double spacing24 = 24.0;
-  static const double spacing32 = 32.0;
-  static const double spacing40 = 40.0;
+  static double get spacingNone => 0.0;
+  static double get spacing4 => 4.0;
+  static double get spacing8 => 8.0;
+  static double get spacing12 => 12.0;
+  static double get spacing16 => 16.0;
+  static double get spacing20 => 20.0;
+  static double get spacing24 => 24.0;
+  static double get spacing32 => 32.0;
+  static double get spacing40 => 40.0;
 
   // Shadow
-  static const double shadowNone = 0.0;
-  static const double shadow4 = 4.0;
-  static const double shadow8 = 8.0;
-  static const double shadow12 = 12.0;
-  static const double shadow16 = 16.0;
-  static const double shadow20 = 20.0;
-  static const double shadow24 = 24.0;
-  static const double shadow32 = 32.0;
-  static const double shadow40 = 40.0;
+  static double get shadowNone => 0.0;
+  static double get shadow4 => 4.0;
+  static double get shadow8 => 8.0;
+  static double get shadow12 => 12.0;
+  static double get shadow16 => 16.0;
+  static double get shadow20 => 20.0;
+  static double get shadow24 => 24.0;
+  static double get shadow32 => 32.0;
+  static double get shadow40 => 40.0;
 
   // Elevation
-  static const double elevationNone = 0.0;
-  static const double elevation4 = 4.0;
-  static const double elevation8 = 8.0;
-  static const double elevation12 = 12.0;
-  static const double elevation16 = 16.0;
-  static const double elevation20 = 20.0;
-  static const double elevation24 = 24.0;
-  static const double elevation32 = 32.0;
-  static const double elevation40 = 40.0;
+  static double get elevationNone => 0.0;
+  static double get elevation4 => 4.0;
+  static double get elevation8 => 8.0;
+  static double get elevation12 => 12.0;
+  static double get elevation16 => 16.0;
+  static double get elevation20 => 20.0;
+  static double get elevation24 => 24.0;
+  static double get elevation32 => 32.0;
+  static double get elevation40 => 40.0;
 
   // Opacity
-  static const double opacityNone = 0.0;
-  static const double opacity20 = 0.20;
-  static const double opacity25 = 0.25;
-  static const double opacity40 = 0.40;
-  static const double opacity50 = 0.50;
-  static const double opacity60 = 0.60;
-  static const double opacity75 = 0.75;
-  static const double opacity80 = 0.80;
-  static const double opacity100 = 1.0;
+  static double get opacityNone => 0.0;
+  static double get opacity20 => 0.20;
+  static double get opacity25 => 0.25;
+  static double get opacity40 => 0.40;
+  static double get opacity50 => 0.50;
+  static double get opacity60 => 0.60;
+  static double get opacity75 => 0.75;
+  static double get opacity80 => 0.80;
+  static double get opacity100 => 1.0;
 }
