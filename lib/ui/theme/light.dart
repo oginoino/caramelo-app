@@ -19,6 +19,12 @@ ThemeData _lightTheme = ThemeData(
     elevation: UiToken.elevationNone,
     centerTitle: true,
     backgroundColor: UiToken.primaryLightColor,
+    titleTextStyle: TextStyle(
+      color: UiToken.secondaryDark500,
+      fontSize: UiToken.textSize24,
+      fontWeight: FontWeight.w600,
+    ),
+    actionsIconTheme: IconThemeData(color: UiToken.secondaryDark500),
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
