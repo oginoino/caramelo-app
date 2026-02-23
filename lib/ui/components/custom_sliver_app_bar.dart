@@ -1,6 +1,7 @@
 import '../../util/const/ui/ui_token.dart';
 import '../../util/import/packages.dart';
 import '../../util/import/provider.dart';
+import '../../util/import/service.dart';
 import '../../util/import/ui.dart';
 
 class CustomSliverAppBar extends StatelessWidget {
@@ -48,7 +49,7 @@ class CustomSliverAppBar extends StatelessWidget {
               child: TextButton.icon(
                 label: Center(
                   child: Text(
-                    'Toggle Theme',
+                    LocalizationService.strings.toggleTheme,
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       color: isLightTheme
                           ? UiToken.secondaryDark500

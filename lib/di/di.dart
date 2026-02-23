@@ -33,6 +33,9 @@ class DependencyInjection {
     GetIt.I.registerLazySingleton<LocalizationService>(
       () => LocalizationService(),
     );
+
+    // Initialize localization with default locale
+    LocalizationService.load(const Locale('en'));
     GetIt.I.registerLazySingleton<UiToken>(() => UiToken());
   }
 

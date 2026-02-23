@@ -112,6 +112,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Welcome to Caramelo!'**
   String get welcomeMessage;
+
+  /// Toggle theme button text
+  ///
+  /// In en, this message translates to:
+  /// **'Toggle Theme'**
+  String get toggleTheme;
+
+  /// Search placeholder text
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get search;
+
+  /// Home page title
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get home;
 }
 
 class _AppLocalizationsDelegate

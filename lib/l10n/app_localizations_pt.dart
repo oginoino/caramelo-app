@@ -13,6 +13,15 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get welcomeMessage => 'Bem-vindo ao Caramelo!';
+
+  @override
+  String get toggleTheme => 'Alternar Tema';
+
+  @override
+  String get search => 'Buscar';
+
+  @override
+  String get home => 'Início';
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
@@ -24,4 +33,13 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get welcomeMessage => 'Bem-vindo ao Caramelo!';
+
+  @override
+  String get toggleTheme => 'Alternar Tema';
+
+  @override
+  String get search => 'Buscar';
+
+  @override
+  String get home => 'Início';
 }

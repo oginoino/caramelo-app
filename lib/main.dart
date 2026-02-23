@@ -7,6 +7,7 @@ Future<void> main() async {
   try {
     WidgetsFlutterBinding.ensureInitialized();
     await Bootstrap.init();
+
     runApp(
       MultiProvider(providers: RegisterProvider.register(), child: const App()),
     );

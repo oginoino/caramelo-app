@@ -13,4 +13,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get welcomeMessage => 'Welcome to Caramelo!';
+
+  @override
+  String get toggleTheme => 'Toggle Theme';
+
+  @override
+  String get search => 'Search';
+
+  @override
+  String get home => 'Home';
 }
