@@ -35,7 +35,7 @@ class DependencyInjection {
     );
 
     // Initialize localization with default locale
-    LocalizationService.load(const Locale('en'));
+    LocalizationService.load(const Locale('pt'));
     GetIt.I.registerLazySingleton<UiToken>(() => UiToken());
   }
 
