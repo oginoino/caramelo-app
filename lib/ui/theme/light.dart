@@ -44,7 +44,7 @@ ThemeData _lightTheme = ThemeData(
   ),
   inputDecorationTheme: InputDecorationTheme(
     border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(UiToken.borderRadius8),
+      borderRadius: BorderRadius.circular(UiToken.borderRadiusFull),
     ),
     contentPadding: EdgeInsets.symmetric(
       horizontal: UiToken.spacing16,

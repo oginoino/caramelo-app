@@ -11,10 +11,7 @@ class Search extends StatelessWidget {
       child: TextField(
         decoration: InputDecoration(
           hintText: 'Search',
-          prefixIcon: Icon(Icons.search_rounded),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(UiToken.borderRadius8),
-          ),
+          suffixIcon: Icon(Icons.search_rounded),
         ),
       ),
     );
