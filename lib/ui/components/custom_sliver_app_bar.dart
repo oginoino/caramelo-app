@@ -1,11 +1,11 @@
-import '../../util/const/ui/ui_token.dart';
 import '../../util/import/packages.dart';
 import '../../util/import/provider.dart';
 
 class CustomSliverAppBar extends StatelessWidget {
-  const CustomSliverAppBar({super.key, this.title});
+  const CustomSliverAppBar({super.key, this.title, this.flexibleSpace});
 
   final String? title;
+  final Widget? flexibleSpace;
 
   @override
   Widget build(BuildContext context) {
@@ -14,12 +14,13 @@ class CustomSliverAppBar extends StatelessWidget {
       floating: true,
       snap: true,
       pinned: false,
-      expandedHeight: UiToken.spacing40,
+      flexibleSpace: flexibleSpace,
       actions: [
         // Change theme button
         IconButton(
           icon: Icon(Icons.brightness_6),
-          onPressed: () => context.watch<ThemeProvider>().toggleTheme(),
+          onPressed: () =>
+              Provider.of<ThemeProvider>(context, listen: false).toggleTheme(),
         ),
       ],
     );
