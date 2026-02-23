@@ -15,7 +15,7 @@ ThemeData _darkTheme = ThemeData(
     onSurface: UiToken.primaryDark50,
     onError: UiToken.primaryDark50,
   ),
-  appBarTheme: const AppBarTheme(
+  appBarTheme: AppBarTheme(
     elevation: UiToken.elevationNone,
     centerTitle: true,
     backgroundColor: UiToken.primaryDarkColor,
@@ -46,7 +46,7 @@ ThemeData _darkTheme = ThemeData(
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(UiToken.borderRadius8),
     ),
-    contentPadding: const EdgeInsets.symmetric(
+    contentPadding: EdgeInsets.symmetric(
       horizontal: UiToken.spacing16,
       vertical: UiToken.spacing12,
     ),

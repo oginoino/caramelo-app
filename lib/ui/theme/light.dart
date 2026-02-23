@@ -15,7 +15,7 @@ ThemeData _lightTheme = ThemeData(
     onSurface: UiToken.primaryLight900,
     onError: UiToken.primaryLight50,
   ),
-  appBarTheme: const AppBarTheme(
+  appBarTheme: AppBarTheme(
     elevation: UiToken.elevationNone,
     centerTitle: true,
     backgroundColor: UiToken.primaryLightColor,
@@ -46,7 +46,7 @@ ThemeData _lightTheme = ThemeData(
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(UiToken.borderRadius8),
     ),
-    contentPadding: const EdgeInsets.symmetric(
+    contentPadding: EdgeInsets.symmetric(
       horizontal: UiToken.spacing16,
       vertical: UiToken.spacing12,
     ),

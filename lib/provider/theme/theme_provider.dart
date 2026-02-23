@@ -53,4 +53,10 @@ class ThemeProvider extends ChangeNotifier {
     _currentTheme = theme;
     _applyTheme();
   }
+
+  void toggleTheme() {
+    _isDarkMode = !_isDarkMode;
+    _persistenceService.setIsDarkMode(_isDarkMode);
+    _applyTheme();
+  }
 }
