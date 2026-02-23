@@ -37,8 +37,15 @@ ThemeData _darkTheme = ThemeData(
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(UiToken.borderRadius8),
+        borderRadius: BorderRadius.circular(UiToken.borderRadiusFull),
       ),
+      backgroundColor: UiToken.secondaryDark50,
+      textStyle: TextStyle(
+        color: UiToken.secondaryLight400,
+        fontSize: UiToken.textSize16,
+        fontWeight: FontWeight.w600,
+      ),
+      iconColor: UiToken.secondaryLight400,
     ),
   ),
   textButtonTheme: TextButtonThemeData(
@@ -46,6 +53,13 @@ ThemeData _darkTheme = ThemeData(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(UiToken.borderRadius8),
       ),
+      backgroundColor: UiToken.secondaryDark50,
+      textStyle: TextStyle(
+        color: UiToken.secondaryLight400,
+        fontSize: UiToken.textSize16,
+        fontWeight: FontWeight.w600,
+      ),
+      iconColor: UiToken.secondaryLight400,
     ),
   ),
   inputDecorationTheme: InputDecorationTheme(
