@@ -1,6 +1,7 @@
 import '../../util/import/packages.dart';
 import '../../util/import/repository.dart';
 import '../../util/import/service.dart';
+import '../../service/http/logger/http_error.dart';
 
 class UserProfileProvider extends ChangeNotifier {
   UserProfileProvider(this._userRepository, this._persistenceService);
@@ -40,11 +41,11 @@ class UserProfileProvider extends ChangeNotifier {
       final me = await _userRepository.getMe();
       _fullName = me.fullName;
       _email = me.email;
-    } on AuthException catch (e) {
+    } on HttpError catch (e) {
       _profile = null;
       _fullName = null;
       _email = null;
-      _errorCode = e.code;
+      _errorCode = e.message;
     } finally {
       _isLoading = false;
       notifyListeners();
