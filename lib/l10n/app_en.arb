@@ -7,5 +7,17 @@
     "welcomeMessage": "Welcome to Caramelo!",
     "@welcomeMessage": {
         "description": "Welcome message displayed to users"
+    },
+    "toggleTheme": "Toggle Theme",
+    "@toggleTheme": {
+        "description": "Toggle theme button text"
+    },
+    "search": "Search",
+    "@search": {
+        "description": "Search placeholder text"
+    },
+    "home": "Home",
+    "@home": {
+        "description": "Home page title"
     }
 }

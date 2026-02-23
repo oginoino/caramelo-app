@@ -7,5 +7,17 @@
   "welcomeMessage": "¡Bienvenido a Caramelo!",
   "@welcomeMessage": {
     "description": "Mensaje de bienvenida mostrado a los usuarios"
+  },
+  "toggleTheme": "Alternar Tema",
+  "@toggleTheme": {
+    "description": "Texto del botón para alternar el tema"
+  },
+  "search": "Buscar",
+  "@search": {
+    "description": "Texto de marcador de posición para la búsqueda"
+  },
+  "home": "Inicio",
+  "@home": {
+    "description": "Título de la página de inicio"
   }
 }

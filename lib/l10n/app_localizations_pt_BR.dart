@@ -1,12 +1,7 @@
-// ignore: unused_import
-import 'package:intl/intl.dart' as intl;
-import 'app_localizations.dart';
+import '../util/import/service.dart';
 
-// ignore_for_file: type=lint
-
-/// The translations for Portuguese (`pt`).
-class AppLocalizationsPt extends AppLocalizations {
-  AppLocalizationsPt([String locale = 'pt']) : super(locale);
+class AppLocalizationsPtBR extends AppLocalizations {
+  AppLocalizationsPtBR([String locale = 'pt-BR']) : super(locale);
 
   @override
   String get appTitle => 'Aplicativo Caramelo';
@@ -25,7 +20,7 @@ class AppLocalizationsPt extends AppLocalizations {
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
-class AppLocalizationsPtBr extends AppLocalizationsPt {
+class AppLocalizationsPtBr extends AppLocalizationsPtBR {
   AppLocalizationsPtBr() : super('pt_BR');
 
   @override

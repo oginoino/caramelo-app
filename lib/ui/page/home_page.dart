@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import '../../util/import/service.dart';
 import '../../util/import/ui.dart';
 
 class Home extends StatelessWidget {
@@ -8,7 +8,12 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
-      slivers: [CustomSliverAppBar(title: 'Início', child: Search())],
+      slivers: [
+        CustomSliverAppBar(
+          title: LocalizationService.strings.home,
+          child: Search(),
+        ),
+      ],
     );
   }
 }

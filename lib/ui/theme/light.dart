@@ -39,13 +39,27 @@ ThemeData _lightTheme = ThemeData(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(UiToken.borderRadius8),
       ),
+      backgroundColor: UiToken.secondaryLight50,
+      textStyle: TextStyle(
+        color: UiToken.secondaryDark500,
+        fontSize: UiToken.textSize16,
+        fontWeight: FontWeight.w600,
+      ),
+      iconColor: UiToken.secondaryDark500,
     ),
   ),
   textButtonTheme: TextButtonThemeData(
     style: TextButton.styleFrom(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(UiToken.borderRadius8),
+        borderRadius: BorderRadius.circular(UiToken.borderRadiusFull),
       ),
+      backgroundColor: UiToken.secondaryLight50,
+      textStyle: TextStyle(
+        color: UiToken.primaryLight500,
+        fontSize: UiToken.textSize16,
+        fontWeight: FontWeight.w600,
+      ),
+      iconColor: UiToken.primaryLight500,
     ),
   ),
   inputDecorationTheme: InputDecorationTheme(
@@ -79,6 +93,13 @@ ThemeData _lightTheme = ThemeData(
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(UiToken.borderRadius12),
     ),
+  ),
+  popupMenuTheme: PopupMenuThemeData(
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(UiToken.borderRadiusFull),
+    ),
+    color: UiToken.primaryLight50,
+    elevation: UiToken.elevationNone,
   ),
 );
 
