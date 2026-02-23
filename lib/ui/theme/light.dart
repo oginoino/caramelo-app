@@ -45,11 +45,28 @@ ThemeData _lightTheme = ThemeData(
   inputDecorationTheme: InputDecorationTheme(
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(UiToken.borderRadiusFull),
+      borderSide: BorderSide(color: UiToken.secondaryDark500),
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(UiToken.borderRadiusFull),
+      borderSide: BorderSide(color: UiToken.secondaryDark500),
+    ),
+
+    errorBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(UiToken.borderRadiusFull),
+      borderSide: BorderSide(color: UiToken.errorLight500),
+    ),
+    focusedErrorBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(UiToken.borderRadiusFull),
+      borderSide: BorderSide(color: UiToken.errorLight500),
     ),
     contentPadding: EdgeInsets.symmetric(
       horizontal: UiToken.spacing16,
       vertical: UiToken.spacing12,
     ),
+    hintStyle: TextStyle(color: UiToken.secondaryDark500),
+    suffixIconColor: UiToken.secondaryDark500,
+    labelStyle: TextStyle(color: UiToken.secondaryDark500),
   ),
   cardTheme: CardThemeData(
     elevation: UiToken.elevationNone,
