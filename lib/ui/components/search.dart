@@ -1,5 +1,6 @@
 import '../../util/const/ui/ui_token.dart';
 import '../../util/import/packages.dart';
+import '../../util/import/service.dart';
 
 class Search extends StatelessWidget {
   const Search({super.key});
@@ -10,7 +11,7 @@ class Search extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: UiToken.spacing16),
       child: TextField(
         decoration: InputDecoration(
-          hintText: 'Search',
+          hintText: LocalizationService.strings.search,
           suffixIcon: Icon(Icons.search_rounded),
         ),
       ),

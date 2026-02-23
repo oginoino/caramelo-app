@@ -12,6 +12,7 @@ class DependencyInjection {
     _registerUtils();
     _registerServices();
     _registerRepositories();
+    _registerAuthenticatedService();
   }
 
   static Future<void> _registerPersistencePreferences() async {
@@ -33,6 +34,9 @@ class DependencyInjection {
     GetIt.I.registerLazySingleton<LocalizationService>(
       () => LocalizationService(),
     );
+
+    // Initialize localization with default locale
+    LocalizationService.load(const Locale('pt', 'BR'));
     GetIt.I.registerLazySingleton<UiToken>(() => UiToken());
   }
 
@@ -47,14 +51,6 @@ class DependencyInjection {
     );
 
     GetIt.I.registerLazySingleton<HttpServiceInterface>(
-      () => ApiServiceFactory.createAuthenticatedService(
-        persistenceService: persistenceService,
-        authRepository: GetIt.I<AuthRepository>(),
-      ),
-      instanceName: 'authenticatedService',
-    );
-
-    GetIt.I.registerLazySingleton<HttpServiceInterface>(
       () => ApiServiceFactory.createPublicService(),
       instanceName: 'publicService',
     );
@@ -63,9 +59,6 @@ class DependencyInjection {
   static void _registerRepositories() {
     final authService = GetIt.I<HttpServiceInterface>(
       instanceName: 'authService',
-    );
-    final authenticatedService = GetIt.I<HttpServiceInterface>(
-      instanceName: 'authenticatedService',
     );
     final persistenceService = GetIt.I<PersistenceService>();
 
@@ -86,7 +79,9 @@ class DependencyInjection {
 
     GetIt.I.registerLazySingleton<UserServiceRepository>(
       () => UserServiceRepository(
-        httpService: authenticatedService,
+        httpService: GetIt.I<HttpServiceInterface>(
+          instanceName: 'authenticatedService',
+        ),
         authPrefix: Environment.authApiPrefix,
         corePrefix: Environment.coreApiPrefix,
       ),
@@ -94,9 +89,23 @@ class DependencyInjection {
 
     GetIt.I.registerLazySingleton<UserRepository>(
       () => UserRepository(
-        httpService: authenticatedService,
+        httpService: GetIt.I<HttpServiceInterface>(
+          instanceName: 'authenticatedService',
+        ),
         persistenceService: persistenceService,
       ),
+    );
+  }
+
+  static void _registerAuthenticatedService() {
+    final persistenceService = GetIt.I<PersistenceService>();
+
+    GetIt.I.registerLazySingleton<HttpServiceInterface>(
+      () => ApiServiceFactory.createAuthenticatedService(
+        persistenceService: persistenceService,
+        authRepository: GetIt.I<AuthRepository>(),
+      ),
+      instanceName: 'authenticatedService',
     );
   }
 }
