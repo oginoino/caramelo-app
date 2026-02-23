@@ -83,6 +83,19 @@ ThemeData _darkTheme = ThemeData(
       borderRadius: BorderRadius.circular(UiToken.borderRadius12),
     ),
   ),
+  popupMenuTheme: PopupMenuThemeData(
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(UiToken.borderRadiusFull),
+    ),
+    color: UiToken.primaryDark900,
+    elevation: UiToken.elevationNone,
+    textStyle: TextStyle(
+      color: UiToken.secondaryLight500,
+      fontSize: UiToken.textSize16,
+      fontWeight: FontWeight.w600,
+    ),
+    iconColor: UiToken.secondaryLight500,
+  ),
 );
 
 ThemeData get darkTheme => _darkTheme;

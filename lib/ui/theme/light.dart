@@ -80,6 +80,19 @@ ThemeData _lightTheme = ThemeData(
       borderRadius: BorderRadius.circular(UiToken.borderRadius12),
     ),
   ),
+  popupMenuTheme: PopupMenuThemeData(
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(UiToken.borderRadiusFull),
+    ),
+    color: UiToken.primaryLight50,
+    elevation: UiToken.elevationNone,
+    textStyle: TextStyle(
+      color: UiToken.secondaryDark500,
+      fontSize: UiToken.textSize16,
+      fontWeight: FontWeight.w600,
+    ),
+    iconColor: UiToken.secondaryDark500,
+  ),
 );
 
 ThemeData get lightTheme => _lightTheme;
