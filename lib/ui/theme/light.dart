@@ -63,15 +63,20 @@ ThemeData _lightTheme = ThemeData(
     ),
   ),
   inputDecorationTheme: InputDecorationTheme(
+    filled: true,
+    fillColor: UiToken.secondaryLight50,
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(UiToken.borderRadiusFull),
-      borderSide: BorderSide(color: UiToken.secondaryDark500),
+      borderSide: BorderSide(color: UiToken.secondaryLight400),
     ),
     enabledBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(UiToken.borderRadiusFull),
-      borderSide: BorderSide(color: UiToken.secondaryDark500),
+      borderSide: BorderSide(color: UiToken.secondaryLight400),
     ),
-
+    focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(UiToken.borderRadiusFull),
+      borderSide: BorderSide(color: UiToken.primaryLight600),
+    ),
     errorBorder: OutlineInputBorder(
       borderRadius: BorderRadius.circular(UiToken.borderRadiusFull),
       borderSide: BorderSide(color: UiToken.errorLight500),
@@ -85,8 +90,8 @@ ThemeData _lightTheme = ThemeData(
       vertical: UiToken.spacing12,
     ),
     hintStyle: TextStyle(color: UiToken.secondaryLight600),
-    suffixIconColor: UiToken.secondaryLight700,
     labelStyle: TextStyle(color: UiToken.secondaryLight700),
+    suffixIconColor: UiToken.secondaryLight600,
   ),
   cardTheme: CardThemeData(
     elevation: UiToken.elevationNone,
