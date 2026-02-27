@@ -20,11 +20,11 @@ ThemeData _darkTheme = ThemeData(
     centerTitle: true,
     backgroundColor: UiToken.primaryDarkColor,
     titleTextStyle: TextStyle(
-      color: UiToken.secondaryLight500,
+      color: UiToken.primaryDark50,
       fontSize: UiToken.textSize24,
       fontWeight: FontWeight.w600,
     ),
-    actionsIconTheme: IconThemeData(color: UiToken.secondaryLight500),
+    actionsIconTheme: IconThemeData(color: UiToken.primaryDark50),
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
@@ -41,11 +41,11 @@ ThemeData _darkTheme = ThemeData(
       ),
       backgroundColor: UiToken.secondaryDark50,
       textStyle: TextStyle(
-        color: UiToken.secondaryLight400,
+        color: UiToken.secondaryLight300,
         fontSize: UiToken.textSize16,
         fontWeight: FontWeight.w600,
       ),
-      iconColor: UiToken.secondaryLight400,
+      iconColor: UiToken.secondaryLight300,
     ),
   ),
   textButtonTheme: TextButtonThemeData(
@@ -55,11 +55,11 @@ ThemeData _darkTheme = ThemeData(
       ),
       backgroundColor: UiToken.secondaryDark50,
       textStyle: TextStyle(
-        color: UiToken.secondaryLight400,
+        color: UiToken.secondaryLight300,
         fontSize: UiToken.textSize16,
         fontWeight: FontWeight.w600,
       ),
-      iconColor: UiToken.secondaryLight400,
+      iconColor: UiToken.secondaryLight300,
     ),
   ),
   inputDecorationTheme: InputDecorationTheme(
@@ -87,9 +87,9 @@ ThemeData _darkTheme = ThemeData(
       horizontal: UiToken.spacing16,
       vertical: UiToken.spacing12,
     ),
-    hintStyle: TextStyle(color: UiToken.secondaryLight500),
-    suffixIconColor: UiToken.secondaryLight500,
-    labelStyle: TextStyle(color: UiToken.secondaryLight500),
+    hintStyle: TextStyle(color: UiToken.secondaryLight400),
+    suffixIconColor: UiToken.secondaryLight400,
+    labelStyle: TextStyle(color: UiToken.secondaryLight300),
   ),
   cardTheme: CardThemeData(
     elevation: UiToken.elevationNone,

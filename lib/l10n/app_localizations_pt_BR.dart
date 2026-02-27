@@ -1,7 +1,7 @@
 import '../util/import/service.dart';
 
 class AppLocalizationsPtBR extends AppLocalizations {
-  AppLocalizationsPtBR([String locale = 'pt-BR']) : super(locale);
+  AppLocalizationsPtBR([super.locale = 'pt-BR']);
 
   @override
   String get appTitle => 'Aplicativo Caramelo';
