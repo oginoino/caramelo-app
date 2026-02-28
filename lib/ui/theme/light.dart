@@ -124,9 +124,6 @@ ThemeData _lightTheme = ThemeData(
       ),
     ),
     dragHandleColor: UiToken.secondaryLight600,
-    constraints: BoxConstraints(
-      maxHeight: MediaQueryData.fromView(PlatformDispatcher.instance.implicitView!).size.height * 0.75,
-    ),
   ),
 );
 
