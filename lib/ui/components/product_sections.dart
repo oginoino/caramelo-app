@@ -13,8 +13,6 @@ class ProductSections extends StatefulWidget {
 }
 
 class _ProductSectionsState extends State<ProductSections> {
-  bool _showAllCategories = false;
-
   @override
   Widget build(BuildContext context) {
     return Consumer<ProductProvider>(
@@ -42,7 +40,6 @@ class _ProductSectionsState extends State<ProductSections> {
         final products = provider.filteredProducts;
         final categories = provider.availableCategories;
         final selectedCategory = provider.selectedCategoryId;
-        final searchQuery = provider.searchQuery;
 
         if (selectedCategory != 'all' && selectedCategory != 'deals') {
           if (products.isEmpty) {
@@ -53,16 +50,7 @@ class _ProductSectionsState extends State<ProductSections> {
           return _ProductGrid(products: products);
         }
 
-        const maxPreviewCategories = 3;
-        final usePreview =
-            selectedCategory == 'all' &&
-            searchQuery.isEmpty &&
-            !_showAllCategories &&
-            categories.length > maxPreviewCategories;
-
-        final Iterable<String> categoriesToShow = usePreview
-            ? categories.take(maxPreviewCategories)
-            : categories;
+        final Iterable<String> categoriesToShow = categories;
 
         final sections = <Widget>[];
         int sectionIndex = 0;
@@ -107,25 +95,6 @@ class _ProductSectionsState extends State<ProductSections> {
                 .move(delay: (sectionIndex * 300).ms),
           );
           sectionIndex++;
-        }
-
-        if (usePreview) {
-          sections.add(
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: TextButton(
-                  onPressed: () {
-                    setState(() {
-                      _showAllCategories = true;
-                    });
-                  },
-                  child: Text(LocalizationService.strings.viewAllCategories),
-                ),
-              ),
-            ),
-          );
         }
 
         return Column(children: sections)
