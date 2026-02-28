@@ -4,6 +4,7 @@ import '../../util/const/ui/ui_token.dart';
 import '../../util/import/packages.dart' as math show min;
 import '../../util/import/provider.dart';
 import '../../util/import/service.dart';
+import 'app_tooltip.dart';
 import 'location_bottom_sheet.dart';
 
 class LocationSelectorDropdown extends StatefulWidget {
@@ -72,21 +73,8 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
         ...provider.locations.map(
           (loc) => PopupMenuItem<String>(
             value: loc.name,
-            child: Tooltip(
+            child: AppTooltip(
               message: 'Selecionar ${loc.name}',
-              decoration: BoxDecoration(
-                color: isDark
-                    ? UiToken.secondaryLight200
-                    : UiToken.secondaryDark900,
-                borderRadius: BorderRadius.circular(UiToken.borderRadius8),
-              ),
-              textStyle: TextStyle(
-                color: isDark
-                    ? UiToken.secondaryDark900
-                    : UiToken.secondaryLight200,
-                fontSize: UiToken.textSize12,
-                fontWeight: FontWeight.w600,
-              ),
               child: SizedBox(
                 width: menuMaxWidth,
                 child: Row(
@@ -109,21 +97,8 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
         ),
         PopupMenuItem<String>(
           value: '__add__',
-          child: Tooltip(
+          child: AppTooltip(
             message: 'Adicionar nova localização',
-            decoration: BoxDecoration(
-              color: isDark
-                  ? UiToken.secondaryLight200
-                  : UiToken.secondaryDark900,
-              borderRadius: BorderRadius.circular(UiToken.borderRadius8),
-            ),
-            textStyle: TextStyle(
-              color: isDark
-                  ? UiToken.secondaryDark900
-                  : UiToken.secondaryLight200,
-              fontSize: UiToken.textSize12,
-              fontWeight: FontWeight.w600,
-            ),
             child: SizedBox(
               width: menuMaxWidth,
               child: Row(
@@ -187,25 +162,9 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
                 width: width,
                 child: Material(
                   color: Colors.transparent,
-                  child: Tooltip(
+                  child: AppTooltip(
                     message:
                         provider.selectedLocation ?? 'Selecionar localização',
-                    decoration: BoxDecoration(
-                      color: isDark
-                          ? UiToken.secondaryLight200
-                          : UiToken.secondaryDark900,
-                      borderRadius: BorderRadius.circular(
-                        UiToken.borderRadius8,
-                      ),
-                    ),
-                    textStyle: TextStyle(
-                      color: isDark
-                          ? UiToken.secondaryDark900
-                          : UiToken.secondaryLight200,
-                      fontSize: UiToken.textSize12,
-                      fontWeight: FontWeight.w600,
-                    ),
-                    waitDuration: const Duration(milliseconds: 500),
                     child: InkWell(
                       key: _anchorKey,
                       borderRadius: BorderRadius.circular(

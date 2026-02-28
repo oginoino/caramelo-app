@@ -201,14 +201,26 @@ ThemeData _darkTheme = ThemeData(
   ),
   tooltipTheme: TooltipThemeData(
     decoration: BoxDecoration(
-      color: UiToken.secondaryLight200,
+      color: UiToken.primaryLight100,
       borderRadius: BorderRadius.circular(UiToken.borderRadius8),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black.withValues(alpha: 0.2),
+          blurRadius: 4,
+          offset: const Offset(0, 2),
+        ),
+      ],
     ),
     textStyle: TextStyle(
-      color: UiToken.secondaryDark900,
+      color: UiToken.primaryDark900,
       fontSize: UiToken.textSize12,
       fontWeight: FontWeight.w600,
     ),
+    padding: EdgeInsets.symmetric(
+      horizontal: UiToken.spacing12,
+      vertical: UiToken.spacing8,
+    ),
+    waitDuration: const Duration(milliseconds: 500),
   ),
   tabBarTheme: TabBarThemeData(
     labelColor: UiToken.primaryDark50,
