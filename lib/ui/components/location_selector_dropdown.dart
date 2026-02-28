@@ -1,5 +1,7 @@
 import '../../util/import/packages.dart';
 import '../../util/const/ui/ui_token.dart';
+import '../../util/import/di.dart' as di;
+import '../../util/import/domain.dart';
 
 class LocationSelectorDropdown extends StatefulWidget {
   const LocationSelectorDropdown({super.key, this.initialSelection});
@@ -12,17 +14,33 @@ class LocationSelectorDropdown extends StatefulWidget {
 }
 
 class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
-  final List<String> _locations = ['Minha casa', 'Trabalho'];
+  List<Location> _locations = const [];
   String? _selectedLocation;
 
   @override
   void initState() {
     super.initState();
-    if (widget.initialSelection != null &&
-        _locations.contains(widget.initialSelection)) {
-      _selectedLocation = widget.initialSelection;
-    } else {
-      _selectedLocation = _locations.isNotEmpty ? _locations.first : null;
+    _loadLocations();
+  }
+
+  Future<void> _loadLocations() async {
+    try {
+      final repo = di.locationRepository;
+      final items = await repo.getLocations();
+      setState(() {
+        _locations = items;
+        if (widget.initialSelection != null &&
+            items.any((e) => e.name == widget.initialSelection)) {
+          _selectedLocation = widget.initialSelection;
+        } else {
+          _selectedLocation = items.isNotEmpty ? items.first.name : null;
+        }
+      });
+    } catch (e) {
+      setState(() {
+        _locations = const [];
+        _selectedLocation = null;
+      });
     }
   }
 
@@ -57,16 +75,19 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
     );
 
     if (result != null && result.isNotEmpty) {
-      if (!_locations.contains(result)) {
-        setState(() {
-          _locations.add(result);
-          _selectedLocation = result;
-        });
-      } else {
-        setState(() {
-          _selectedLocation = result;
-        });
-      }
+      final exists = _locations.any((e) => e.name == result);
+      setState(() {
+        if (!exists) {
+          _locations = List<Location>.from(_locations)
+            ..add(
+              Location(
+                id: 'custom_${DateTime.now().millisecondsSinceEpoch}',
+                name: result,
+              ),
+            );
+        }
+        _selectedLocation = result;
+      });
     }
   }
 
@@ -96,7 +117,7 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
             items: [
               ..._locations.map(
                 (loc) => DropdownMenuItem<String>(
-                  value: loc,
+                  value: loc.name,
                   child: Row(
                     children: [
                       Icon(
@@ -107,7 +128,7 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
                       const SizedBox(width: 8),
                       Expanded(
                         child: Text(
-                          loc,
+                          loc.name,
                           style: TextStyle(color: textColor),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
@@ -161,7 +182,7 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
                         const SizedBox(width: 8),
                         Expanded(
                           child: Text(
-                            loc,
+                            loc.name,
                             style: TextStyle(color: textColor),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,

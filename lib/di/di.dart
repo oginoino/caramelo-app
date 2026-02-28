@@ -65,6 +65,9 @@ class DependencyInjection {
     GetIt.I.registerLazySingleton<ProductRepository>(
       () => ProductRepository(httpService: publicService),
     );
+    GetIt.I.registerLazySingleton<LocationRepository>(
+      () => LocationRepository(httpService: publicService),
+    );
 
     GetIt.I.registerLazySingleton<AuthRepository>(
       () => AuthRepository(httpService: authService),
@@ -139,3 +142,6 @@ HttpServiceInterface get authenticatedService =>
 
 HttpServiceInterface get publicService =>
     GetIt.I<HttpServiceInterface>(instanceName: 'publicService');
+
+LocationRepository get locationRepository =>
+    GetIt.I<LocationRepository>();

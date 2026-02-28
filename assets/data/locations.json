@@ -1,0 +1,5 @@
+[
+  { "id": "home", "name": "Minha casa", "description": "Endereço principal" },
+  { "id": "work", "name": "Trabalho", "description": "Escritório" },
+  { "id": "parents", "name": "Casa dos pais" }
+]
