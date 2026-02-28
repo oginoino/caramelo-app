@@ -160,10 +160,14 @@ ThemeData _darkTheme = ThemeData(
     suffixIconColor: UiToken.secondaryLight400,
   ),
   cardTheme: CardThemeData(
+    color: UiToken.secondaryDark400,
+    surfaceTintColor: UiToken.secondaryDark400,
     elevation: UiToken.elevationNone,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(UiToken.borderRadius12),
+      side: BorderSide(color: UiToken.secondaryDark600),
     ),
+    clipBehavior: Clip.antiAlias,
   ),
   dialogTheme: DialogThemeData(
     elevation: UiToken.elevationNone,
