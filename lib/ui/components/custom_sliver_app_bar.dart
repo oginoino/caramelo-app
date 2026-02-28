@@ -43,26 +43,43 @@ class _CustomSliverAppBarState extends State<CustomSliverAppBar> {
         ),
       ),
       expandedHeight: 280,
+      leading: IconButton(
+        tooltip: 'Profile',
+        onPressed: () {
+          showModalBottomSheet<void>(
+            context: context,
+            isScrollControlled: true,
+            showDragHandle: true,
+            builder: (sheetContext) {
+              return const ProfileBottomSheet();
+            },
+          );
+        },
+        icon: CircleAvatar(
+          radius: UiToken.shadow16,
+          backgroundColor: isLightTheme
+              ? UiToken.secondaryDark500
+              : UiToken.secondaryLight400,
+          child: Icon(
+            Icons.person_rounded,
+            size: UiToken.textSize24,
+            color: isLightTheme
+                ? UiToken.secondaryLight400
+                : UiToken.secondaryDark500,
+          ),
+        ),
+      ),
       actions: [
         IconButton(
-          tooltip: 'Profile',
-          onPressed: () {
-            showModalBottomSheet<void>(
-              context: context,
-              isScrollControlled: true,
-              showDragHandle: true,
-              builder: (sheetContext) {
-                return const ProfileBottomSheet();
-              },
-            );
-          },
+          tooltip: 'Cart',
+          onPressed: () {},
           icon: CircleAvatar(
             radius: UiToken.shadow16,
             backgroundColor: isLightTheme
                 ? UiToken.secondaryDark500
                 : UiToken.secondaryLight400,
             child: Icon(
-              Icons.person_rounded,
+              Icons.shopping_bag_rounded,
               size: UiToken.textSize24,
               color: isLightTheme
                   ? UiToken.secondaryLight400
