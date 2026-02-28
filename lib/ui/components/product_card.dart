@@ -148,7 +148,9 @@ class _AddButton extends StatelessWidget {
                   : UiToken.primaryDark800,
             ),
             onPressed: () => cart.decreaseItem(product.id),
-            icon: const Icon(Icons.remove_rounded),
+            icon: Icon(
+              quantity == 1 ? Icons.delete_rounded : Icons.remove_rounded,
+            ),
           ),
           Text(
             '$quantity',
@@ -163,7 +165,7 @@ class _AddButton extends StatelessWidget {
                   ? UiToken.primaryLight50
                   : UiToken.primaryDark800,
             ),
-            onPressed: onAdd,
+            onPressed: canAddMore ? onAdd : null,
             icon: const Icon(Icons.add_rounded),
           ),
         ],
