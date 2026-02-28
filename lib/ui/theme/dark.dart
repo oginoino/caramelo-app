@@ -29,6 +29,12 @@ ThemeData _darkTheme = ThemeData(
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       elevation: UiToken.elevationNone,
+      backgroundColor: UiToken.primaryDarkColor,
+      foregroundColor: UiToken.primaryDark50,
+      textStyle: TextStyle(
+        fontSize: UiToken.textSize16,
+        fontWeight: FontWeight.w600,
+      ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(UiToken.borderRadius8),
       ),
@@ -36,30 +42,31 @@ ThemeData _darkTheme = ThemeData(
   ),
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(UiToken.borderRadiusFull),
-      ),
       backgroundColor: UiToken.secondaryDark50,
+      foregroundColor: UiToken.secondaryLight300,
       textStyle: TextStyle(
-        color: UiToken.secondaryLight300,
         fontSize: UiToken.textSize16,
         fontWeight: FontWeight.w600,
       ),
       iconColor: UiToken.secondaryLight300,
+      side: BorderSide(color: UiToken.secondaryLight500),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(UiToken.borderRadius8),
+      ),
     ),
   ),
   textButtonTheme: TextButtonThemeData(
     style: TextButton.styleFrom(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(UiToken.borderRadius8),
-      ),
       backgroundColor: UiToken.secondaryDark50,
+      foregroundColor: UiToken.secondaryLight300,
       textStyle: TextStyle(
-        color: UiToken.secondaryLight300,
         fontSize: UiToken.textSize16,
         fontWeight: FontWeight.w600,
       ),
       iconColor: UiToken.secondaryLight300,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(UiToken.borderRadiusFull),
+      ),
     ),
   ),
   inputDecorationTheme: InputDecorationTheme(
