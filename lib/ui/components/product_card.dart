@@ -65,15 +65,19 @@ class ProductCard extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 2),
-                Text(
-                  product.name,
-                  style: TextStyle(
-                    color: textColor,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 13,
+                SizedBox(
+                  height: 13 * 1.2 * 2,
+                  child: Text(
+                    product.name,
+                    style: TextStyle(
+                      color: textColor,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 13,
+                      height: 1.2,
+                    ),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
                 ),
                 SizedBox(height: 2),
                 Text(
@@ -81,7 +85,7 @@ class ProductCard extends StatelessWidget {
                   style: TextStyle(
                     color: textColor,
                     fontWeight: FontWeight.bold,
-                    fontSize: 14,
+                    fontSize: 16,
                   ),
                 ),
               ],
