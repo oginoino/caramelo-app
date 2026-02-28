@@ -129,7 +129,7 @@ class _ProductGrid extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: UiToken.spacing16),
+              padding: EdgeInsets.zero,
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Material(
@@ -151,7 +151,7 @@ class _ProductGrid extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Icon(Icons.arrow_back_ios_new_rounded),
+                          Icon(Icons.arrow_back_ios_new_rounded, size: 24),
                           SizedBox(width: UiToken.spacing8),
                           Text(
                             LocalizationService.strings.categoryAll,
