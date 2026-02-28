@@ -94,82 +94,203 @@ class ProductCard extends StatelessWidget {
   }
 }
 
-class _AddButton extends StatelessWidget {
+class _AddButton extends StatefulWidget {
   const _AddButton({required this.product, required this.cart});
 
   final Product product;
   final CartProvider cart;
 
   @override
+  State<_AddButton> createState() => _AddButtonState();
+}
+
+class _AddButtonState extends State<_AddButton> {
+  bool _isExpanded = false;
+  Timer? _collapseTimer;
+
+  @override
+  void dispose() {
+    _collapseTimer?.cancel();
+    super.dispose();
+  }
+
+  void _restartCollapseTimer() {
+    _collapseTimer?.cancel();
+    _collapseTimer = Timer(const Duration(seconds: 2), () {
+      if (!mounted) {
+        return;
+      }
+      setState(() {
+        _isExpanded = false;
+      });
+    });
+  }
+
+  void _showStockLimitMessage(BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          'Só temos ${widget.product.stock.available} unidades em estoque.',
+        ),
+      ),
+    );
+  }
+
+  void _handleAddPressed(BuildContext context) {
+    final canAddMore = widget.cart.canAdd(widget.product.id);
+    if (!canAddMore) {
+      _showStockLimitMessage(context);
+      return;
+    }
+    widget.cart.addItem(widget.product);
+    setState(() {
+      _isExpanded = true;
+    });
+    _restartCollapseTimer();
+  }
+
+  void _handleDecreasePressed() {
+    final quantity = widget.cart.getQuantity(widget.product.id);
+    if (quantity <= 0) {
+      return;
+    }
+    widget.cart.decreaseItem(widget.product.id);
+    if (quantity == 1) {
+      _collapseTimer?.cancel();
+      setState(() {
+        _isExpanded = false;
+      });
+      return;
+    }
+    setState(() {
+      _isExpanded = true;
+    });
+    _restartCollapseTimer();
+  }
+
+  void _handleCompactTap() {
+    final quantity = widget.cart.getQuantity(widget.product.id);
+    if (quantity == 0) {
+      return;
+    }
+    setState(() {
+      _isExpanded = true;
+    });
+    _restartCollapseTimer();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final isLight = Theme.of(context).brightness == Brightness.light;
-    final quantity = cart.getQuantity(product.id);
-    final canAddMore = cart.canAdd(product.id);
-
-    final VoidCallback? onAdd = canAddMore
-        ? () => cart.addItem(product)
-        : () {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(
-                  'Só temos ${product.stock.available} unidades em estoque.',
-                ),
-              ),
-            );
-          };
+    final quantity = widget.cart.getQuantity(widget.product.id);
+    final canAddMore = widget.cart.canAdd(widget.product.id);
 
     if (quantity == 0) {
+      _collapseTimer?.cancel();
+      _isExpanded = false;
       return IconButton(
-        style: IconButton.styleFrom(
-          backgroundColor: isLight
-              ? UiToken.primaryLight600
-              : UiToken.primaryLight500,
-          foregroundColor: isLight
-              ? UiToken.primaryLight50
-              : UiToken.primaryDark800,
-          shape: const CircleBorder(),
-        ),
-        onPressed: onAdd,
-        icon: const Icon(Icons.add_rounded),
-      );
+            style: IconButton.styleFrom(
+              backgroundColor: isLight
+                  ? UiToken.primaryLight600
+                  : UiToken.primaryLight500,
+              foregroundColor: isLight
+                  ? UiToken.primaryLight50
+                  : UiToken.primaryDark800,
+              shape: const CircleBorder(),
+            ),
+            onPressed: () => _handleAddPressed(context),
+            icon: const Icon(Icons.add_rounded),
+          )
+          .animate(key: ValueKey('add_${widget.product.id}_icon'))
+          .scale(
+            begin: const Offset(0.9, 0.9),
+            end: const Offset(1, 1),
+            duration: 200.ms,
+          )
+          .fadeIn(duration: 200.ms);
+    }
+
+    if (!_isExpanded) {
+      return GestureDetector(
+            onTap: _handleCompactTap,
+            child: Container(
+              width: 40,
+              height: 40,
+              decoration: BoxDecoration(
+                color: isLight
+                    ? UiToken.primaryLight600
+                    : UiToken.primaryLight500,
+                shape: BoxShape.circle,
+              ),
+              alignment: Alignment.center,
+              child: Text(
+                '$quantity',
+                style: TextStyle(
+                  color: isLight
+                      ? UiToken.primaryLight50
+                      : UiToken.primaryDark800,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          )
+          .animate(key: ValueKey('add_${widget.product.id}_compact'))
+          .scale(
+            begin: const Offset(0.8, 0.8),
+            end: const Offset(1, 1),
+            duration: 220.ms,
+            curve: Curves.easeOutBack,
+          )
+          .fadeIn(duration: 220.ms);
     }
 
     return Container(
-      decoration: BoxDecoration(
-        color: isLight ? UiToken.primaryLight600 : UiToken.primaryLight500,
-        borderRadius: BorderRadius.circular(UiToken.borderRadiusFull),
-      ),
-      child: Row(
-        children: [
-          IconButton(
-            style: IconButton.styleFrom(
-              foregroundColor: isLight
-                  ? UiToken.primaryLight50
-                  : UiToken.primaryDark800,
-            ),
-            onPressed: () => cart.decreaseItem(product.id),
-            icon: Icon(
-              quantity == 1 ? Icons.delete_rounded : Icons.remove_rounded,
-            ),
+          decoration: BoxDecoration(
+            color: isLight ? UiToken.primaryLight600 : UiToken.primaryLight500,
+            borderRadius: BorderRadius.circular(UiToken.borderRadiusFull),
           ),
-          Text(
-            '$quantity',
-            style: TextStyle(
-              color: isLight ? UiToken.primaryLight50 : UiToken.primaryDark800,
-              fontWeight: FontWeight.bold,
-            ),
+          child: Row(
+            children: [
+              IconButton(
+                style: IconButton.styleFrom(
+                  foregroundColor: isLight
+                      ? UiToken.primaryLight50
+                      : UiToken.primaryDark800,
+                ),
+                onPressed: _handleDecreasePressed,
+                icon: Icon(
+                  quantity == 1 ? Icons.delete_rounded : Icons.remove_rounded,
+                ),
+              ),
+              Text(
+                '$quantity',
+                style: TextStyle(
+                  color: isLight
+                      ? UiToken.primaryLight50
+                      : UiToken.primaryDark800,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              IconButton(
+                style: IconButton.styleFrom(
+                  foregroundColor: isLight
+                      ? UiToken.primaryLight50
+                      : UiToken.primaryDark800,
+                ),
+                onPressed: canAddMore
+                    ? () {
+                        _handleAddPressed(context);
+                      }
+                    : () {
+                        _showStockLimitMessage(context);
+                      },
+                icon: const Icon(Icons.add_rounded),
+              ),
+            ],
           ),
-          IconButton(
-            style: IconButton.styleFrom(
-              foregroundColor: isLight
-                  ? UiToken.primaryLight50
-                  : UiToken.primaryDark800,
-            ),
-            onPressed: canAddMore ? onAdd : null,
-            icon: const Icon(Icons.add_rounded),
-          ),
-        ],
-      ),
-    );
+        )
+        .animate(key: ValueKey('add_${widget.product.id}_expanded'))
+        .fadeIn(duration: 200.ms)
+        .slideX(begin: 0.2, end: 0, duration: 200.ms);
   }
 }
