@@ -3,8 +3,15 @@ import '../../provider/product_provider/product_provider.dart';
 import '../../util/import/domain.dart';
 import '../../util/import/ui.dart';
 
-class ProductSections extends StatelessWidget {
+class ProductSections extends StatefulWidget {
   const ProductSections({super.key});
+
+  @override
+  State<ProductSections> createState() => _ProductSectionsState();
+}
+
+class _ProductSectionsState extends State<ProductSections> {
+  bool _showAllCategories = false;
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +28,7 @@ class ProductSections extends StatelessWidget {
         final products = provider.filteredProducts;
         final categories = provider.availableCategories;
         final selectedCategory = provider.selectedCategoryId;
+        final searchQuery = provider.searchQuery;
 
         if (selectedCategory != 'all' && selectedCategory != 'deals') {
           if (products.isEmpty) {
@@ -29,8 +37,18 @@ class ProductSections extends StatelessWidget {
           return _ProductGrid(products: products);
         }
 
+        const maxPreviewCategories = 3;
+        final usePreview = selectedCategory == 'all' &&
+            searchQuery.isEmpty &&
+            !_showAllCategories &&
+            categories.length > maxPreviewCategories;
+
+        final Iterable<String> categoriesToShow = usePreview
+            ? categories.take(maxPreviewCategories)
+            : categories;
+
         final sections = <Widget>[];
-        for (final category in categories) {
+        for (final category in categoriesToShow) {
           final categoryProducts = products
               .where((p) => p.categories.contains(category))
               .toList();
@@ -57,6 +75,25 @@ class ProductSections extends StatelessWidget {
                 ),
                 const SizedBox(height: 24),
               ],
+            ),
+          );
+        }
+
+        if (usePreview) {
+          sections.add(
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: TextButton(
+                  onPressed: () {
+                    setState(() {
+                      _showAllCategories = true;
+                    });
+                  },
+                  child: const Text('Ver todas as categorias'),
+                ),
+              ),
             ),
           );
         }
