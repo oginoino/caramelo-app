@@ -9,8 +9,11 @@ class ProductCarousel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const cardWidth = 160.0;
+    final cardHeight = cardWidth / ProductCard.aspectRatio;
+
     return SizedBox(
-      height: 250,
+      height: cardHeight,
       child: ListView.separated(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         scrollDirection: Axis.horizontal,
@@ -18,7 +21,10 @@ class ProductCarousel extends StatelessWidget {
         separatorBuilder: (context, index) => const SizedBox(width: 12),
         itemBuilder: (context, index) {
           final product = products[index];
-          return SizedBox(width: 160, child: ProductCard(product: product));
+          return SizedBox(
+            width: cardWidth,
+            child: ProductCard(product: product),
+          );
         },
       ),
     );

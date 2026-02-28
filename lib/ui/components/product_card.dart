@@ -5,6 +5,8 @@ import '../../util/import/packages.dart';
 class ProductCard extends StatelessWidget {
   const ProductCard({required this.product, super.key});
 
+  static const double aspectRatio = 0.64;
+
   final Product product;
 
   @override
