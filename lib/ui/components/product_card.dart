@@ -49,7 +49,7 @@ class ProductCard extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(height: 8),
+          SizedBox(height: UiToken.spacing8),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: UiToken.spacing4),
             child: Column(
