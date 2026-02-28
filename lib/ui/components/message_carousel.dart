@@ -3,10 +3,7 @@ import '../../util/import/domain.dart';
 import '../../util/const/ui/ui_token.dart';
 
 class MessageCarousel extends StatefulWidget {
-  const MessageCarousel({
-    super.key,
-    required this.messages,
-  });
+  const MessageCarousel({super.key, required this.messages});
 
   final List<Message> messages;
 
@@ -65,19 +62,17 @@ class _MessageCarouselState extends State<MessageCarousel> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return SizedBox(
-      height: 80,
+      height: 88,
       child: PageView.builder(
         controller: _controller,
         itemCount: widget.messages.length,
-        padEnds: false,
+        padEnds: true,
+        pageSnapping: true,
         itemBuilder: (context, index) {
           final message = widget.messages[index];
 
           return Padding(
-            padding: EdgeInsets.only(
-              left: index == 0 ? UiToken.spacing16 : UiToken.spacing8,
-              right: UiToken.spacing8,
-            ),
+            padding: EdgeInsets.symmetric(horizontal: UiToken.spacing12),
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(UiToken.borderRadius16),

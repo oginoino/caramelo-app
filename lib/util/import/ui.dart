@@ -9,3 +9,4 @@ export '../../ui/components/popup_menu_icon_button.dart';
 export '../../ui/components/location_selector_dropdown.dart';
 export '../../ui/components/theme_toggle.dart';
 export '../../ui/components/message_carousel.dart';
+export '../../ui/components/home_message_carousel_section.dart';
