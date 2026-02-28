@@ -72,15 +72,71 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
         ...provider.locations.map(
           (loc) => PopupMenuItem<String>(
             value: loc.name,
+            child: Tooltip(
+              message: 'Selecionar ${loc.name}',
+              decoration: BoxDecoration(
+                color: isDark
+                    ? UiToken.secondaryLight200
+                    : UiToken.secondaryDark900,
+                borderRadius: BorderRadius.circular(UiToken.borderRadius8),
+              ),
+              textStyle: TextStyle(
+                color: isDark
+                    ? UiToken.secondaryDark900
+                    : UiToken.secondaryLight200,
+                fontSize: UiToken.textSize12,
+                fontWeight: FontWeight.w600,
+              ),
+              child: SizedBox(
+                width: menuMaxWidth,
+                child: Row(
+                  children: [
+                    Icon(Icons.location_on_rounded, size: 18, color: textColor),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: Text(
+                        loc.name,
+                        style: TextStyle(color: textColor),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+        PopupMenuItem<String>(
+          value: '__add__',
+          child: Tooltip(
+            message: 'Adicionar nova localização',
+            decoration: BoxDecoration(
+              color: isDark
+                  ? UiToken.secondaryLight200
+                  : UiToken.secondaryDark900,
+              borderRadius: BorderRadius.circular(UiToken.borderRadius8),
+            ),
+            textStyle: TextStyle(
+              color: isDark
+                  ? UiToken.secondaryDark900
+                  : UiToken.secondaryLight200,
+              fontSize: UiToken.textSize12,
+              fontWeight: FontWeight.w600,
+            ),
             child: SizedBox(
               width: menuMaxWidth,
               child: Row(
                 children: [
-                  Icon(Icons.location_on_rounded, size: 18, color: textColor),
+                  Icon(
+                    Icons.add_location_alt_rounded,
+                    size: 18,
+                    color: textColor,
+                  ),
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text(
-                      loc.name,
+                      LocalizationService.strings.addLocation,
                       style: TextStyle(color: textColor),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
@@ -88,30 +144,6 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
                   ),
                 ],
               ),
-            ),
-          ),
-        ),
-        PopupMenuItem<String>(
-          value: '__add__',
-          child: SizedBox(
-            width: menuMaxWidth,
-            child: Row(
-              children: [
-                Icon(
-                  Icons.add_location_alt_rounded,
-                  size: 18,
-                  color: textColor,
-                ),
-                const SizedBox(width: 8),
-                Expanded(
-                  child: Text(
-                    LocalizationService.strings.addLocation,
-                    style: TextStyle(color: textColor),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-              ],
             ),
           ),
         ),
@@ -155,56 +187,76 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
                 width: width,
                 child: Material(
                   color: Colors.transparent,
-                  child: InkWell(
-                    key: _anchorKey,
-                    borderRadius: BorderRadius.circular(
-                      UiToken.borderRadiusFull,
+                  child: Tooltip(
+                    message:
+                        provider.selectedLocation ?? 'Selecionar localização',
+                    decoration: BoxDecoration(
+                      color: isDark
+                          ? UiToken.secondaryLight200
+                          : UiToken.secondaryDark900,
+                      borderRadius: BorderRadius.circular(
+                        UiToken.borderRadius8,
+                      ),
                     ),
-                    onTap: () => _openLocationMenu(provider),
-                    child: AnimatedContainer(
-                      duration: const Duration(milliseconds: 200),
-                      curve: Curves.easeOut,
-                      padding: EdgeInsets.symmetric(
-                        horizontal: UiToken.spacing16,
-                        vertical: UiToken.spacing8,
+                    textStyle: TextStyle(
+                      color: isDark
+                          ? UiToken.secondaryDark900
+                          : UiToken.secondaryLight200,
+                      fontSize: UiToken.textSize12,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    waitDuration: const Duration(milliseconds: 500),
+                    child: InkWell(
+                      key: _anchorKey,
+                      borderRadius: BorderRadius.circular(
+                        UiToken.borderRadiusFull,
                       ),
-                      decoration: BoxDecoration(
-                        color: backgroundColor,
-                        borderRadius: BorderRadius.circular(
-                          UiToken.borderRadiusFull,
+                      onTap: () => _openLocationMenu(provider),
+                      child: AnimatedContainer(
+                        duration: const Duration(milliseconds: 200),
+                        curve: Curves.easeOut,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: UiToken.spacing16,
+                          vertical: UiToken.spacing8,
                         ),
-                        border: Border.all(color: borderColor),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withValues(alpha: 0.05),
-                            blurRadius: 8,
-                            offset: const Offset(0, 4),
+                        decoration: BoxDecoration(
+                          color: backgroundColor,
+                          borderRadius: BorderRadius.circular(
+                            UiToken.borderRadiusFull,
                           ),
-                        ],
-                      ),
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.location_on_rounded,
-                            size: 18,
-                            color: textColor,
-                          ),
-                          const SizedBox(width: 8),
-                          Expanded(
-                            child: Text(
-                              provider.selectedLocation ?? '',
-                              style: TextStyle(color: textColor),
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
+                          border: Border.all(color: borderColor),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withValues(alpha: 0.05),
+                              blurRadius: 8,
+                              offset: const Offset(0, 4),
                             ),
-                          ),
-                          const SizedBox(width: 8),
-                          Icon(
-                            Icons.expand_more_rounded,
-                            size: 18,
-                            color: textColor,
-                          ),
-                        ],
+                          ],
+                        ),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.location_on_rounded,
+                              size: 18,
+                              color: textColor,
+                            ),
+                            const SizedBox(width: 8),
+                            Expanded(
+                              child: Text(
+                                provider.selectedLocation ?? '',
+                                style: TextStyle(color: textColor),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                            const SizedBox(width: 8),
+                            Icon(
+                              Icons.expand_more_rounded,
+                              size: 18,
+                              color: textColor,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),

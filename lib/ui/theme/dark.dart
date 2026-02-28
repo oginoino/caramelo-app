@@ -201,11 +201,11 @@ ThemeData _darkTheme = ThemeData(
   ),
   tooltipTheme: TooltipThemeData(
     decoration: BoxDecoration(
-      color: UiToken.secondaryDark900,
+      color: UiToken.secondaryLight200,
       borderRadius: BorderRadius.circular(UiToken.borderRadius8),
     ),
     textStyle: TextStyle(
-      color: UiToken.primaryDark50,
+      color: UiToken.secondaryDark900,
       fontSize: UiToken.textSize12,
       fontWeight: FontWeight.w600,
     ),
