@@ -23,6 +23,9 @@ class RegisterProvider {
         create: (context) =>
             UserProfileProvider(userRepository, persistenceService),
       ),
+      ChangeNotifierProvider(
+        create: (context) => LocationProvider(locationRepository),
+      ),
     ];
   }
 }
