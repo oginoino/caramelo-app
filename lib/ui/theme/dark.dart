@@ -106,6 +106,21 @@ ThemeData _darkTheme = ThemeData(
     color: UiToken.primaryDark900,
     elevation: UiToken.elevationNone,
   ),
+  bottomSheetTheme: BottomSheetThemeData(
+    backgroundColor: UiToken.primaryDark900,
+    surfaceTintColor: UiToken.primaryDark900,
+    elevation: UiToken.elevationNone,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(UiToken.borderRadius16),
+        topRight: Radius.circular(UiToken.borderRadius16),
+      ),
+    ),
+    dragHandleColor: UiToken.secondaryLight400,
+    constraints: BoxConstraints(
+      maxHeight: MediaQueryData.fromView(PlatformDispatcher.instance.implicitView!).size.height * 0.75,
+    ),
+  ),
 );
 
 ThemeData get darkTheme => _darkTheme;

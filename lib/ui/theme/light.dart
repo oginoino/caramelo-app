@@ -106,6 +106,21 @@ ThemeData _lightTheme = ThemeData(
     color: UiToken.primaryLight50,
     elevation: UiToken.elevationNone,
   ),
+  bottomSheetTheme: BottomSheetThemeData(
+    backgroundColor: UiToken.primaryLight50,
+    surfaceTintColor: UiToken.primaryLight50,
+    elevation: UiToken.elevationNone,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(UiToken.borderRadius16),
+        topRight: Radius.circular(UiToken.borderRadius16),
+      ),
+    ),
+    dragHandleColor: UiToken.secondaryLight600,
+    constraints: BoxConstraints(
+      maxHeight: MediaQueryData.fromView(PlatformDispatcher.instance.implicitView!).size.height * 0.75,
+    ),
+  ),
 );
 
 ThemeData get lightTheme => _lightTheme;

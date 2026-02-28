@@ -2,6 +2,7 @@ import '../../util/import/packages.dart';
 import '../../util/const/ui/ui_token.dart';
 import '../../util/import/provider.dart';
 import '../../util/import/service.dart';
+import 'location_bottom_sheet.dart';
 
 class LocationSelectorDropdown extends StatefulWidget {
   const LocationSelectorDropdown({super.key, this.initialSelection});
@@ -27,9 +28,6 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
   }
 
   Future<void> _openLocationBottomSheet() async {
-    final provider = Provider.of<LocationProvider>(context, listen: false);
-    String query = '';
-
     await showModalBottomSheet<void>(
       context: context,
       isScrollControlled: true,
@@ -39,144 +37,7 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
           padding: EdgeInsets.only(
             bottom: MediaQuery.viewInsetsOf(sheetContext).bottom,
           ),
-          child: StatefulBuilder(
-            builder: (sheetContext, setSheetState) {
-              final isDark =
-                  Theme.of(sheetContext).brightness == Brightness.dark;
-              final onSurface = Theme.of(sheetContext).colorScheme.onSurface;
-              final textColor = isDark ? UiToken.secondaryLight200 : onSurface;
-              final hintColor = isDark
-                  ? UiToken.secondaryLight400
-                  : onSurface.withValues(alpha: 0.6);
-              final normalizedQuery = query.trim().toLowerCase();
-              final filtered = normalizedQuery.isEmpty
-                  ? provider.locations
-                  : provider.locations
-                        .where(
-                          (loc) =>
-                              loc.name.toLowerCase().contains(normalizedQuery),
-                        )
-                        .toList();
-              final canAdd =
-                  normalizedQuery.isNotEmpty &&
-                  !provider.locations.any(
-                    (loc) => loc.name.toLowerCase() == normalizedQuery,
-                  );
-
-              return SizedBox(
-                height: MediaQuery.sizeOf(sheetContext).height * 0.75,
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: UiToken.spacing16,
-                        vertical: UiToken.spacing12,
-                      ),
-                      child: Text(
-                        LocalizationService.strings.newLocationTitle,
-                        style: Theme.of(
-                          sheetContext,
-                        ).textTheme.titleMedium?.copyWith(color: textColor),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: UiToken.spacing16,
-                      ),
-                      child: TextField(
-                        style: TextStyle(color: textColor),
-                        cursorColor: textColor,
-                        autofocus: true,
-                        decoration: InputDecoration(
-                          labelText: LocalizationService.strings.search,
-                          hintText: LocalizationService.strings.newLocationHint,
-                          labelStyle: TextStyle(color: hintColor),
-                          hintStyle: TextStyle(color: hintColor),
-                          prefixIcon: Icon(
-                            Icons.search_rounded,
-                            color: hintColor,
-                          ),
-                        ),
-                        textInputAction: TextInputAction.done,
-                        onChanged: (value) {
-                          setSheetState(() {
-                            query = value;
-                          });
-                        },
-                        onSubmitted: (value) async {
-                          final name = value.trim();
-                          if (name.isEmpty) return;
-                          await provider.addLocation(name);
-                          if (sheetContext.mounted) {
-                            Navigator.of(sheetContext).pop();
-                          }
-                        },
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Expanded(
-                      child: ListView.separated(
-                        itemCount: filtered.length + (canAdd ? 1 : 0),
-                        separatorBuilder: (context, index) =>
-                            const Divider(height: 1),
-                        itemBuilder: (context, index) {
-                          if (canAdd && index == 0) {
-                            final name = query.trim();
-                            return ListTile(
-                              leading: Icon(
-                                Icons.add_location_alt_rounded,
-                                color: textColor,
-                              ),
-                              title: Text(
-                                LocalizationService.strings.addLocation,
-                                style: TextStyle(color: textColor),
-                              ),
-                              subtitle: Text(
-                                name,
-                                style: TextStyle(color: hintColor),
-                              ),
-                              onTap: () async {
-                                await provider.addLocation(name);
-                                if (sheetContext.mounted) {
-                                  Navigator.of(sheetContext).pop();
-                                }
-                              },
-                            );
-                          }
-
-                          final location = filtered[index - (canAdd ? 1 : 0)];
-                          return ListTile(
-                            leading: Icon(
-                              Icons.location_on_rounded,
-                              color: textColor,
-                            ),
-                            title: Text(
-                              location.name,
-                              style: TextStyle(color: textColor),
-                            ),
-                            onTap: () {
-                              provider.setSelectedLocation(location.name);
-                              Navigator.of(sheetContext).pop();
-                            },
-                          );
-                        },
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(UiToken.spacing16),
-                      child: SizedBox(
-                        width: double.infinity,
-                        child: OutlinedButton(
-                          onPressed: () => Navigator.of(sheetContext).pop(),
-                          child: Text(LocalizationService.strings.cancel),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              );
-            },
-          ),
+          child: const LocationBottomSheet(),
         );
       },
     );
