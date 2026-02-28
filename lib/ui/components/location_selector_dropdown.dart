@@ -159,7 +159,6 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
                     ],
                   ),
                   child: Row(
-                    mainAxisSize: MainAxisSize.min,
                     children: [
                       Icon(
                         Icons.location_on_rounded,
@@ -167,8 +166,7 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
                         color: textColor,
                       ),
                       const SizedBox(width: 8),
-                      ConstrainedBox(
-                        constraints: BoxConstraints(maxWidth: maxWidth - 56),
+                      Expanded(
                         child: Text(
                           provider.selectedLocation ?? '',
                           style: TextStyle(color: textColor),
