@@ -111,6 +111,23 @@ ThemeData _lightTheme = ThemeData(
       ),
     ),
   ),
+  filledButtonTheme: FilledButtonThemeData(
+    style: FilledButton.styleFrom(
+      backgroundColor: UiToken.primaryLight600,
+      foregroundColor: UiToken.primaryLight50,
+      padding: EdgeInsets.symmetric(
+        horizontal: UiToken.spacing16,
+        vertical: UiToken.spacing12,
+      ),
+      textStyle: TextStyle(
+        fontSize: UiToken.textSize16,
+        fontWeight: FontWeight.w700,
+      ),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(UiToken.borderRadius8),
+      ),
+    ),
+  ),
   inputDecorationTheme: InputDecorationTheme(
     filled: true,
     fillColor: UiToken.secondaryLight50,
