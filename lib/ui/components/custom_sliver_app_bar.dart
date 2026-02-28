@@ -1,6 +1,7 @@
 import '../../util/const/ui/ui_token.dart';
 import '../../util/import/packages.dart';
 import '../../util/import/ui.dart';
+import 'profile_avatar.dart';
 import 'profile_bottom_sheet.dart';
 
 class CustomSliverAppBar extends StatefulWidget {
@@ -21,7 +22,6 @@ class _CustomSliverAppBarState extends State<CustomSliverAppBar> {
 
   @override
   Widget build(BuildContext context) {
-    final isLightTheme = Theme.of(context).brightness == Brightness.light;
     final scaffoldColor = Theme.of(context).scaffoldBackgroundColor;
 
     return SliverAppBar(
@@ -43,7 +43,7 @@ class _CustomSliverAppBarState extends State<CustomSliverAppBar> {
         ),
       ),
       expandedHeight: 220,
-      leading: IconButton(
+      leading: ProfileAvatar(
         tooltip: 'Profile',
         onPressed: () {
           showModalBottomSheet<void>(
@@ -55,19 +55,6 @@ class _CustomSliverAppBarState extends State<CustomSliverAppBar> {
             },
           );
         },
-        icon: CircleAvatar(
-          radius: UiToken.shadow16,
-          backgroundColor: isLightTheme
-              ? UiToken.secondaryDark500
-              : UiToken.secondaryLight400,
-          child: Icon(
-            Icons.person_rounded,
-            size: UiToken.textSize24,
-            color: isLightTheme
-                ? UiToken.secondaryLight400
-                : UiToken.secondaryDark500,
-          ),
-        ),
       ),
       actions: [
         CartActionButton(
