@@ -5,6 +5,8 @@ ThemeData _darkTheme = ThemeData(
   brightness: Brightness.dark,
   useMaterial3: true,
   fontFamily: GoogleFonts.nunito().fontFamily,
+  visualDensity: VisualDensity.standard,
+  shadowColor: Colors.black.withValues(alpha: 0.24),
   colorScheme: ColorScheme.dark(
     primary: UiToken.primaryDarkColor,
     secondary: UiToken.secondaryDark500,
@@ -26,11 +28,43 @@ ThemeData _darkTheme = ThemeData(
     ),
     actionsIconTheme: IconThemeData(color: UiToken.primaryDark50),
   ),
+  iconTheme: IconThemeData(color: UiToken.primaryDark50),
+  textTheme: TextTheme(
+    titleLarge: TextStyle(
+      color: UiToken.primaryDark50,
+      fontSize: UiToken.textSize24,
+      fontWeight: FontWeight.w700,
+    ),
+    titleMedium: TextStyle(
+      color: UiToken.primaryDark50,
+      fontSize: UiToken.textSize20,
+      fontWeight: FontWeight.w600,
+    ),
+    bodyLarge: TextStyle(
+      color: UiToken.primaryDark50,
+      fontSize: UiToken.textSize16,
+      fontWeight: FontWeight.w400,
+    ),
+    bodyMedium: TextStyle(
+      color: UiToken.primaryDark50,
+      fontSize: UiToken.textSize14,
+      fontWeight: FontWeight.w400,
+    ),
+    labelLarge: TextStyle(
+      color: UiToken.primaryDark50,
+      fontSize: UiToken.textSize14,
+      fontWeight: FontWeight.w600,
+    ),
+  ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       elevation: UiToken.elevationNone,
       backgroundColor: UiToken.primaryDarkColor,
       foregroundColor: UiToken.primaryDark50,
+      padding: EdgeInsets.symmetric(
+        horizontal: UiToken.spacing16,
+        vertical: UiToken.spacing12,
+      ),
       textStyle: TextStyle(
         fontSize: UiToken.textSize16,
         fontWeight: FontWeight.w600,
@@ -44,6 +78,10 @@ ThemeData _darkTheme = ThemeData(
     style: OutlinedButton.styleFrom(
       backgroundColor: UiToken.secondaryDark400,
       foregroundColor: UiToken.secondaryLight300,
+      padding: EdgeInsets.symmetric(
+        horizontal: UiToken.spacing16,
+        vertical: UiToken.spacing12,
+      ),
       textStyle: TextStyle(
         fontSize: UiToken.textSize16,
         fontWeight: FontWeight.w600,
@@ -59,6 +97,10 @@ ThemeData _darkTheme = ThemeData(
     style: TextButton.styleFrom(
       backgroundColor: UiToken.secondaryDark50,
       foregroundColor: UiToken.secondaryLight300,
+      padding: EdgeInsets.symmetric(
+        horizontal: UiToken.spacing16,
+        vertical: UiToken.spacing12,
+      ),
       textStyle: TextStyle(
         fontSize: UiToken.textSize16,
         fontWeight: FontWeight.w600,
@@ -105,6 +147,105 @@ ThemeData _darkTheme = ThemeData(
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(UiToken.borderRadius12),
     ),
+  ),
+  dialogTheme: DialogThemeData(
+    elevation: UiToken.elevationNone,
+    backgroundColor: UiToken.primaryDark900,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(UiToken.borderRadius12),
+    ),
+    titleTextStyle: TextStyle(
+      color: UiToken.primaryDark50,
+      fontSize: UiToken.textSize20,
+      fontWeight: FontWeight.w600,
+    ),
+    contentTextStyle: TextStyle(
+      color: UiToken.primaryDark50,
+      fontSize: UiToken.textSize16,
+      fontWeight: FontWeight.w400,
+    ),
+  ),
+  snackBarTheme: SnackBarThemeData(
+    backgroundColor: UiToken.secondaryDark800,
+    contentTextStyle: TextStyle(
+      color: UiToken.secondaryLight300,
+      fontSize: UiToken.textSize14,
+      fontWeight: FontWeight.w600,
+    ),
+    behavior: SnackBarBehavior.floating,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(UiToken.borderRadius8),
+    ),
+    elevation: UiToken.elevationNone,
+  ),
+  tooltipTheme: TooltipThemeData(
+    decoration: BoxDecoration(
+      color: UiToken.secondaryDark900,
+      borderRadius: BorderRadius.circular(UiToken.borderRadius8),
+    ),
+    textStyle: TextStyle(
+      color: UiToken.primaryDark50,
+      fontSize: UiToken.textSize12,
+      fontWeight: FontWeight.w600,
+    ),
+  ),
+  tabBarTheme: TabBarThemeData(
+    labelColor: UiToken.primaryDark50,
+    unselectedLabelColor: UiToken.secondaryLight400,
+    labelStyle: TextStyle(
+      fontSize: UiToken.textSize14,
+      fontWeight: FontWeight.w600,
+    ),
+    unselectedLabelStyle: TextStyle(
+      fontSize: UiToken.textSize14,
+      fontWeight: FontWeight.w400,
+    ),
+    indicatorColor: UiToken.primaryDark50,
+    dividerColor: UiToken.secondaryDark500,
+  ),
+  listTileTheme: ListTileThemeData(
+    iconColor: UiToken.primaryDark50,
+    textColor: UiToken.primaryDark50,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(UiToken.borderRadius12),
+    ),
+    contentPadding: EdgeInsets.symmetric(
+      horizontal: UiToken.spacing16,
+      vertical: UiToken.spacing8,
+    ),
+  ),
+  dividerTheme: DividerThemeData(
+    color: UiToken.secondaryDark600,
+    thickness: 1,
+    space: 1,
+  ),
+  checkboxTheme: CheckboxThemeData(
+    fillColor: WidgetStatePropertyAll(UiToken.primaryDark50),
+    checkColor: WidgetStatePropertyAll(UiToken.primaryDark900),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(UiToken.borderRadius4),
+    ),
+    side: BorderSide(color: UiToken.secondaryDark600),
+  ),
+  radioTheme: RadioThemeData(
+    fillColor: WidgetStatePropertyAll(UiToken.primaryDark50),
+  ),
+  switchTheme: SwitchThemeData(
+    trackColor: WidgetStatePropertyAll(UiToken.secondaryDark600),
+    thumbColor: WidgetStatePropertyAll(UiToken.primaryDark50),
+  ),
+  floatingActionButtonTheme: FloatingActionButtonThemeData(
+    backgroundColor: UiToken.primaryDarkColor,
+    foregroundColor: UiToken.primaryDark50,
+    elevation: UiToken.elevationNone,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(UiToken.borderRadius16),
+    ),
+  ),
+  progressIndicatorTheme: ProgressIndicatorThemeData(
+    color: UiToken.primaryDark50,
+    linearTrackColor: UiToken.secondaryDark600,
+    circularTrackColor: UiToken.secondaryDark600,
   ),
   popupMenuTheme: PopupMenuThemeData(
     shape: RoundedRectangleBorder(
