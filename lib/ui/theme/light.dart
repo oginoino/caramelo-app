@@ -70,7 +70,7 @@ ThemeData _lightTheme = ThemeData(
         fontWeight: FontWeight.w600,
       ),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(UiToken.borderRadius8),
+        borderRadius: BorderRadius.circular(UiToken.borderRadiusFull),
       ),
     ),
   ),
@@ -89,7 +89,7 @@ ThemeData _lightTheme = ThemeData(
       iconColor: UiToken.secondaryLight900,
       side: BorderSide(color: UiToken.secondaryLight400),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(UiToken.borderRadius8),
+        borderRadius: BorderRadius.circular(UiToken.borderRadiusFull),
       ),
     ),
   ),
@@ -124,7 +124,7 @@ ThemeData _lightTheme = ThemeData(
         fontWeight: FontWeight.w700,
       ),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(UiToken.borderRadius8),
+        borderRadius: BorderRadius.circular(UiToken.borderRadiusFull),
       ),
     ),
   ),
