@@ -42,7 +42,7 @@ ThemeData _lightTheme = ThemeData(
   ),
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
-      backgroundColor: UiToken.secondaryLight50,
+      backgroundColor: UiToken.secondaryLight100,
       foregroundColor: UiToken.secondaryLight900,
       textStyle: TextStyle(
         fontSize: UiToken.textSize16,

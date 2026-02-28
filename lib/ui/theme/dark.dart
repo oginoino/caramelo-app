@@ -42,7 +42,7 @@ ThemeData _darkTheme = ThemeData(
   ),
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
-      backgroundColor: UiToken.secondaryDark50,
+      backgroundColor: UiToken.secondaryDark400,
       foregroundColor: UiToken.secondaryLight300,
       textStyle: TextStyle(
         fontSize: UiToken.textSize16,
