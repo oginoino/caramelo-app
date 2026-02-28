@@ -1,5 +1,7 @@
 import '../../util/import/packages.dart';
+
 import '../../util/const/ui/ui_token.dart';
+import '../../util/import/packages.dart' as math show min;
 import '../../util/import/provider.dart';
 import '../../util/import/service.dart';
 import 'location_bottom_sheet.dart';
@@ -116,7 +118,11 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
   Widget build(BuildContext context) {
     return Consumer<LocationProvider>(
       builder: (context, provider, child) {
-        final maxWidth = MediaQuery.sizeOf(context).width * 2 / 3;
+        final screenWidth = MediaQuery.sizeOf(context).width;
+        final maxWidth = math.min(
+          screenWidth * (2 / 3),
+          360.0,
+        ); // largura máxima absoluta
         final isDark = Theme.of(context).brightness == Brightness.dark;
         final onSurface = Theme.of(context).colorScheme.onSurface;
         final textColor = isDark ? UiToken.secondaryLight200 : onSurface;
@@ -127,10 +133,10 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
             Theme.of(context).cardTheme.color ??
             Theme.of(context).colorScheme.surface;
 
-        return Align(
+        return UnconstrainedBox(
           alignment: Alignment.center,
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: maxWidth),
+          child: SizedBox(
+            width: maxWidth,
             child: Material(
               color: Colors.transparent,
               child: InkWell(
