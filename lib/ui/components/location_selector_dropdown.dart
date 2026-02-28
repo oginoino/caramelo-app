@@ -1,4 +1,5 @@
 import '../../util/import/packages.dart';
+import '../../util/const/ui/ui_token.dart';
 
 class LocationSelectorDropdown extends StatefulWidget {
   const LocationSelectorDropdown({super.key, this.initialSelection});
@@ -81,6 +82,8 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
           child: DropdownButton<String>(
             value: _selectedLocation,
             isExpanded: true,
+            borderRadius: BorderRadius.circular(UiToken.borderRadius12),
+            dropdownColor: Theme.of(context).colorScheme.surface,
             items: [
               ..._locations.map(
                 (loc) => DropdownMenuItem<String>(
