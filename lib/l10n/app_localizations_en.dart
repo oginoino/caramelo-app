@@ -40,4 +40,35 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get language => 'Language';
+
+  @override
+  String get noProductsFound => 'No products found.';
+
+  @override
+  String get viewAllCategories => 'View all categories';
+
+  @override
+  String get categoryAll => 'All';
+
+  @override
+  String get categoryDeals => 'Deals';
+
+  @override
+  String get addLocationTooltip => 'Add new location';
+
+  @override
+  String get languageEnglish => 'English';
+
+  @override
+  String get languageSpanish => 'Spanish';
+
+  @override
+  String get languagePortugueseBrazil => 'Portuguese (Brazil)';
+
+  @override
+  String get selectLocation => 'Select location';
+
+  @override
+  String get errorLoadingProducts =>
+      'Failed to load products. Please try again later.';
 }

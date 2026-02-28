@@ -166,6 +166,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Language'**
   String get language;
+
+  /// Message shown when no products match the filters
+  ///
+  /// In en, this message translates to:
+  /// **'No products found.'**
+  String get noProductsFound;
+
+  /// Button text to view all product categories
+  ///
+  /// In en, this message translates to:
+  /// **'View all categories'**
+  String get viewAllCategories;
+
+  /// Label for the category that shows all products
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get categoryAll;
+
+  /// Label for the deals/offers category
+  ///
+  /// In en, this message translates to:
+  /// **'Deals'**
+  String get categoryDeals;
+
+  /// Tooltip for the action to add a new location
+  ///
+  /// In en, this message translates to:
+  /// **'Add new location'**
+  String get addLocationTooltip;
+
+  /// Label for English language option
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get languageEnglish;
+
+  /// Label for Spanish language option
+  ///
+  /// In en, this message translates to:
+  /// **'Spanish'**
+  String get languageSpanish;
+
+  /// Label for Brazilian Portuguese language option
+  ///
+  /// In en, this message translates to:
+  /// **'Portuguese (Brazil)'**
+  String get languagePortugueseBrazil;
+
+  /// Tooltip or helper text for selecting a location
+  ///
+  /// In en, this message translates to:
+  /// **'Select location'**
+  String get selectLocation;
+
+  /// Generic error displayed when products fail to load
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load products. Please try again later.'**
+  String get errorLoadingProducts;
 }
 
 class _AppLocalizationsDelegate

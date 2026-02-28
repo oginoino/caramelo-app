@@ -1,6 +1,7 @@
 import '../../provider/product_provider/product_provider.dart';
 import '../../util/const/ui/ui_token.dart';
 import '../../util/import/packages.dart';
+import '../../util/import/service.dart';
 
 class CategoryChips extends StatelessWidget {
   const CategoryChips({super.key});
@@ -39,8 +40,8 @@ class CategoryChips extends StatelessWidget {
               final isSelected = category == selectedCategory;
 
               String label = category;
-              if (category == 'all') label = 'Tudo';
-              if (category == 'deals') label = 'Promoções';
+              if (category == 'all') label = LocalizationService.strings.categoryAll;
+              if (category == 'deals') label = LocalizationService.strings.categoryDeals;
               // Capitalize first letter for others
               if (category != 'all' &&
                   category != 'deals' &&

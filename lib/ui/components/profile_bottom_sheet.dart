@@ -23,13 +23,13 @@ class ProfileBottomSheet extends StatelessWidget {
   String _localeLabel(Locale locale) {
     switch (locale.languageCode) {
       case 'en':
-        return 'English';
+        return LocalizationService.strings.languageEnglish;
       case 'es':
-        return 'Español';
+        return LocalizationService.strings.languageSpanish;
       case 'pt':
-        return 'Português (Brasil)';
+        return LocalizationService.strings.languagePortugueseBrazil;
       default:
-        return 'Português (Brasil)';
+        return LocalizationService.strings.languagePortugueseBrazil;
     }
   }
 

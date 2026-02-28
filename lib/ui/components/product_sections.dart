@@ -3,6 +3,7 @@ import '../../util/import/packages.dart';
 import '../../provider/product_provider/product_provider.dart';
 import '../../util/import/domain.dart';
 import '../../util/import/ui.dart';
+import '../../util/import/service.dart';
 
 class ProductSections extends StatefulWidget {
   const ProductSections({super.key});
@@ -24,7 +25,9 @@ class _ProductSectionsState extends State<ProductSections> {
 
         final errorMessage = provider.errorMessage;
         if (errorMessage != null) {
-          return Center(child: Text(errorMessage));
+          return Center(
+            child: Text(LocalizationService.strings.errorLoadingProducts),
+          );
         }
 
         final products = provider.filteredProducts;
@@ -34,7 +37,9 @@ class _ProductSectionsState extends State<ProductSections> {
 
         if (selectedCategory != 'all' && selectedCategory != 'deals') {
           if (products.isEmpty) {
-            return const Center(child: Text('Nenhum produto encontrado.'));
+            return Center(
+              child: Text(LocalizationService.strings.noProductsFound),
+            );
           }
           return _ProductGrid(products: products);
         }
@@ -75,6 +80,7 @@ class _ProductSectionsState extends State<ProductSections> {
                 ProductCarousel(
                   products: categoryProducts,
                   onViewAll: () => provider.selectCategory(category),
+                  viewAllLabel: LocalizationService.strings.viewAllCategories,
                 ),
                 const SizedBox(height: 24),
               ],
@@ -94,7 +100,7 @@ class _ProductSectionsState extends State<ProductSections> {
                       _showAllCategories = true;
                     });
                   },
-                  child: const Text('Ver todas as categorias'),
+                  child: Text(LocalizationService.strings.viewAllCategories),
                 ),
               ),
             ),
@@ -148,7 +154,7 @@ class _ProductGrid extends StatelessWidget {
                           Icon(Icons.arrow_back_ios_new_rounded),
                           SizedBox(width: UiToken.spacing8),
                           Text(
-                            'Tudo',
+                            LocalizationService.strings.categoryAll,
                             style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,

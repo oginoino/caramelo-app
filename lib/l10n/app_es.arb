@@ -43,5 +43,45 @@
   "language": "Idioma",
   "@language": {
     "description": "Etiqueta del selector de idioma"
+  },
+  "noProductsFound": "No se encontraron productos.",
+  "@noProductsFound": {
+    "description": "Mensaje mostrado cuando ningún producto coincide con los filtros"
+  },
+  "viewAllCategories": "Ver todas las categorías",
+  "@viewAllCategories": {
+    "description": "Texto del botón para ver todas las categorías de productos"
+  },
+  "categoryAll": "Todo",
+  "@categoryAll": {
+    "description": "Etiqueta para la categoría que muestra todos los productos"
+  },
+  "categoryDeals": "Ofertas",
+  "@categoryDeals": {
+    "description": "Etiqueta para la categoría de ofertas/promociones"
+  },
+  "addLocationTooltip": "Agregar nueva ubicación",
+  "@addLocationTooltip": {
+    "description": "Tooltip para la acción de agregar una nueva ubicación"
+  },
+  "languageEnglish": "Inglés",
+  "@languageEnglish": {
+    "description": "Etiqueta para la opción de idioma inglés"
+  },
+  "languageSpanish": "Español",
+  "@languageSpanish": {
+    "description": "Etiqueta para la opción de idioma español"
+  },
+  "languagePortugueseBrazil": "Portugués (Brasil)",
+  "@languagePortugueseBrazil": {
+    "description": "Etiqueta para la opción de idioma portugués de Brasil"
+  },
+  "selectLocation": "Seleccionar ubicación",
+  "@selectLocation": {
+    "description": "Tooltip o texto de ayuda para seleccionar una ubicación"
+  },
+  "errorLoadingProducts": "Error al cargar productos. Inténtalo de nuevo más tarde.",
+  "@errorLoadingProducts": {
+    "description": "Error genérico cuando los productos no se pueden cargar"
   }
 }

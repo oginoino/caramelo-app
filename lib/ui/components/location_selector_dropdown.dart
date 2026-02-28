@@ -72,7 +72,7 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
           (loc) => PopupMenuItem<String>(
             value: loc.name,
             child: AppTooltip(
-              message: 'Selecionar ${loc.name}',
+              message: loc.name,
               child: SizedBox(
                 width: menuMaxWidth,
                 child: Row(
@@ -96,7 +96,7 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
         PopupMenuItem<String>(
           value: '__add__',
           child: AppTooltip(
-            message: 'Adicionar nova localização',
+            message: LocalizationService.strings.addLocationTooltip,
             child: SizedBox(
               width: menuMaxWidth,
               child: Row(
@@ -162,7 +162,7 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
                   color: Colors.transparent,
                   child: AppTooltip(
                     message:
-                        provider.selectedLocation ?? 'Selecionar localização',
+                        provider.selectedLocation ?? LocalizationService.strings.selectLocation,
                     child: InkWell(
                       key: _anchorKey,
                       borderRadius: BorderRadius.circular(

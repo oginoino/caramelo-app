@@ -43,5 +43,45 @@
   "language": "Idioma",
   "@language": {
     "description": "Texto do seletor de idioma"
+  },
+  "noProductsFound": "Nenhum produto encontrado.",
+  "@noProductsFound": {
+    "description": "Mensagem exibida quando nenhum produto corresponde aos filtros"
+  },
+  "viewAllCategories": "Ver todas as categorias",
+  "@viewAllCategories": {
+    "description": "Texto do botão para ver todas as categorias de produtos"
+  },
+  "categoryAll": "Tudo",
+  "@categoryAll": {
+    "description": "Rótulo para a categoria que mostra todos os produtos"
+  },
+  "categoryDeals": "Promoções",
+  "@categoryDeals": {
+    "description": "Rótulo para a categoria de promoções/ofertas"
+  },
+  "addLocationTooltip": "Adicionar nova localização",
+  "@addLocationTooltip": {
+    "description": "Tooltip para a ação de adicionar uma nova localização"
+  },
+  "languageEnglish": "Inglês",
+  "@languageEnglish": {
+    "description": "Rótulo para a opção de idioma inglês"
+  },
+  "languageSpanish": "Espanhol",
+  "@languageSpanish": {
+    "description": "Rótulo para a opção de idioma espanhol"
+  },
+  "languagePortugueseBrazil": "Português (Brasil)",
+  "@languagePortugueseBrazil": {
+    "description": "Rótulo para a opção de idioma português do Brasil"
+  },
+  "selectLocation": "Selecionar localização",
+  "@selectLocation": {
+    "description": "Tooltip ou texto de ajuda para selecionar uma localização"
+  },
+  "errorLoadingProducts": "Falha ao carregar produtos. Tente novamente mais tarde.",
+  "@errorLoadingProducts": {
+    "description": "Erro genérico exibido quando os produtos falham ao carregar"
   }
 }

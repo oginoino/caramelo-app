@@ -40,4 +40,35 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get language => 'Idioma';
+
+  @override
+  String get noProductsFound => 'No se encontraron productos.';
+
+  @override
+  String get viewAllCategories => 'Ver todas las categorías';
+
+  @override
+  String get categoryAll => 'Todo';
+
+  @override
+  String get categoryDeals => 'Ofertas';
+
+  @override
+  String get addLocationTooltip => 'Agregar nueva ubicación';
+
+  @override
+  String get languageEnglish => 'Inglés';
+
+  @override
+  String get languageSpanish => 'Español';
+
+  @override
+  String get languagePortugueseBrazil => 'Portugués (Brasil)';
+
+  @override
+  String get selectLocation => 'Seleccionar ubicación';
+
+  @override
+  String get errorLoadingProducts =>
+      'Error al cargar productos. Inténtalo de nuevo más tarde.';
 }

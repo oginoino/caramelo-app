@@ -43,5 +43,45 @@
   "language": "Language",
   "@language": {
     "description": "Language selector label"
+  },
+  "noProductsFound": "No products found.",
+  "@noProductsFound": {
+    "description": "Message shown when no products match the filters"
+  },
+  "viewAllCategories": "View all categories",
+  "@viewAllCategories": {
+    "description": "Button text to view all product categories"
+  },
+  "categoryAll": "All",
+  "@categoryAll": {
+    "description": "Label for the category that shows all products"
+  },
+  "categoryDeals": "Deals",
+  "@categoryDeals": {
+    "description": "Label for the deals/offers category"
+  },
+  "addLocationTooltip": "Add new location",
+  "@addLocationTooltip": {
+    "description": "Tooltip for the action to add a new location"
+  },
+  "languageEnglish": "English",
+  "@languageEnglish": {
+    "description": "Label for English language option"
+  },
+  "languageSpanish": "Spanish",
+  "@languageSpanish": {
+    "description": "Label for Spanish language option"
+  },
+  "languagePortugueseBrazil": "Portuguese (Brazil)",
+  "@languagePortugueseBrazil": {
+    "description": "Label for Brazilian Portuguese language option"
+  },
+  "selectLocation": "Select location",
+  "@selectLocation": {
+    "description": "Tooltip or helper text for selecting a location"
+  },
+  "errorLoadingProducts": "Failed to load products. Please try again later.",
+  "@errorLoadingProducts": {
+    "description": "Generic error displayed when products fail to load"
   }
 }

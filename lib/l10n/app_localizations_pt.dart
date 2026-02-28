@@ -40,6 +40,37 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get language => 'Idioma';
+
+  @override
+  String get noProductsFound => 'Nenhum produto encontrado.';
+
+  @override
+  String get viewAllCategories => 'Ver todas as categorias';
+
+  @override
+  String get categoryAll => 'Tudo';
+
+  @override
+  String get categoryDeals => 'Promoções';
+
+  @override
+  String get addLocationTooltip => 'Adicionar nova localização';
+
+  @override
+  String get languageEnglish => 'Inglês';
+
+  @override
+  String get languageSpanish => 'Espanhol';
+
+  @override
+  String get languagePortugueseBrazil => 'Português (Brasil)';
+
+  @override
+  String get selectLocation => 'Selecionar localização';
+
+  @override
+  String get errorLoadingProducts =>
+      'Falha ao carregar produtos. Tente novamente mais tarde.';
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
@@ -78,4 +109,35 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get language => 'Idioma';
+
+  @override
+  String get noProductsFound => 'Nenhum produto encontrado.';
+
+  @override
+  String get viewAllCategories => 'Ver todas as categorias';
+
+  @override
+  String get categoryAll => 'Tudo';
+
+  @override
+  String get categoryDeals => 'Promoções';
+
+  @override
+  String get addLocationTooltip => 'Adicionar nova localização';
+
+  @override
+  String get languageEnglish => 'Inglês';
+
+  @override
+  String get languageSpanish => 'Espanhol';
+
+  @override
+  String get languagePortugueseBrazil => 'Português (Brasil)';
+
+  @override
+  String get selectLocation => 'Selecionar localização';
+
+  @override
+  String get errorLoadingProducts =>
+      'Falha ao carregar produtos. Tente novamente mais tarde.';
 }
