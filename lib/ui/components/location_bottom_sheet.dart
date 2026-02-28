@@ -16,21 +16,20 @@ class _LocationBottomSheetState extends State<LocationBottomSheet> {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<LocationProvider>(context, listen: false);
-    final isDark = Theme.of(context).brightness == Brightness.dark;
     final onSurface = Theme.of(context).colorScheme.onSurface;
-    final textColor = isDark ? UiToken.secondaryLight200 : onSurface;
-    final hintColor = isDark 
-        ? UiToken.secondaryLight400 
-        : onSurface.withValues(alpha: 0.6);
-    
+    final hintColor = onSurface.withValues(alpha: 0.6);
+
     final normalizedQuery = _query.trim().toLowerCase();
     final filtered = normalizedQuery.isEmpty
         ? provider.locations
         : provider.locations
-            .where((loc) => loc.name.toLowerCase().contains(normalizedQuery))
-            .toList();
-    final canAdd = normalizedQuery.isNotEmpty && 
-        !provider.locations.any((loc) => loc.name.toLowerCase() == normalizedQuery);
+              .where((loc) => loc.name.toLowerCase().contains(normalizedQuery))
+              .toList();
+    final canAdd =
+        normalizedQuery.isNotEmpty &&
+        !provider.locations.any(
+          (loc) => loc.name.toLowerCase() == normalizedQuery,
+        );
 
     return SizedBox(
       height: MediaQuery.sizeOf(context).height * 0.75,
@@ -43,24 +42,21 @@ class _LocationBottomSheetState extends State<LocationBottomSheet> {
             ),
             child: Text(
               LocalizationService.strings.newLocationTitle,
-              style: Theme.of(context).textTheme.titleMedium?.copyWith(color: textColor),
+              style: Theme.of(context).textTheme.titleMedium,
             ),
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: UiToken.spacing16),
             child: TextField(
               autofocus: true,
-              style: TextStyle(color: textColor),
-              cursorColor: textColor,
+              style: Theme.of(context).textTheme.bodyLarge,
+              cursorColor: onSurface,
               decoration: InputDecoration(
                 labelText: LocalizationService.strings.search,
                 hintText: LocalizationService.strings.newLocationHint,
                 labelStyle: TextStyle(color: hintColor),
                 hintStyle: TextStyle(color: hintColor),
-                prefixIcon: Icon(
-                  Icons.search_rounded,
-                  color: hintColor,
-                ),
+                prefixIcon: Icon(Icons.search_rounded, color: hintColor),
               ),
               textInputAction: TextInputAction.done,
               onChanged: (value) {
@@ -83,18 +79,9 @@ class _LocationBottomSheetState extends State<LocationBottomSheet> {
                 if (canAdd && index == 0) {
                   final name = _query.trim();
                   return ListTile(
-                    leading: Icon(
-                      Icons.add_location_alt_rounded,
-                      color: textColor,
-                    ),
-                    title: Text(
-                      LocalizationService.strings.addLocation,
-                      style: TextStyle(color: textColor),
-                    ),
-                    subtitle: Text(
-                      name,
-                      style: TextStyle(color: hintColor),
-                    ),
+                    leading: const Icon(Icons.add_location_alt_rounded),
+                    title: Text(LocalizationService.strings.addLocation),
+                    subtitle: Text(name, style: TextStyle(color: hintColor)),
                     onTap: () async {
                       await provider.addLocation(name);
                       if (context.mounted) Navigator.of(context).pop();
@@ -104,14 +91,8 @@ class _LocationBottomSheetState extends State<LocationBottomSheet> {
 
                 final location = filtered[index - (canAdd ? 1 : 0)];
                 return ListTile(
-                  leading: Icon(
-                    Icons.location_on_rounded,
-                    color: textColor,
-                  ),
-                  title: Text(
-                    location.name,
-                    style: TextStyle(color: textColor),
-                  ),
+                  leading: const Icon(Icons.location_on_rounded),
+                  title: Text(location.name),
                   onTap: () {
                     provider.setSelectedLocation(location.name);
                     Navigator.of(context).pop();

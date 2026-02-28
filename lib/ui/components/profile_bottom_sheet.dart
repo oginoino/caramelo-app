@@ -35,9 +35,6 @@ class ProfileBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    final onSurface = Theme.of(context).colorScheme.onSurface;
-    final textColor = isDark ? UiToken.secondaryLight200 : onSurface;
     final localeProvider = context.watch<LocaleProvider>();
     final selectedLocale = _normalizeLocale(localeProvider.currentLocale);
 
@@ -54,18 +51,13 @@ class ProfileBottomSheet extends StatelessWidget {
               alignment: Alignment.centerLeft,
               child: Text(
                 LocalizationService.strings.toggleTheme,
-                style: Theme.of(
-                  context,
-                ).textTheme.titleMedium?.copyWith(color: textColor),
+                style: Theme.of(context).textTheme.titleMedium,
               ),
             ),
           ),
           ListTile(
-            leading: Icon(Icons.brightness_6_rounded, color: textColor),
-            title: Text(
-              LocalizationService.strings.toggleTheme,
-              style: TextStyle(color: textColor),
-            ),
+            leading: const Icon(Icons.brightness_6_rounded),
+            title: Text(LocalizationService.strings.toggleTheme),
             trailing: const ThemeToggle(),
           ),
           Padding(
@@ -77,18 +69,13 @@ class ProfileBottomSheet extends StatelessWidget {
               alignment: Alignment.centerLeft,
               child: Text(
                 LocalizationService.strings.language,
-                style: Theme.of(
-                  context,
-                ).textTheme.titleMedium?.copyWith(color: textColor),
+                style: Theme.of(context).textTheme.titleMedium,
               ),
             ),
           ),
           ListTile(
-            leading: Icon(Icons.language_rounded, color: textColor),
-            title: Text(
-              LocalizationService.strings.language,
-              style: TextStyle(color: textColor),
-            ),
+            leading: const Icon(Icons.language_rounded),
+            title: Text(LocalizationService.strings.language),
             trailing: SizedBox(
               width: 150,
               child: DropdownButtonHideUnderline(
@@ -97,8 +84,8 @@ class ProfileBottomSheet extends StatelessWidget {
                   isExpanded: true,
                   borderRadius: BorderRadius.circular(UiToken.borderRadius12),
                   dropdownColor: Theme.of(context).colorScheme.surface,
-                  style: TextStyle(color: textColor),
-                  iconEnabledColor: textColor,
+                  style: Theme.of(context).textTheme.bodyMedium,
+                  iconEnabledColor: Theme.of(context).colorScheme.onSurface,
                   items:
                       const [
                         Locale('pt', 'BR'),
@@ -125,10 +112,7 @@ class ProfileBottomSheet extends StatelessWidget {
               width: double.infinity,
               child: OutlinedButton(
                 onPressed: () => Navigator.of(context).pop(),
-                child: Text(
-                  LocalizationService.strings.cancel,
-                  style: TextStyle(color: textColor.withValues(alpha: 0.9)),
-                ),
+                child: Text(LocalizationService.strings.cancel),
               ),
             ),
           ),
