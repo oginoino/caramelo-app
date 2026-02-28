@@ -70,22 +70,11 @@ class _CustomSliverAppBarState extends State<CustomSliverAppBar> {
         ),
       ),
       actions: [
-        IconButton(
-          tooltip: 'Cart',
-          onPressed: () {},
-          icon: CircleAvatar(
-            radius: UiToken.shadow16,
-            backgroundColor: isLightTheme
-                ? UiToken.secondaryDark500
-                : UiToken.secondaryLight400,
-            child: Icon(
-              Icons.shopping_bag_rounded,
-              size: UiToken.textSize24,
-              color: isLightTheme
-                  ? UiToken.secondaryLight400
-                  : UiToken.secondaryDark500,
-            ),
-          ),
+        CartActionButton(
+          tooltip: 'Carrinho',
+          onPressed: () {
+            // TODO: navegar para a tela do carrinho
+          },
         ),
       ],
     );
