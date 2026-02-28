@@ -4,7 +4,6 @@ import 'package:caramelo_app/ui/components/profile_bottom_sheet.dart';
 import 'package:caramelo_app/util/import/packages.dart';
 import 'package:caramelo_app/util/import/service.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   setUpAll(() async {
