@@ -20,7 +20,16 @@ class _ProductSectionsState extends State<ProductSections> {
     return Consumer<ProductProvider>(
       builder: (context, provider, child) {
         if (provider.isLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return const Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CircularProgressIndicator(),
+                SizedBox(height: 16),
+                Text('Carregando produtos...'),
+              ],
+            ),
+          ).animate().fadeIn(duration: 300.ms);
         }
 
         final errorMessage = provider.errorMessage;
@@ -56,6 +65,7 @@ class _ProductSectionsState extends State<ProductSections> {
             : categories;
 
         final sections = <Widget>[];
+        int sectionIndex = 0;
         for (final category in categoriesToShow) {
           final categoryProducts = products
               .where((p) => p.categories.contains(category))
@@ -64,28 +74,39 @@ class _ProductSectionsState extends State<ProductSections> {
 
           sections.add(
             Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    category[0].toUpperCase() + category.substring(1),
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child:
+                          Text(
+                                category[0].toUpperCase() +
+                                    category.substring(1),
+                                style: const TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              )
+                              .animate()
+                              .fadeIn(duration: 400.ms)
+                              .slideX(begin: -0.2, end: 0, duration: 400.ms)
+                              .move(delay: (sectionIndex * 200).ms),
                     ),
-                  ),
-                ),
-                const SizedBox(height: 16),
-                ProductCarousel(
-                  products: categoryProducts,
-                  onViewAll: () => provider.selectCategory(category),
-                  viewAllLabel: LocalizationService.strings.viewAllCategories,
-                ),
-                const SizedBox(height: 24),
-              ],
-            ),
+                    const SizedBox(height: 16),
+                    ProductCarousel(
+                      products: categoryProducts,
+                      onViewAll: () => provider.selectCategory(category),
+                      viewAllLabel:
+                          LocalizationService.strings.viewAllCategories,
+                    ),
+                    const SizedBox(height: 24),
+                  ],
+                )
+                .animate()
+                .fadeIn(duration: 500.ms)
+                .move(delay: (sectionIndex * 300).ms),
           );
+          sectionIndex++;
         }
 
         if (usePreview) {
@@ -107,7 +128,10 @@ class _ProductSectionsState extends State<ProductSections> {
           );
         }
 
-        return Column(children: sections);
+        return Column(children: sections)
+            .animate()
+            .fadeIn(duration: 600.ms)
+            .slideY(begin: 0.1, end: 0, duration: 600.ms);
       },
     );
   }
@@ -184,7 +208,16 @@ class _ProductGrid extends StatelessWidget {
               ),
               itemBuilder: (context, index) {
                 final product = products[index];
-                return ProductCard(product: product);
+                return ProductCard(product: product)
+                    .animate()
+                    .fadeIn(duration: 300.ms)
+                    .slideY(begin: 0.2, end: 0, duration: 300.ms)
+                    .scale(
+                      begin: const Offset(0.8, 0.8),
+                      end: const Offset(1, 1),
+                      duration: 300.ms,
+                    )
+                    .move(delay: (index * 50).ms);
               },
             ),
           ],

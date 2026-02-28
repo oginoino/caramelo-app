@@ -70,7 +70,16 @@ class ProductCarousel extends StatelessWidget {
               final product = products[index];
               return SizedBox(
                 width: cardWidth,
-                child: ProductCard(product: product),
+                child: ProductCard(product: product)
+                    .animate()
+                    .fadeIn(duration: 300.ms)
+                    .slideX(begin: 0.2, end: 0, duration: 300.ms)
+                    .scale(
+                      begin: const Offset(0.8, 0.8),
+                      end: const Offset(1, 1),
+                      duration: 300.ms,
+                    )
+                    .move(delay: (index * 100).ms),
               );
             }
           },

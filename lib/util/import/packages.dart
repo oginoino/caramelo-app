@@ -31,3 +31,5 @@ export 'package:google_fonts/google_fonts.dart';
 export 'dart:math';
 
 export 'package:cached_network_image/cached_network_image.dart';
+
+export 'package:flutter_animate/flutter_animate.dart';
