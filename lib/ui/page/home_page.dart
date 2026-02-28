@@ -11,7 +11,11 @@ class Home extends StatelessWidget {
       slivers: [
         CustomSliverAppBar(
           title: LocalizationService.strings.home,
-          child: Search(),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [Center(), Search()],
+          ),
         ),
       ],
     );

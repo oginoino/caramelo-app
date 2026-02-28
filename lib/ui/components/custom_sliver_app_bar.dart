@@ -42,7 +42,7 @@ class _CustomSliverAppBarState extends State<CustomSliverAppBar> {
           ),
         ),
       ),
-      expandedHeight: 280,
+      expandedHeight: 200,
       leading: IconButton(
         tooltip: 'Profile',
         onPressed: () {
