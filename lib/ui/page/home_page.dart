@@ -44,7 +44,7 @@ class Home extends StatelessWidget {
               style: TextStyle(
                 color: isLight
                     ? Theme.of(context).colorScheme.onPrimary
-                    : UiToken.primaryDark50,
+                    : UiToken.primaryDark800,
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -52,11 +52,11 @@ class Home extends StatelessWidget {
               Icons.shopping_cart_rounded,
               color: isLight
                   ? Theme.of(context).colorScheme.onPrimary
-                  : UiToken.primaryDark50,
+                  : UiToken.primaryDark800,
             ),
             backgroundColor: isLight
                 ? Theme.of(context).colorScheme.primary
-                : UiToken.primaryDarkColor,
+                : UiToken.primaryLight500,
             elevation: UiToken.elevationNone,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(UiToken.borderRadius16),

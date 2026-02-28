@@ -133,13 +133,13 @@ class _AddButtonState extends State<_AddButton> {
         content: Text(
           'Só temos ${widget.product.stock.available} unidades em estoque.',
           style: TextStyle(
-            color: isLight ? UiToken.primaryLight50 : UiToken.primaryDark50,
+            color: isLight ? UiToken.primaryLight50 : UiToken.primaryDark800,
             fontWeight: FontWeight.w600,
           ),
         ),
         backgroundColor: isLight
             ? UiToken.secondaryLight800
-            : UiToken.secondaryDark800,
+            : UiToken.primaryLight500,
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(UiToken.borderRadius8),
