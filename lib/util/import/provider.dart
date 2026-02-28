@@ -7,3 +7,4 @@ export '../../provider/locale_provider/locale_provider.dart';
 export '../../provider/product_provider/product_provider.dart';
 export '../../provider/auth_provider/auth_provider.dart';
 export '../../provider/location_provider/location_provider.dart';
+export '../../provider/message_provider/message_provider.dart';

@@ -26,6 +26,9 @@ class RegisterProvider {
       ChangeNotifierProvider(
         create: (context) => LocationProvider(locationRepository),
       ),
+      ChangeNotifierProvider(
+        create: (context) => MessageProvider(messageRepository),
+      ),
     ];
   }
 }

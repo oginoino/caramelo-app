@@ -98,6 +98,9 @@ class DependencyInjection {
         persistenceService: persistenceService,
       ),
     );
+    GetIt.I.registerLazySingleton<MessageRepository>(
+      () => MessageRepository(httpService: publicService),
+    );
   }
 
   static void _registerAuthenticatedService() {
@@ -143,5 +146,6 @@ HttpServiceInterface get authenticatedService =>
 HttpServiceInterface get publicService =>
     GetIt.I<HttpServiceInterface>(instanceName: 'publicService');
 
-LocationRepository get locationRepository =>
-    GetIt.I<LocationRepository>();
+LocationRepository get locationRepository => GetIt.I<LocationRepository>();
+
+MessageRepository get messageRepository => GetIt.I<MessageRepository>();
