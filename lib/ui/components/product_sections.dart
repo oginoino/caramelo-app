@@ -123,24 +123,48 @@ class _ProductGrid extends StatelessWidget {
           children: [
             Padding(
               padding: EdgeInsets.symmetric(horizontal: UiToken.spacing16),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Icon(Icons.arrow_back_ios_new_rounded),
-                  SizedBox(width: UiToken.spacing8),
-                  Text(
-                    'Voltar',
-                    style: Theme.of(context).textTheme.titleMedium,
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(
+                      UiToken.borderRadiusFull,
+                    ),
+                    onTap: () => Provider.of<ProductProvider>(
+                      context,
+                      listen: false,
+                    ).selectCategory('all'),
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: UiToken.spacing16,
+                        vertical: UiToken.spacing12,
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Icon(Icons.arrow_back_ios_new_rounded),
+                          SizedBox(width: UiToken.spacing8),
+                          Text(
+                            'Tudo',
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                ],
+                ),
               ),
             ),
-
             SizedBox(height: UiToken.spacing16),
 
             GridView.builder(
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              shrinkWrap: true,
+
               physics: const NeverScrollableScrollPhysics(),
               itemCount: products.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
