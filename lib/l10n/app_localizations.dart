@@ -130,6 +130,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Home'**
   String get home;
+
+  /// Title for adding a new location
+  ///
+  /// In en, this message translates to:
+  /// **'New location'**
+  String get newLocationTitle;
+
+  /// Hint text for the new location input
+  ///
+  /// In en, this message translates to:
+  /// **'E.g.: Mom\'s house'**
+  String get newLocationHint;
+
+  /// Cancel button text
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// Save button text
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get save;
+
+  /// Option to add a new location
+  ///
+  /// In en, this message translates to:
+  /// **'Add location...'**
+  String get addLocation;
 }
 
 class _AppLocalizationsDelegate

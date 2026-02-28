@@ -22,6 +22,21 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get home => 'Início';
+
+  @override
+  String get newLocationTitle => 'Nova localização';
+
+  @override
+  String get newLocationHint => 'Ex.: Casa da mãe';
+
+  @override
+  String get cancel => 'Cancelar';
+
+  @override
+  String get save => 'Salvar';
+
+  @override
+  String get addLocation => 'Adicionar localização...';
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
@@ -42,4 +57,19 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get home => 'Início';
+
+  @override
+  String get newLocationTitle => 'Nova localização';
+
+  @override
+  String get newLocationHint => 'Ex.: Casa da mãe';
+
+  @override
+  String get cancel => 'Cancelar';
+
+  @override
+  String get save => 'Salvar';
+
+  @override
+  String get addLocation => 'Adicionar localização...';
 }

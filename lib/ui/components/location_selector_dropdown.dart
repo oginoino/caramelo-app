@@ -1,6 +1,7 @@
 import '../../util/import/packages.dart';
 import '../../util/const/ui/ui_token.dart';
 import '../../util/import/provider.dart';
+import '../../util/import/service.dart';
 
 class LocationSelectorDropdown extends StatefulWidget {
   const LocationSelectorDropdown({super.key, this.initialSelection});
@@ -25,43 +26,140 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
     });
   }
 
-  Future<void> _addNewLocation() async {
+  Future<void> _openLocationBottomSheet() async {
+    final provider = Provider.of<LocationProvider>(context, listen: false);
     final controller = TextEditingController();
-    final result = await showDialog<String>(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: const Text('Nova localização'),
-          content: TextField(
-            controller: controller,
-            decoration: const InputDecoration(hintText: 'Ex.: Casa da mãe'),
-            textInputAction: TextInputAction.done,
-            onSubmitted: (_) {
-              Navigator.of(context).pop(controller.text.trim());
-            },
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: const Text('Cancelar'),
-            ),
-            ElevatedButton(
-              onPressed: () =>
-                  Navigator.of(context).pop(controller.text.trim()),
-              child: const Text('Salvar'),
-            ),
-          ],
-        );
-      },
-    );
+    String query = '';
 
-    if (result != null && result.isNotEmpty) {
-      if (mounted) {
-        Provider.of<LocationProvider>(
-          context,
-          listen: false,
-        ).addLocation(result);
-      }
+    try {
+      await showModalBottomSheet<void>(
+        context: context,
+        isScrollControlled: true,
+        showDragHandle: true,
+        builder: (sheetContext) {
+          return Padding(
+            padding: EdgeInsets.only(
+              bottom: MediaQuery.viewInsetsOf(sheetContext).bottom,
+            ),
+            child: StatefulBuilder(
+              builder: (sheetContext, setSheetState) {
+                final normalizedQuery = query.trim().toLowerCase();
+                final filtered = normalizedQuery.isEmpty
+                    ? provider.locations
+                    : provider.locations
+                          .where(
+                            (loc) => loc.name.toLowerCase().contains(
+                              normalizedQuery,
+                            ),
+                          )
+                          .toList();
+                final canAdd =
+                    normalizedQuery.isNotEmpty &&
+                    !provider.locations.any(
+                      (loc) => loc.name.toLowerCase() == normalizedQuery,
+                    );
+
+                return SizedBox(
+                  height: MediaQuery.sizeOf(sheetContext).height * 0.75,
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: UiToken.spacing16,
+                          vertical: UiToken.spacing12,
+                        ),
+                        child: Text(
+                          LocalizationService.strings.newLocationTitle,
+                          style: Theme.of(sheetContext).textTheme.titleMedium,
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: UiToken.spacing16,
+                        ),
+                        child: TextField(
+                          controller: controller,
+                          autofocus: true,
+                          decoration: InputDecoration(
+                            labelText: LocalizationService.strings.search,
+                            hintText:
+                                LocalizationService.strings.newLocationHint,
+                            prefixIcon: const Icon(Icons.search_rounded),
+                          ),
+                          textInputAction: TextInputAction.done,
+                          onChanged: (value) {
+                            setSheetState(() {
+                              query = value;
+                            });
+                          },
+                          onSubmitted: (_) async {
+                            final name = controller.text.trim();
+                            if (name.isEmpty) return;
+                            await provider.addLocation(name);
+                            if (sheetContext.mounted) {
+                              Navigator.of(sheetContext).pop();
+                            }
+                          },
+                        ),
+                      ),
+                      const SizedBox(height: 8),
+                      Expanded(
+                        child: ListView.separated(
+                          itemCount: filtered.length + (canAdd ? 1 : 0),
+                          separatorBuilder: (context, index) =>
+                              const Divider(height: 1),
+                          itemBuilder: (context, index) {
+                            if (canAdd && index == 0) {
+                              final name = controller.text.trim();
+                              return ListTile(
+                                leading: const Icon(
+                                  Icons.add_location_alt_rounded,
+                                ),
+                                title: Text(
+                                  LocalizationService.strings.addLocation,
+                                ),
+                                subtitle: Text(name),
+                                onTap: () async {
+                                  await provider.addLocation(name);
+                                  if (sheetContext.mounted) {
+                                    Navigator.of(sheetContext).pop();
+                                  }
+                                },
+                              );
+                            }
+
+                            final location = filtered[index - (canAdd ? 1 : 0)];
+                            return ListTile(
+                              leading: const Icon(Icons.location_on_rounded),
+                              title: Text(location.name),
+                              onTap: () {
+                                provider.setSelectedLocation(location.name);
+                                Navigator.of(sheetContext).pop();
+                              },
+                            );
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(UiToken.spacing16),
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: OutlinedButton(
+                            onPressed: () => Navigator.of(sheetContext).pop(),
+                            child: Text(LocalizationService.strings.cancel),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+          );
+        },
+      );
+    } finally {
+      controller.dispose();
     }
   }
 
@@ -126,7 +224,7 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
                         const SizedBox(width: 8),
                         Expanded(
                           child: Text(
-                            'Adicionar localização...',
+                            LocalizationService.strings.addLocation,
                             style: TextStyle(color: textColor),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
@@ -138,7 +236,7 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
                 ],
                 onChanged: (value) async {
                   if (value == '__add__') {
-                    await _addNewLocation();
+                    await _openLocationBottomSheet();
                     return;
                   }
                   provider.setSelectedLocation(value);

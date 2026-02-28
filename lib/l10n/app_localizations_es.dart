@@ -22,4 +22,19 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get home => 'Inicio';
+
+  @override
+  String get newLocationTitle => 'Nueva ubicación';
+
+  @override
+  String get newLocationHint => 'Ej.: Casa de mamá';
+
+  @override
+  String get cancel => 'Cancelar';
+
+  @override
+  String get save => 'Guardar';
+
+  @override
+  String get addLocation => 'Agregar ubicación...';
 }

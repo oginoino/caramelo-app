@@ -19,5 +19,25 @@
     "home": "Home",
     "@home": {
         "description": "Home page title"
-    }
+  },
+  "newLocationTitle": "New location",
+  "@newLocationTitle": {
+    "description": "Title for adding a new location"
+  },
+  "newLocationHint": "E.g.: Mom's house",
+  "@newLocationHint": {
+    "description": "Hint text for the new location input"
+  },
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "Cancel button text"
+  },
+  "save": "Save",
+  "@save": {
+    "description": "Save button text"
+  },
+  "addLocation": "Add location...",
+  "@addLocation": {
+    "description": "Option to add a new location"
+  }
 }

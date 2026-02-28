@@ -19,5 +19,25 @@
   "home": "Inicio",
   "@home": {
     "description": "Título de la página de inicio"
+  },
+  "newLocationTitle": "Nueva ubicación",
+  "@newLocationTitle": {
+    "description": "Título para añadir una nueva ubicación"
+  },
+  "newLocationHint": "Ej.: Casa de mamá",
+  "@newLocationHint": {
+    "description": "Texto de ayuda para el campo de nueva ubicación"
+  },
+  "cancel": "Cancelar",
+  "@cancel": {
+    "description": "Texto del botón cancelar"
+  },
+  "save": "Guardar",
+  "@save": {
+    "description": "Texto del botón guardar"
+  },
+  "addLocation": "Agregar ubicación...",
+  "@addLocation": {
+    "description": "Opción para agregar una nueva ubicación"
   }
 }
