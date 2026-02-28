@@ -39,7 +39,7 @@ class CartActionButton extends StatelessWidget {
                   radius: UiToken.shadow16,
                   backgroundColor: avatarBg,
                   child: Icon(
-                    Icons.shopping_bag_rounded,
+                    Icons.shopping_basket_rounded,
                     size: UiToken.textSize24,
                     color: avatarFg,
                   ),

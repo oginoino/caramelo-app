@@ -24,6 +24,7 @@ class Home extends StatelessWidget {
             ],
           ),
         ),
+        const SliverToBoxAdapter(child: ProductSections()),
       ],
     );
   }
