@@ -1,7 +1,7 @@
 import '../../util/import/packages.dart';
 import '../../util/const/ui/ui_token.dart';
-import '../../util/import/provider.dart';
 import '../../util/import/service.dart';
+import 'theme_toggle.dart';
 
 class ProfileBottomSheet extends StatelessWidget {
   const ProfileBottomSheet({super.key});
@@ -11,7 +11,6 @@ class ProfileBottomSheet extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final onSurface = Theme.of(context).colorScheme.onSurface;
     final textColor = isDark ? UiToken.secondaryLight200 : onSurface;
-    final themeProvider = Provider.of<ThemeProvider>(context);
 
     return SizedBox(
       height: MediaQuery.sizeOf(context).height * 0.35,
@@ -38,15 +37,7 @@ class ProfileBottomSheet extends StatelessWidget {
               LocalizationService.strings.toggleTheme,
               style: TextStyle(color: textColor),
             ),
-            trailing: Switch(
-              value: themeProvider.isDarkMode,
-              onChanged: (value) {
-                themeProvider.setDarkMode(value);
-              },
-            ),
-            onTap: () {
-              themeProvider.setDarkMode(!themeProvider.isDarkMode);
-            },
+            trailing: const ThemeToggle(),
           ),
           const Spacer(),
           Padding(
