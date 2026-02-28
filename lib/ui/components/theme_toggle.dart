@@ -46,7 +46,9 @@ class _ThemeToggleState extends State<ThemeToggle> {
                   size: UiToken.textSize16,
                   color: isLightTheme
                       ? UiToken.secondaryLight600
-                      : UiToken.secondaryDark500,
+                      : UiToken.secondaryLight400.withValues(
+                          alpha: UiToken.opacity75,
+                        ),
                 ),
               ),
             if (!isDarkMode)
