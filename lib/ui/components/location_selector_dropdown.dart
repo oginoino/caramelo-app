@@ -74,6 +74,7 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
     return DropdownButtonHideUnderline(
       child: DropdownButton<String>(
         value: _selectedLocation,
+        isExpanded: true,
         items: [
           ..._locations.map(
             (loc) => DropdownMenuItem<String>(
@@ -82,18 +83,30 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
                 children: [
                   const Icon(Icons.location_on_outlined, size: 18),
                   const SizedBox(width: 8),
-                  Text(loc),
+                  Expanded(
+                    child: Text(
+                      loc,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
                 ],
               ),
             ),
           ),
-          const DropdownMenuItem<String>(
+          DropdownMenuItem<String>(
             value: '__add__',
             child: Row(
               children: [
-                Icon(Icons.add_location_alt_outlined, size: 18),
-                SizedBox(width: 8),
-                Text('Adicionar localização...'),
+                const Icon(Icons.add_location_alt_outlined, size: 18),
+                const SizedBox(width: 8),
+                const Expanded(
+                  child: Text(
+                    'Adicionar localização...',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
               ],
             ),
           ),
@@ -114,7 +127,13 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
                   children: [
                     const Icon(Icons.location_on_outlined, size: 18),
                     const SizedBox(width: 8),
-                    Text(loc),
+                    Expanded(
+                      child: Text(
+                        loc,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
                   ],
                 ),
               )
