@@ -221,8 +221,8 @@ ThemeData _darkTheme = ThemeData(
     dividerColor: UiToken.secondaryDark500,
   ),
   listTileTheme: ListTileThemeData(
-    iconColor: UiToken.primaryDark50,
-    textColor: UiToken.primaryDark50,
+    iconColor: UiToken.secondaryLight200,
+    textColor: UiToken.secondaryLight200,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(UiToken.borderRadius12),
     ),
