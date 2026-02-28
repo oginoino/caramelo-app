@@ -1,7 +1,9 @@
-import 'package:flutter/material.dart';
-import '../../../l10n/app_localizations.dart';
+import '../../import/packages.dart';
+import '../../import/service.dart';
 
 class LocaleConfig {
+  LocaleConfig._();
+
   static const List<LocalizationsDelegate<dynamic>> localizationDelegates =
       AppLocalizations.localizationsDelegates;
 
