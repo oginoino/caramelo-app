@@ -71,74 +71,82 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButtonHideUnderline(
-      child: DropdownButton<String>(
-        value: _selectedLocation,
-        isExpanded: true,
-        items: [
-          ..._locations.map(
-            (loc) => DropdownMenuItem<String>(
-              value: loc,
-              child: Row(
-                children: [
-                  const Icon(Icons.location_on_outlined, size: 18),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: Text(
-                      loc,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          DropdownMenuItem<String>(
-            value: '__add__',
-            child: Row(
-              children: [
-                const Icon(Icons.add_location_alt_outlined, size: 18),
-                const SizedBox(width: 8),
-                const Expanded(
-                  child: Text(
-                    'Adicionar localização...',
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
+    final maxWidth = MediaQuery.sizeOf(context).width * 2 / 3;
+
+    return Align(
+      alignment: Alignment.center,
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxWidth: maxWidth),
+        child: DropdownButtonHideUnderline(
+          child: DropdownButton<String>(
+            value: _selectedLocation,
+            isExpanded: true,
+            items: [
+              ..._locations.map(
+                (loc) => DropdownMenuItem<String>(
+                  value: loc,
+                  child: Row(
+                    children: [
+                      const Icon(Icons.location_on_outlined, size: 18),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: Text(
+                          loc,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ],
-            ),
-          ),
-        ],
-        onChanged: (value) async {
-          if (value == '__add__') {
-            await _addNewLocation();
-            return;
-          }
-          setState(() {
-            _selectedLocation = value;
-          });
-        },
-        selectedItemBuilder: (context) {
-          return _locations
-              .map(
-                (loc) => Row(
+              ),
+              DropdownMenuItem<String>(
+                value: '__add__',
+                child: Row(
                   children: [
-                    const Icon(Icons.location_on_outlined, size: 18),
+                    const Icon(Icons.add_location_alt_outlined, size: 18),
                     const SizedBox(width: 8),
-                    Expanded(
+                    const Expanded(
                       child: Text(
-                        loc,
+                        'Adicionar localização...',
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
                   ],
                 ),
-              )
-              .toList();
-        },
+              ),
+            ],
+            onChanged: (value) async {
+              if (value == '__add__') {
+                await _addNewLocation();
+                return;
+              }
+              setState(() {
+                _selectedLocation = value;
+              });
+            },
+            selectedItemBuilder: (context) {
+              return _locations
+                  .map(
+                    (loc) => Row(
+                      children: [
+                        const Icon(Icons.location_on_outlined, size: 18),
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: Text(
+                            loc,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                  .toList();
+            },
+          ),
+        ),
       ),
     );
   }
