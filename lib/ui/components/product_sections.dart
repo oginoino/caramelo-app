@@ -22,8 +22,9 @@ class _ProductSectionsState extends State<ProductSections> {
           return const Center(child: CircularProgressIndicator());
         }
 
-        if (provider.errorMessage != null) {
-          return Center(child: Text(provider.errorMessage!));
+        final errorMessage = provider.errorMessage;
+        if (errorMessage != null) {
+          return Center(child: Text(errorMessage));
         }
 
         final products = provider.filteredProducts;
@@ -165,6 +166,8 @@ class _ProductGrid extends StatelessWidget {
             GridView.builder(
               padding: const EdgeInsets.symmetric(horizontal: 16),
 
+              shrinkWrap: true,
+              primary: false,
               physics: const NeverScrollableScrollPhysics(),
               itemCount: products.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
