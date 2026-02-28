@@ -15,6 +15,8 @@ class LocationSelectorDropdown extends StatefulWidget {
 }
 
 class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
+  final GlobalKey _anchorKey = GlobalKey();
+
   @override
   void initState() {
     super.initState();
@@ -43,6 +45,73 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
     );
   }
 
+  Future<void> _openLocationMenu(LocationProvider provider) async {
+    final renderBox =
+        _anchorKey.currentContext?.findRenderObject() as RenderBox?;
+    final overlay = Overlay.of(context).context.findRenderObject() as RenderBox;
+    if (renderBox == null) return;
+
+    final position = RelativeRect.fromRect(
+      renderBox.localToGlobal(Offset.zero, ancestor: overlay) & renderBox.size,
+      Offset.zero & overlay.size,
+    );
+
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final onSurface = Theme.of(context).colorScheme.onSurface;
+    final textColor = isDark ? UiToken.secondaryLight200 : onSurface;
+
+    final selected = await showMenu<String>(
+      context: context,
+      position: position,
+      items: [
+        ...provider.locations.map(
+          (loc) => PopupMenuItem<String>(
+            value: loc.name,
+            child: Row(
+              children: [
+                Icon(Icons.location_on_rounded, size: 18, color: textColor),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    loc.name,
+                    style: TextStyle(color: textColor),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        PopupMenuItem<String>(
+          value: '__add__',
+          child: Row(
+            children: [
+              Icon(Icons.add_location_alt_rounded, size: 18, color: textColor),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  LocalizationService.strings.addLocation,
+                  style: TextStyle(color: textColor),
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+
+    if (!mounted) return;
+    if (selected == null) return;
+    if (selected == '__add__') {
+      await _openLocationBottomSheet();
+      return;
+    }
+    provider.setSelectedLocation(selected);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<LocationProvider>(
@@ -51,100 +120,71 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
         final isDark = Theme.of(context).brightness == Brightness.dark;
         final onSurface = Theme.of(context).colorScheme.onSurface;
         final textColor = isDark ? UiToken.secondaryLight200 : onSurface;
-        final disabledIconColor = isDark
-            ? UiToken.secondaryLight400
-            : onSurface.withValues(alpha: 0.6);
+        final borderColor = isDark
+            ? UiToken.secondaryDark600
+            : UiToken.secondaryLight200;
+        final backgroundColor =
+            Theme.of(context).cardTheme.color ??
+            Theme.of(context).colorScheme.surface;
 
         return Align(
           alignment: Alignment.center,
           child: ConstrainedBox(
             constraints: BoxConstraints(maxWidth: maxWidth),
-            child: DropdownButtonHideUnderline(
-              child: DropdownButton<String>(
-                value: provider.selectedLocation,
-                isExpanded: true,
-                borderRadius: BorderRadius.circular(UiToken.borderRadius12),
-                dropdownColor: Theme.of(context).colorScheme.surface,
-                style: TextStyle(color: textColor),
-                iconEnabledColor: textColor,
-                iconDisabledColor: disabledIconColor,
-                items: [
-                  ...provider.locations.map(
-                    (loc) => DropdownMenuItem<String>(
-                      value: loc.name,
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.location_on_rounded,
-                            size: 18,
-                            color: textColor,
-                          ),
-                          const SizedBox(width: 8),
-                          Expanded(
-                            child: Text(
-                              loc.name,
-                              style: TextStyle(color: textColor),
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                        ],
+            child: Material(
+              color: Colors.transparent,
+              child: InkWell(
+                key: _anchorKey,
+                borderRadius: BorderRadius.circular(UiToken.borderRadiusFull),
+                onTap: () => _openLocationMenu(provider),
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 200),
+                  curve: Curves.easeOut,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: UiToken.spacing16,
+                    vertical: UiToken.spacing8,
+                  ),
+                  decoration: BoxDecoration(
+                    color: backgroundColor,
+                    borderRadius: BorderRadius.circular(
+                      UiToken.borderRadiusFull,
+                    ),
+                    border: Border.all(color: borderColor),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withValues(alpha: 0.05),
+                        blurRadius: 8,
+                        offset: const Offset(0, 4),
                       ),
-                    ),
+                    ],
                   ),
-                  DropdownMenuItem<String>(
-                    value: '__add__',
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.add_location_alt_rounded,
-                          size: 18,
-                          color: textColor,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        Icons.location_on_rounded,
+                        size: 18,
+                        color: textColor,
+                      ),
+                      const SizedBox(width: 8),
+                      ConstrainedBox(
+                        constraints: BoxConstraints(maxWidth: maxWidth - 56),
+                        child: Text(
+                          provider.selectedLocation ?? '',
+                          style: TextStyle(color: textColor),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                         ),
-                        const SizedBox(width: 8),
-                        Expanded(
-                          child: Text(
-                            LocalizationService.strings.addLocation,
-                            style: TextStyle(color: textColor),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                      const SizedBox(width: 8),
+                      Icon(
+                        Icons.expand_more_rounded,
+                        size: 18,
+                        color: textColor,
+                      ),
+                    ],
                   ),
-                ],
-                onChanged: (value) async {
-                  if (value == '__add__') {
-                    await _openLocationBottomSheet();
-                    return;
-                  }
-                  provider.setSelectedLocation(value);
-                },
-                selectedItemBuilder: (context) {
-                  return provider.locations
-                      .map(
-                        (loc) => Row(
-                          children: [
-                            Icon(
-                              Icons.location_on_rounded,
-                              size: 18,
-                              color: textColor,
-                            ),
-                            const SizedBox(width: 8),
-                            Expanded(
-                              child: Text(
-                                loc.name,
-                                style: TextStyle(color: textColor),
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                          ],
-                        ),
-                      )
-                      .toList();
-                },
+                ),
               ),
             ),
           ),
