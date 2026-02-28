@@ -49,9 +49,9 @@ class ProductCard extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: UiToken.spacing8),
+          SizedBox(height: 6),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: UiToken.spacing4),
+            padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -59,24 +59,27 @@ class ProductCard extends StatelessWidget {
                   product.unit,
                   style: TextStyle(
                     color: textColor.withValues(alpha: 0.7),
-                    fontSize: 12,
+                    fontSize: 11,
                   ),
                 ),
+                SizedBox(height: 2),
                 Text(
                   product.name,
                   style: TextStyle(
                     color: textColor,
                     fontWeight: FontWeight.w500,
+                    fontSize: 13,
                   ),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
+                SizedBox(height: 2),
                 Text(
                   product.formattedPrice,
                   style: TextStyle(
                     color: textColor,
                     fontWeight: FontWeight.bold,
-                    fontSize: 16,
+                    fontSize: 14,
                   ),
                 ),
               ],

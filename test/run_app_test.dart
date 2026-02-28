@@ -19,7 +19,8 @@ void main() {
     await tester.pumpWidget(
       MultiProvider(providers: RegisterProvider.register(), child: const App()),
     );
-    await tester.pumpAndSettle();
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 300));
 
     expect(find.byType(CustomSliverAppBar), findsOneWidget);
   });
