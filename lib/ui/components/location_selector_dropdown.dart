@@ -73,6 +73,12 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
   @override
   Widget build(BuildContext context) {
     final maxWidth = MediaQuery.sizeOf(context).width * 2 / 3;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final onSurface = Theme.of(context).colorScheme.onSurface;
+    final textColor = isDark ? UiToken.secondaryLight200 : onSurface;
+    final disabledIconColor = isDark
+        ? UiToken.secondaryLight400
+        : onSurface.withValues(alpha: 0.6);
 
     return Align(
       alignment: Alignment.center,
@@ -84,17 +90,25 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
             isExpanded: true,
             borderRadius: BorderRadius.circular(UiToken.borderRadius12),
             dropdownColor: Theme.of(context).colorScheme.surface,
+            style: TextStyle(color: textColor),
+            iconEnabledColor: textColor,
+            iconDisabledColor: disabledIconColor,
             items: [
               ..._locations.map(
                 (loc) => DropdownMenuItem<String>(
                   value: loc,
                   child: Row(
                     children: [
-                      const Icon(Icons.location_on_outlined, size: 18),
+                      Icon(
+                        Icons.location_on_outlined,
+                        size: 18,
+                        color: textColor,
+                      ),
                       const SizedBox(width: 8),
                       Expanded(
                         child: Text(
                           loc,
+                          style: TextStyle(color: textColor),
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -107,11 +121,16 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
                 value: '__add__',
                 child: Row(
                   children: [
-                    const Icon(Icons.add_location_alt_outlined, size: 18),
+                    Icon(
+                      Icons.add_location_alt_outlined,
+                      size: 18,
+                      color: textColor,
+                    ),
                     const SizedBox(width: 8),
-                    const Expanded(
+                    Expanded(
                       child: Text(
                         'Adicionar localização...',
+                        style: TextStyle(color: textColor),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -134,11 +153,16 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
                   .map(
                     (loc) => Row(
                       children: [
-                        const Icon(Icons.location_on_outlined, size: 18),
+                        Icon(
+                          Icons.location_on_outlined,
+                          size: 18,
+                          color: textColor,
+                        ),
                         const SizedBox(width: 8),
                         Expanded(
                           child: Text(
                             loc,
+                            style: TextStyle(color: textColor),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
