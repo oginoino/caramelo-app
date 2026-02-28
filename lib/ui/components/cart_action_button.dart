@@ -20,11 +20,9 @@ class CartActionButton extends StatelessWidget {
     final bg = isLight ? UiToken.primaryDark900 : UiToken.primaryLight200;
     final fg = isLight ? UiToken.primaryLight50 : UiToken.primaryDark900;
     final avatarBg = isLight
-        ? UiToken.secondaryDark500
-        : UiToken.secondaryLight400;
-    final avatarFg = isLight
-        ? UiToken.secondaryLight400
-        : UiToken.secondaryDark500;
+        ? UiToken.primaryLight200
+        : UiToken.primaryLight500;
+    final avatarFg = isLight ? UiToken.primaryLight500 : UiToken.primaryDark900;
 
     return Consumer<CartProvider>(
       builder: (context, cart, _) {
