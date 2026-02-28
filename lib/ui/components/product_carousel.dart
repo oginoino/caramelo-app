@@ -1,7 +1,6 @@
 import '../../util/import/packages.dart';
 import '../../util/import/domain.dart';
 import '../../util/import/ui.dart';
-import '../../util/const/ui/ui_token.dart';
 import '../../util/import/service.dart';
 
 class ProductCarousel extends StatelessWidget {
@@ -34,9 +33,8 @@ class ProductCarousel extends StatelessWidget {
             final isViewAllTile = onViewAll != null && index == products.length;
             if (isViewAllTile) {
               final isLight = Theme.of(context).brightness == Brightness.light;
-              final bg = isLight
-                  ? UiToken.primaryLight50
-                  : UiToken.primaryDark900;
+              if (isLight) {
+              } else {}
               final fg = Theme.of(context).colorScheme.onSurface;
               final label =
                   viewAllLabel ?? LocalizationService.strings.viewAllCategories;
