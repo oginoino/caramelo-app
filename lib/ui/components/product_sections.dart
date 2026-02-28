@@ -22,10 +22,7 @@ class ProductSections extends StatelessWidget {
         final selectedCategory = provider.selectedCategoryId;
 
         if (selectedCategory != 'all' && selectedCategory != 'deals') {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: ProductCarousel(products: products),
-          );
+          return ProductCarousel(products: products);
         }
 
         final sections = <Widget>[];
@@ -36,23 +33,23 @@ class ProductSections extends StatelessWidget {
           if (categoryProducts.isEmpty) continue;
 
           sections.add(
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Text(
                     category[0].toUpperCase() + category.substring(1),
                     style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(height: 16),
-                  ProductCarousel(products: categoryProducts),
-                  const SizedBox(height: 24),
-                ],
-              ),
+                ),
+                const SizedBox(height: 16),
+                ProductCarousel(products: categoryProducts),
+                const SizedBox(height: 24),
+              ],
             ),
           );
         }
