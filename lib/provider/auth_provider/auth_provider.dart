@@ -87,7 +87,9 @@ class AuthProvider extends ChangeNotifier {
       );
 
       if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
+        final messenger = ScaffoldMessenger.of(context);
+        messenger.clearSnackBars();
+        messenger.showSnackBar(
           SnackBar(
             content: Text('Cadastro realizado com sucesso!'),
             backgroundColor: Colors.green,
@@ -126,7 +128,9 @@ class AuthProvider extends ChangeNotifier {
       await _authRepository.requestPasswordReset(email: email);
 
       if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
+        final messenger = ScaffoldMessenger.of(context);
+        messenger.clearSnackBars();
+        messenger.showSnackBar(
           SnackBar(
             content: Text('Email de recuperação enviado!'),
             backgroundColor: Colors.green,
@@ -169,7 +173,9 @@ class AuthProvider extends ChangeNotifier {
       );
 
       if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
+        final messenger = ScaffoldMessenger.of(context);
+        messenger.clearSnackBars();
+        messenger.showSnackBar(
           SnackBar(
             content: Text('Senha alterada com sucesso!'),
             backgroundColor: Colors.green,

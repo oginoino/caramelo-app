@@ -128,7 +128,9 @@ class _AddButtonState extends State<_AddButton> {
 
   void _showStockLimitMessage(BuildContext context) {
     final isLight = Theme.of(context).brightness == Brightness.light;
-    ScaffoldMessenger.of(context).showSnackBar(
+    final messenger = ScaffoldMessenger.of(context);
+    messenger.clearSnackBars();
+    messenger.showSnackBar(
       SnackBar(
         content: Text(
           'Só temos ${widget.product.stock.available} unidades em estoque.',
