@@ -33,14 +33,16 @@ class _CustomSliverAppBarState extends State<CustomSliverAppBar> {
       floating: true,
       snap: true,
       pinned: false,
-      flexibleSpace: Align(
-        alignment: Alignment.bottomCenter,
-        child: Padding(
-          padding: EdgeInsets.only(bottom: UiToken.spacing16),
-          child: widget.child,
+      flexibleSpace: FlexibleSpaceBar(
+        background: Align(
+          alignment: Alignment.bottomCenter,
+          child: Padding(
+            padding: EdgeInsets.only(bottom: UiToken.spacing16),
+            child: widget.child,
+          ),
         ),
       ),
-      collapsedHeight: 280,
+      expandedHeight: 280,
       actions: [
         IconButton(
           tooltip: 'Profile',

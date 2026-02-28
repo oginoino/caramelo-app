@@ -39,5 +39,9 @@
   "addLocation": "Add location...",
   "@addLocation": {
     "description": "Option to add a new location"
+  },
+  "language": "Language",
+  "@language": {
+    "description": "Language selector label"
   }
 }

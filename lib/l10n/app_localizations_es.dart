@@ -37,4 +37,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get addLocation => 'Agregar ubicación...';
+
+  @override
+  String get language => 'Idioma';
 }

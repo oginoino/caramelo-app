@@ -18,6 +18,7 @@ class LocaleProvider extends ChangeNotifier {
     if (language != null) {
       _currentLocale = Locale(language, country);
     }
+    LocalizationService.load(_currentLocale);
     _persistenceService.setLocale(
       _currentLocale.languageCode,
       _currentLocale.countryCode,
@@ -28,6 +29,7 @@ class LocaleProvider extends ChangeNotifier {
   void setLocale(Locale locale) {
     if (_currentLocale != locale) {
       _currentLocale = locale;
+      LocalizationService.load(locale);
       _persistenceService.setLocale(locale.languageCode, locale.countryCode);
       notifyListeners();
     }

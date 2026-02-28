@@ -160,6 +160,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Add location...'**
   String get addLocation;
+
+  /// Language selector label
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get language;
 }
 
 class _AppLocalizationsDelegate
