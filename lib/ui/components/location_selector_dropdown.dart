@@ -100,7 +100,7 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
                   child: Row(
                     children: [
                       Icon(
-                        Icons.location_on_outlined,
+                        Icons.location_on_rounded,
                         size: 18,
                         color: textColor,
                       ),
@@ -122,7 +122,7 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
                 child: Row(
                   children: [
                     Icon(
-                      Icons.add_location_alt_outlined,
+                      Icons.add_location_alt_rounded,
                       size: 18,
                       color: textColor,
                     ),
@@ -154,7 +154,7 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
                     (loc) => Row(
                       children: [
                         Icon(
-                          Icons.location_on_outlined,
+                          Icons.location_on_rounded,
                           size: 18,
                           color: textColor,
                         ),

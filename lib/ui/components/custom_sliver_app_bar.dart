@@ -74,7 +74,7 @@ class _CustomSliverAppBarState extends State<CustomSliverAppBar> {
                   ),
                 ),
                 icon: Icon(
-                  Icons.brightness_6,
+                  Icons.brightness_6_rounded,
                   color: isLightTheme
                       ? UiToken.secondaryDark500
                       : UiToken.secondaryLight400,
