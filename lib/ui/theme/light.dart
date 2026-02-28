@@ -248,8 +248,24 @@ ThemeData _lightTheme = ThemeData(
     fillColor: WidgetStatePropertyAll(UiToken.primaryLight600),
   ),
   switchTheme: SwitchThemeData(
-    trackColor: WidgetStatePropertyAll(UiToken.secondaryLight200),
-    thumbColor: WidgetStatePropertyAll(UiToken.primaryLight600),
+    trackColor: WidgetStateProperty.resolveWith((states) {
+      if (states.contains(WidgetState.disabled)) {
+        return UiToken.secondaryLight200.withValues(alpha: 0.5);
+      }
+      if (states.contains(WidgetState.selected)) {
+        return UiToken.primaryLight600.withValues(alpha: 0.5);
+      }
+      return UiToken.secondaryLight200;
+    }),
+    thumbColor: WidgetStateProperty.resolveWith((states) {
+      if (states.contains(WidgetState.disabled)) {
+        return UiToken.secondaryLight400;
+      }
+      if (states.contains(WidgetState.selected)) {
+        return UiToken.primaryLight600;
+      }
+      return UiToken.secondaryLight600;
+    }),
   ),
   floatingActionButtonTheme: FloatingActionButtonThemeData(
     backgroundColor: UiToken.primaryLightColor,
