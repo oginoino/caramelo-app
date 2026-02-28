@@ -53,6 +53,9 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
     final overlay = Overlay.of(context).context.findRenderObject() as RenderBox;
     if (renderBox == null) return;
 
+    final screenWidth = MediaQuery.sizeOf(context).width;
+    final menuMaxWidth = math.min(screenWidth * 0.9, 420.0);
+
     final position = RelativeRect.fromRect(
       renderBox.localToGlobal(Offset.zero, ancestor: overlay) & renderBox.size,
       Offset.zero & overlay.size,
@@ -69,13 +72,40 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
         ...provider.locations.map(
           (loc) => PopupMenuItem<String>(
             value: loc.name,
+            child: SizedBox(
+              width: menuMaxWidth,
+              child: Row(
+                children: [
+                  Icon(Icons.location_on_rounded, size: 18, color: textColor),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: Text(
+                      loc.name,
+                      style: TextStyle(color: textColor),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        PopupMenuItem<String>(
+          value: '__add__',
+          child: SizedBox(
+            width: menuMaxWidth,
             child: Row(
               children: [
-                Icon(Icons.location_on_rounded, size: 18, color: textColor),
+                Icon(
+                  Icons.add_location_alt_rounded,
+                  size: 18,
+                  color: textColor,
+                ),
                 const SizedBox(width: 8),
                 Expanded(
                   child: Text(
-                    loc.name,
+                    LocalizationService.strings.addLocation,
                     style: TextStyle(color: textColor),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
@@ -83,23 +113,6 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
                 ),
               ],
             ),
-          ),
-        ),
-        PopupMenuItem<String>(
-          value: '__add__',
-          child: Row(
-            children: [
-              Icon(Icons.add_location_alt_rounded, size: 18, color: textColor),
-              const SizedBox(width: 8),
-              Expanded(
-                child: Text(
-                  LocalizationService.strings.addLocation,
-                  style: TextStyle(color: textColor),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-            ],
           ),
         ),
       ],
