@@ -2,6 +2,7 @@ import '../../util/import/packages.dart';
 import '../../util/import/provider.dart';
 import '../../util/import/service.dart';
 import '../../util/import/ui.dart';
+import '../../util/const/ui/ui_token.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -33,12 +34,33 @@ class Home extends StatelessWidget {
           if (cart.itemCount == 0) {
             return const SizedBox.shrink();
           }
+          final isLight = Theme.of(context).brightness == Brightness.light;
           return FloatingActionButton.extended(
             onPressed: () {
               // TODO: navegar para a tela do carrinho
             },
-            label: Text('Ir para o carrinho (${cart.itemCount})'),
-            icon: const Icon(Icons.shopping_cart_rounded),
+            label: Text(
+              'Ir para o carrinho (${cart.itemCount})',
+              style: TextStyle(
+                color: isLight
+                    ? Theme.of(context).colorScheme.onPrimary
+                    : UiToken.primaryDark50,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            icon: Icon(
+              Icons.shopping_cart_rounded,
+              color: isLight
+                  ? Theme.of(context).colorScheme.onPrimary
+                  : UiToken.primaryDark50,
+            ),
+            backgroundColor: isLight
+                ? Theme.of(context).colorScheme.primary
+                : UiToken.primaryDarkColor,
+            elevation: UiToken.elevationNone,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(UiToken.borderRadius16),
+            ),
           );
         },
       ),
