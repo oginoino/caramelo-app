@@ -41,6 +41,13 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
           ),
           child: StatefulBuilder(
             builder: (sheetContext, setSheetState) {
+              final isDark =
+                  Theme.of(sheetContext).brightness == Brightness.dark;
+              final onSurface = Theme.of(sheetContext).colorScheme.onSurface;
+              final textColor = isDark ? UiToken.secondaryLight200 : onSurface;
+              final hintColor = isDark
+                  ? UiToken.secondaryLight400
+                  : onSurface.withValues(alpha: 0.6);
               final normalizedQuery = query.trim().toLowerCase();
               final filtered = normalizedQuery.isEmpty
                   ? provider.locations
@@ -67,7 +74,9 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
                       ),
                       child: Text(
                         LocalizationService.strings.newLocationTitle,
-                        style: Theme.of(sheetContext).textTheme.titleMedium,
+                        style: Theme.of(
+                          sheetContext,
+                        ).textTheme.titleMedium?.copyWith(color: textColor),
                       ),
                     ),
                     Padding(
@@ -75,11 +84,18 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
                         horizontal: UiToken.spacing16,
                       ),
                       child: TextField(
+                        style: TextStyle(color: textColor),
+                        cursorColor: textColor,
                         autofocus: true,
                         decoration: InputDecoration(
                           labelText: LocalizationService.strings.search,
                           hintText: LocalizationService.strings.newLocationHint,
-                          prefixIcon: const Icon(Icons.search_rounded),
+                          labelStyle: TextStyle(color: hintColor),
+                          hintStyle: TextStyle(color: hintColor),
+                          prefixIcon: Icon(
+                            Icons.search_rounded,
+                            color: hintColor,
+                          ),
                         ),
                         textInputAction: TextInputAction.done,
                         onChanged: (value) {
@@ -107,13 +123,18 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
                           if (canAdd && index == 0) {
                             final name = query.trim();
                             return ListTile(
-                              leading: const Icon(
+                              leading: Icon(
                                 Icons.add_location_alt_rounded,
+                                color: textColor,
                               ),
                               title: Text(
                                 LocalizationService.strings.addLocation,
+                                style: TextStyle(color: textColor),
                               ),
-                              subtitle: Text(name),
+                              subtitle: Text(
+                                name,
+                                style: TextStyle(color: hintColor),
+                              ),
                               onTap: () async {
                                 await provider.addLocation(name);
                                 if (sheetContext.mounted) {
@@ -125,8 +146,14 @@ class _LocationSelectorDropdownState extends State<LocationSelectorDropdown> {
 
                           final location = filtered[index - (canAdd ? 1 : 0)];
                           return ListTile(
-                            leading: const Icon(Icons.location_on_rounded),
-                            title: Text(location.name),
+                            leading: Icon(
+                              Icons.location_on_rounded,
+                              color: textColor,
+                            ),
+                            title: Text(
+                              location.name,
+                              style: TextStyle(color: textColor),
+                            ),
                             onTap: () {
                               provider.setSelectedLocation(location.name);
                               Navigator.of(sheetContext).pop();
