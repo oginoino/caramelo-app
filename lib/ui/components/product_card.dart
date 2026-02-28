@@ -29,8 +29,8 @@ class ProductCard extends StatelessWidget {
                 ),
               ),
               Positioned(
-                top: 8,
-                right: 8,
+                top: UiToken.spacing4,
+                right: UiToken.spacing4,
                 child: IconButton(
                   style: IconButton.styleFrom(
                     backgroundColor: isLight
@@ -42,7 +42,7 @@ class ProductCard extends StatelessWidget {
                     shape: const CircleBorder(),
                   ),
                   onPressed: () {},
-                  icon: const Icon(Icons.add),
+                  icon: const Icon(Icons.add_rounded),
                 ),
               ),
             ],
