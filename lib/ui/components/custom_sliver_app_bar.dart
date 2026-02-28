@@ -1,8 +1,7 @@
 import '../../util/const/ui/ui_token.dart';
 import '../../util/import/packages.dart';
-import '../../util/import/provider.dart';
-import '../../util/import/service.dart';
 import '../../util/import/ui.dart';
+import 'profile_bottom_sheet.dart';
 
 class CustomSliverAppBar extends StatefulWidget {
   const CustomSliverAppBar({super.key, this.title, this.child});
@@ -43,7 +42,18 @@ class _CustomSliverAppBarState extends State<CustomSliverAppBar> {
       ),
       collapsedHeight: 280,
       actions: [
-        PopupMenuIconButton(
+        IconButton(
+          tooltip: 'Profile',
+          onPressed: () {
+            showModalBottomSheet<void>(
+              context: context,
+              isScrollControlled: true,
+              showDragHandle: true,
+              builder: (sheetContext) {
+                return const ProfileBottomSheet();
+              },
+            );
+          },
           icon: CircleAvatar(
             radius: UiToken.shadow16,
             backgroundColor: isLightTheme
@@ -57,39 +67,6 @@ class _CustomSliverAppBarState extends State<CustomSliverAppBar> {
                   : UiToken.secondaryDark500,
             ),
           ),
-          items: [
-            PopupMenuItem(
-              padding: EdgeInsets.symmetric(horizontal: UiToken.spacing16),
-              value: 'toggle_theme',
-              child: TextButton.icon(
-                label: Center(
-                  child: Text(
-                    LocalizationService.strings.toggleTheme,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: isLightTheme
-                          ? UiToken.secondaryDark500
-                          : UiToken.secondaryLight400,
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                icon: Icon(
-                  Icons.brightness_6_rounded,
-                  color: isLightTheme
-                      ? UiToken.secondaryDark500
-                      : UiToken.secondaryLight400,
-                ),
-                onPressed: () {
-                  Provider.of<ThemeProvider>(
-                    context,
-                    listen: false,
-                  ).toggleTheme();
-                  Navigator.pop(context);
-                },
-                autofocus: false,
-              ),
-            ),
-          ],
         ),
       ],
     );
