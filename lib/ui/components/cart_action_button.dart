@@ -1,7 +1,7 @@
 import '../../util/import/packages.dart';
 import '../../util/const/ui/ui_token.dart';
 import '../../util/import/provider.dart';
-import 'app_tooltip.dart';
+import '../../util/import/ui.dart';
 
 class CartActionButton extends StatelessWidget {
   const CartActionButton({

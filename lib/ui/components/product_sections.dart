@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
+import '../../util/import/packages.dart';
 import '../../provider/product_provider/product_provider.dart';
 import '../../util/import/ui.dart';
 
@@ -32,8 +30,9 @@ class ProductSections extends StatelessWidget {
 
         final sections = <Widget>[];
         for (final category in categories) {
-          final categoryProducts =
-              products.where((p) => p.categories.contains(category)).toList();
+          final categoryProducts = products
+              .where((p) => p.categories.contains(category))
+              .toList();
           if (categoryProducts.isEmpty) continue;
 
           sections.add(
@@ -58,9 +57,7 @@ class ProductSections extends StatelessWidget {
           );
         }
 
-        return Column(
-          children: sections,
-        );
+        return Column(children: sections);
       },
     );
   }

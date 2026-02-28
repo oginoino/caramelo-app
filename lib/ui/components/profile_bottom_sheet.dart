@@ -2,7 +2,7 @@ import '../../util/import/packages.dart';
 import '../../util/const/ui/ui_token.dart';
 import '../../util/import/provider.dart';
 import '../../util/import/service.dart';
-import 'theme_toggle.dart';
+import '../../util/import/ui.dart';
 
 class ProfileBottomSheet extends StatelessWidget {
   const ProfileBottomSheet({super.key});

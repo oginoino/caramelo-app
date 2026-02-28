@@ -1,8 +1,6 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/material.dart';
-
 import '../../util/import/domain.dart';
 import '../../util/const/ui/ui_token.dart';
+import '../../util/import/packages.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({required this.product, super.key});
@@ -17,7 +15,8 @@ class ProductCard extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Expanded(
+        AspectRatio(
+          aspectRatio: 1.15,
           child: Stack(
             children: [
               ClipRRect(

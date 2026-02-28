@@ -1,8 +1,6 @@
 import '../../util/const/ui/ui_token.dart';
 import '../../util/import/packages.dart';
 import '../../util/import/ui.dart';
-import 'profile_avatar.dart';
-import 'profile_bottom_sheet.dart';
 
 class CustomSliverAppBar extends StatefulWidget {
   const CustomSliverAppBar({

@@ -29,3 +29,5 @@ export 'package:provider/single_child_widget.dart';
 export 'package:google_fonts/google_fonts.dart';
 
 export 'dart:math';
+
+export 'package:cached_network_image/cached_network_image.dart';

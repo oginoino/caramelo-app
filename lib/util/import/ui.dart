@@ -15,3 +15,7 @@ export '../../ui/components/message_carousel.dart';
 export '../../ui/components/home_message_carousel_section.dart';
 export '../../ui/components/cart_action_button.dart';
 export '../../ui/components/category_chips.dart';
+export '../../ui/components/app_tooltip.dart';
+export '../../ui/components/location_bottom_sheet.dart';
+export '../../ui/components/profile_avatar.dart';
+export '../../ui/components/profile_bottom_sheet.dart';

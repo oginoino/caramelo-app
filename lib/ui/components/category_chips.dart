@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import '../../provider/product_provider/product_provider.dart';
 import '../../util/const/ui/ui_token.dart';
+import '../../util/import/packages.dart';
 
 class CategoryChips extends StatelessWidget {
   const CategoryChips({super.key});

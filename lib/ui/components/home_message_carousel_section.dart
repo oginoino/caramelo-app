@@ -1,7 +1,7 @@
 import '../../util/import/packages.dart';
 import '../../util/import/provider.dart';
 import '../../util/const/ui/ui_token.dart';
-import 'message_carousel.dart';
+import '../../util/import/ui.dart';
 
 class HomeMessageCarouselSection extends StatelessWidget {
   const HomeMessageCarouselSection({super.key});
@@ -27,4 +27,3 @@ class HomeMessageCarouselSection extends StatelessWidget {
     );
   }
 }
-
