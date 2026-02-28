@@ -51,7 +51,10 @@ class ProductSections extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 16),
-                ProductCarousel(products: categoryProducts),
+                ProductCarousel(
+                  products: categoryProducts,
+                  onViewAll: () => provider.selectCategory(category),
+                ),
                 const SizedBox(height: 24),
               ],
             ),
