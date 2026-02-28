@@ -43,34 +43,6 @@ class ProductCard extends StatelessWidget {
                       right: UiToken.spacing4,
                       child: _AddButton(product: product, cart: cart),
                     ),
-                    if (quantity > 0)
-                      Positioned(
-                        top: UiToken.spacing4,
-                        left: UiToken.spacing4,
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 8,
-                            vertical: 4,
-                          ),
-                          decoration: BoxDecoration(
-                            color: isLight
-                                ? UiToken.primaryLight600
-                                : UiToken.primaryLight500,
-                            borderRadius: BorderRadius.circular(
-                              UiToken.borderRadius12,
-                            ),
-                          ),
-                          child: Text(
-                            '$quantity',
-                            style: TextStyle(
-                              color: isLight
-                                  ? UiToken.primaryLight50
-                                  : UiToken.primaryDark800,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ),
                   ],
                 ),
               ),
