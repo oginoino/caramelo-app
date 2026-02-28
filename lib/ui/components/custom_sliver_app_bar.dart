@@ -4,18 +4,28 @@ import '../../util/import/provider.dart';
 import '../../util/import/service.dart';
 import '../../util/import/ui.dart';
 
-class CustomSliverAppBar extends StatelessWidget {
+class CustomSliverAppBar extends StatefulWidget {
   const CustomSliverAppBar({super.key, this.title, this.child});
 
   final String? title;
   final Widget? child;
 
   @override
+  State<CustomSliverAppBar> createState() => _CustomSliverAppBarState();
+}
+
+class _CustomSliverAppBarState extends State<CustomSliverAppBar> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final isLightTheme = Theme.of(context).brightness == Brightness.light;
 
     return SliverAppBar(
-      title: title != null ? Text(title!) : null,
+      title: LocationSelectorDropdown(initialSelection: widget.title),
       floating: true,
       snap: true,
       pinned: false,
@@ -23,7 +33,7 @@ class CustomSliverAppBar extends StatelessWidget {
         alignment: Alignment.bottomCenter,
         child: Padding(
           padding: EdgeInsets.only(bottom: UiToken.spacing16),
-          child: child,
+          child: widget.child,
         ),
       ),
       collapsedHeight: 280,
