@@ -11,11 +11,17 @@ class Home extends StatelessWidget {
     return CustomScrollView(
       slivers: [
         CustomSliverAppBar(
+          expandedHeight: 280,
           title: LocalizationService.strings.home,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.end,
-            children: [const HomeMessageCarouselSection(), Search()],
+            children: [
+              const HomeMessageCarouselSection(),
+              Search(),
+              const SizedBox(height: 12),
+              const CategoryChips(),
+            ],
           ),
         ),
       ],

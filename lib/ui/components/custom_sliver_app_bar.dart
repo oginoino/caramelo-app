@@ -5,10 +5,16 @@ import 'profile_avatar.dart';
 import 'profile_bottom_sheet.dart';
 
 class CustomSliverAppBar extends StatefulWidget {
-  const CustomSliverAppBar({super.key, this.title, this.child});
+  const CustomSliverAppBar({
+    super.key,
+    this.title,
+    this.child,
+    this.expandedHeight = 220,
+  });
 
   final String? title;
   final Widget? child;
+  final double expandedHeight;
 
   @override
   State<CustomSliverAppBar> createState() => _CustomSliverAppBarState();
@@ -42,7 +48,7 @@ class _CustomSliverAppBarState extends State<CustomSliverAppBar> {
           ),
         ),
       ),
-      expandedHeight: 220,
+      expandedHeight: widget.expandedHeight,
       leading: ProfileAvatar(
         tooltip: 'Profile',
         onPressed: () {
