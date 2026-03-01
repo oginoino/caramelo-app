@@ -1,6 +1,7 @@
 import '../../util/import/packages.dart';
 import '../../util/import/repository.dart';
 import '../../util/import/domain.dart';
+import '../../util/import/service.dart';
 
 class LocationProvider extends ChangeNotifier {
   final LocationRepository _repository;
@@ -33,7 +34,7 @@ class LocationProvider extends ChangeNotifier {
       }
     } catch (e) {
       debugPrint('Error loading locations: $e');
-      _errorMessage = 'Failed to load locations. Please try again later.';
+      _errorMessage = LocalizationService.strings.errorLoadingLocations;
       _locations = [];
     } finally {
       _isLoading = false;

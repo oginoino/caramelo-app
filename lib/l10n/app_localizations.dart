@@ -226,6 +226,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Failed to load products. Please try again later.'**
   String get errorLoadingProducts;
+
+  /// Shown while products are loading
+  ///
+  /// In en, this message translates to:
+  /// **'Loading products...'**
+  String get loadingProducts;
+
+  /// Generic error when locations fail to load
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load locations. Please try again later.'**
+  String get errorLoadingLocations;
+
+  /// Shown when user tries to add beyond stock limit
+  ///
+  /// In en, this message translates to:
+  /// **'Stock limit reached.'**
+  String get stockLimitReached;
+
+  /// Label for closing actions like SnackBar
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get close;
+
+  /// Shown after successful user registration
+  ///
+  /// In en, this message translates to:
+  /// **'Registration successful!'**
+  String get authSuccessRegistration;
+
+  /// SnackBar action to clear/hide
+  ///
+  /// In en, this message translates to:
+  /// **'Clear'**
+  String get actionClear;
+
+  /// Shown after requesting password reset email
+  ///
+  /// In en, this message translates to:
+  /// **'Recovery email sent!'**
+  String get passwordResetEmailSent;
+
+  /// Shown after password reset completes
+  ///
+  /// In en, this message translates to:
+  /// **'Password changed successfully!'**
+  String get passwordChangedSuccess;
+
+  /// Login error for wrong credentials
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid email or password'**
+  String get errorInvalidCredentials;
+
+  /// Shown when there is no internet
+  ///
+  /// In en, this message translates to:
+  /// **'No internet connection'**
+  String get errorNetworkOffline;
+
+  /// Shown when a request times out
+  ///
+  /// In en, this message translates to:
+  /// **'The request took too long'**
+  String get errorTimeout;
+
+  /// Generic authentication error without specifics
+  ///
+  /// In en, this message translates to:
+  /// **'Authentication error'**
+  String get errorAuthenticationGeneric;
+
+  /// Shown when trying to register an existing email
+  ///
+  /// In en, this message translates to:
+  /// **'Email already registered'**
+  String get errorRegistrationConflictEmail;
+
+  /// Shown when email is not found during password reset
+  ///
+  /// In en, this message translates to:
+  /// **'Email not found'**
+  String get errorEmailNotFound;
+
+  /// Generic unexpected error message
+  ///
+  /// In en, this message translates to:
+  /// **'Unexpected error'**
+  String get errorUnexpected;
+
+  /// Generic error when resetting password fails
+  ///
+  /// In en, this message translates to:
+  /// **'Error resetting password'**
+  String get errorResetPasswordGeneric;
 }
 
 class _AppLocalizationsDelegate

@@ -2,6 +2,7 @@ import '../../util/import/domain.dart';
 import '../../util/const/ui/ui_token.dart';
 import '../../util/import/packages.dart';
 import '../../util/import/provider.dart';
+import '../../util/import/service.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({required this.product, super.key});
@@ -130,11 +131,9 @@ class _AddButtonState extends State<_AddButton> {
     messenger.clearSnackBars();
     messenger.showSnackBar(
       SnackBar(
-        content: Text(
-          'Só temos ${widget.product.stock.available} unidades em estoque.',
-        ),
+        content: Text(LocalizationService.strings.stockLimitReached),
         action: SnackBarAction(
-          label: 'Fechar',
+          label: LocalizationService.strings.close,
           onPressed: () => messenger.hideCurrentSnackBar(),
         ),
       ),

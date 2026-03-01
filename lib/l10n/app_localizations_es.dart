@@ -71,4 +71,53 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get errorLoadingProducts =>
       'Error al cargar productos. Inténtalo de nuevo más tarde.';
+
+  @override
+  String get loadingProducts => 'Cargando productos...';
+
+  @override
+  String get errorLoadingLocations =>
+      'Error al cargar ubicaciones. Inténtalo de nuevo más tarde.';
+
+  @override
+  String get stockLimitReached => 'Límite de stock alcanzado.';
+
+  @override
+  String get close => 'Cerrar';
+
+  @override
+  String get authSuccessRegistration => '¡Registro realizado con éxito!';
+
+  @override
+  String get actionClear => 'Limpiar';
+
+  @override
+  String get passwordResetEmailSent => '¡Correo de recuperación enviado!';
+
+  @override
+  String get passwordChangedSuccess => '¡Contraseña cambiada con éxito!';
+
+  @override
+  String get errorInvalidCredentials => 'Correo o contraseña inválidos';
+
+  @override
+  String get errorNetworkOffline => 'Sin conexión a internet';
+
+  @override
+  String get errorTimeout => 'La solicitud tardó demasiado';
+
+  @override
+  String get errorAuthenticationGeneric => 'Error de autenticación';
+
+  @override
+  String get errorRegistrationConflictEmail => 'Correo ya registrado';
+
+  @override
+  String get errorEmailNotFound => 'Correo no encontrado';
+
+  @override
+  String get errorUnexpected => 'Error inesperado';
+
+  @override
+  String get errorResetPasswordGeneric => 'Error al restablecer la contraseña';
 }

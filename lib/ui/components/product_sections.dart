@@ -18,13 +18,13 @@ class _ProductSectionsState extends State<ProductSections> {
     return Consumer<ProductProvider>(
       builder: (context, provider, child) {
         if (provider.isLoading) {
-          return const Center(
+          return Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CircularProgressIndicator(),
-                SizedBox(height: 16),
-                Text('Carregando produtos...'),
+                const CircularProgressIndicator(),
+                const SizedBox(height: 16),
+                Text(LocalizationService.strings.loadingProducts),
               ],
             ),
           ).animate().fadeIn(duration: 300.ms);

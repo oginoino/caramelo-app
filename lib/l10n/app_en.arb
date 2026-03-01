@@ -83,5 +83,69 @@
   "errorLoadingProducts": "Failed to load products. Please try again later.",
   "@errorLoadingProducts": {
     "description": "Generic error displayed when products fail to load"
+  },
+  "loadingProducts": "Loading products...",
+  "@loadingProducts": {
+    "description": "Shown while products are loading"
+  },
+  "errorLoadingLocations": "Failed to load locations. Please try again later.",
+  "@errorLoadingLocations": {
+    "description": "Generic error when locations fail to load"
+  },
+  "stockLimitReached": "Stock limit reached.",
+  "@stockLimitReached": {
+    "description": "Shown when user tries to add beyond stock limit"
+  },
+  "close": "Close",
+  "@close": {
+    "description": "Label for closing actions like SnackBar"
+  },
+  "authSuccessRegistration": "Registration successful!",
+  "@authSuccessRegistration": {
+    "description": "Shown after successful user registration"
+  },
+  "actionClear": "Clear",
+  "@actionClear": {
+    "description": "SnackBar action to clear/hide"
+  },
+  "passwordResetEmailSent": "Recovery email sent!",
+  "@passwordResetEmailSent": {
+    "description": "Shown after requesting password reset email"
+  },
+  "passwordChangedSuccess": "Password changed successfully!",
+  "@passwordChangedSuccess": {
+    "description": "Shown after password reset completes"
+  },
+  "errorInvalidCredentials": "Invalid email or password",
+  "@errorInvalidCredentials": {
+    "description": "Login error for wrong credentials"
+  },
+  "errorNetworkOffline": "No internet connection",
+  "@errorNetworkOffline": {
+    "description": "Shown when there is no internet"
+  },
+  "errorTimeout": "The request took too long",
+  "@errorTimeout": {
+    "description": "Shown when a request times out"
+  },
+  "errorAuthenticationGeneric": "Authentication error",
+  "@errorAuthenticationGeneric": {
+    "description": "Generic authentication error without specifics"
+  },
+  "errorRegistrationConflictEmail": "Email already registered",
+  "@errorRegistrationConflictEmail": {
+    "description": "Shown when trying to register an existing email"
+  },
+  "errorEmailNotFound": "Email not found",
+  "@errorEmailNotFound": {
+    "description": "Shown when email is not found during password reset"
+  },
+  "errorUnexpected": "Unexpected error",
+  "@errorUnexpected": {
+    "description": "Generic unexpected error message"
+  },
+  "errorResetPasswordGeneric": "Error resetting password",
+  "@errorResetPasswordGeneric": {
+    "description": "Generic error when resetting password fails"
   }
 }

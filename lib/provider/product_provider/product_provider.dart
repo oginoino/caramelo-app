@@ -1,6 +1,7 @@
 import '../../util/import/domain.dart';
 import '../../util/import/packages.dart';
 import '../../util/import/repository.dart';
+import '../../util/import/service.dart';
 
 enum ProductSortOption {
   relevance,
@@ -43,7 +44,7 @@ class ProductProvider extends ChangeNotifier {
       _products = await _repository.getProducts();
     } catch (e) {
       debugPrint('Error loading products: $e');
-      _errorMessage = 'Failed to load products. Please try again later.';
+      _errorMessage = LocalizationService.strings.errorLoadingProducts;
     } finally {
       _isLoading = false;
       notifyListeners();

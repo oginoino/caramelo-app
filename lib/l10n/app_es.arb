@@ -83,5 +83,69 @@
   "errorLoadingProducts": "Error al cargar productos. Inténtalo de nuevo más tarde.",
   "@errorLoadingProducts": {
     "description": "Error genérico cuando los productos no se pueden cargar"
+  },
+  "loadingProducts": "Cargando productos...",
+  "@loadingProducts": {
+    "description": "Se muestra mientras los productos se cargan"
+  },
+  "errorLoadingLocations": "Error al cargar ubicaciones. Inténtalo de nuevo más tarde.",
+  "@errorLoadingLocations": {
+    "description": "Error genérico cuando las ubicaciones no se pueden cargar"
+  },
+  "stockLimitReached": "Límite de stock alcanzado.",
+  "@stockLimitReached": {
+    "description": "Se muestra cuando el usuario intenta agregar más del stock"
+  },
+  "close": "Cerrar",
+  "@close": {
+    "description": "Etiqueta para cerrar acciones como SnackBar"
+  },
+  "authSuccessRegistration": "¡Registro realizado con éxito!",
+  "@authSuccessRegistration": {
+    "description": "Se muestra tras un registro exitoso"
+  },
+  "actionClear": "Limpiar",
+  "@actionClear": {
+    "description": "Acción para limpiar/ocultar SnackBar"
+  },
+  "passwordResetEmailSent": "¡Correo de recuperación enviado!",
+  "@passwordResetEmailSent": {
+    "description": "Se muestra tras solicitar restablecimiento de contraseña"
+  },
+  "passwordChangedSuccess": "¡Contraseña cambiada con éxito!",
+  "@passwordChangedSuccess": {
+    "description": "Se muestra tras completar el restablecimiento de contraseña"
+  },
+  "errorInvalidCredentials": "Correo o contraseña inválidos",
+  "@errorInvalidCredentials": {
+    "description": "Error de inicio de sesión por credenciales erróneas"
+  },
+  "errorNetworkOffline": "Sin conexión a internet",
+  "@errorNetworkOffline": {
+    "description": "Se muestra cuando no hay internet"
+  },
+  "errorTimeout": "La solicitud tardó demasiado",
+  "@errorTimeout": {
+    "description": "Se muestra cuando una solicitud excede el tiempo"
+  },
+  "errorAuthenticationGeneric": "Error de autenticación",
+  "@errorAuthenticationGeneric": {
+    "description": "Error genérico de autenticación sin detalles"
+  },
+  "errorRegistrationConflictEmail": "Correo ya registrado",
+  "@errorRegistrationConflictEmail": {
+    "description": "Se muestra al intentar registrar un correo existente"
+  },
+  "errorEmailNotFound": "Correo no encontrado",
+  "@errorEmailNotFound": {
+    "description": "Se muestra cuando el correo no se encuentra"
+  },
+  "errorUnexpected": "Error inesperado",
+  "@errorUnexpected": {
+    "description": "Mensaje genérico de error inesperado"
+  },
+  "errorResetPasswordGeneric": "Error al restablecer la contraseña",
+  "@errorResetPasswordGeneric": {
+    "description": "Error genérico cuando falla el restablecimiento"
   }
 }

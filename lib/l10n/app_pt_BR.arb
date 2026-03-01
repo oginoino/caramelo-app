@@ -83,5 +83,69 @@
   "errorLoadingProducts": "Falha ao carregar produtos. Tente novamente mais tarde.",
   "@errorLoadingProducts": {
     "description": "Erro genérico exibido quando os produtos falham ao carregar"
+  },
+  "loadingProducts": "Carregando produtos...",
+  "@loadingProducts": {
+    "description": "Exibido enquanto os produtos estão sendo carregados"
+  },
+  "errorLoadingLocations": "Falha ao carregar localizações. Tente novamente mais tarde.",
+  "@errorLoadingLocations": {
+    "description": "Erro genérico quando as localizações falham ao carregar"
+  },
+  "stockLimitReached": "Limite de estoque atingido.",
+  "@stockLimitReached": {
+    "description": "Exibido quando tenta adicionar além do estoque"
+  },
+  "close": "Fechar",
+  "@close": {
+    "description": "Rótulo para fechar ações como SnackBar"
+  },
+  "authSuccessRegistration": "Cadastro realizado com sucesso!",
+  "@authSuccessRegistration": {
+    "description": "Exibido após cadastro bem-sucedido"
+  },
+  "actionClear": "Limpar",
+  "@actionClear": {
+    "description": "Ação para limpar/ocultar SnackBar"
+  },
+  "passwordResetEmailSent": "Email de recuperação enviado!",
+  "@passwordResetEmailSent": {
+    "description": "Exibido após solicitar redefinição de senha"
+  },
+  "passwordChangedSuccess": "Senha alterada com sucesso!",
+  "@passwordChangedSuccess": {
+    "description": "Exibido após concluir a redefinição de senha"
+  },
+  "errorInvalidCredentials": "Email ou senha inválidos",
+  "@errorInvalidCredentials": {
+    "description": "Erro de login por credenciais incorretas"
+  },
+  "errorNetworkOffline": "Sem conexão com internet",
+  "@errorNetworkOffline": {
+    "description": "Exibido quando não há internet"
+  },
+  "errorTimeout": "A requisição demorou muito tempo",
+  "@errorTimeout": {
+    "description": "Exibido quando a requisição excede o tempo"
+  },
+  "errorAuthenticationGeneric": "Erro de autenticação",
+  "@errorAuthenticationGeneric": {
+    "description": "Erro genérico de autenticação sem detalhes"
+  },
+  "errorRegistrationConflictEmail": "Email já cadastrado",
+  "@errorRegistrationConflictEmail": {
+    "description": "Exibido ao tentar cadastrar um email existente"
+  },
+  "errorEmailNotFound": "Email não encontrado",
+  "@errorEmailNotFound": {
+    "description": "Exibido quando o email não é encontrado"
+  },
+  "errorUnexpected": "Erro inesperado",
+  "@errorUnexpected": {
+    "description": "Mensagem genérica de erro inesperado"
+  },
+  "errorResetPasswordGeneric": "Erro ao redefinir senha",
+  "@errorResetPasswordGeneric": {
+    "description": "Erro genérico quando a redefinição falha"
   }
 }

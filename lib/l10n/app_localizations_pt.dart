@@ -71,6 +71,55 @@ class AppLocalizationsPt extends AppLocalizations {
   @override
   String get errorLoadingProducts =>
       'Falha ao carregar produtos. Tente novamente mais tarde.';
+
+  @override
+  String get loadingProducts => 'Carregando produtos...';
+
+  @override
+  String get errorLoadingLocations =>
+      'Falha ao carregar localizações. Tente novamente mais tarde.';
+
+  @override
+  String get stockLimitReached => 'Limite de estoque atingido.';
+
+  @override
+  String get close => 'Fechar';
+
+  @override
+  String get authSuccessRegistration => 'Cadastro realizado com sucesso!';
+
+  @override
+  String get actionClear => 'Limpar';
+
+  @override
+  String get passwordResetEmailSent => 'Email de recuperação enviado!';
+
+  @override
+  String get passwordChangedSuccess => 'Senha alterada com sucesso!';
+
+  @override
+  String get errorInvalidCredentials => 'Email ou senha inválidos';
+
+  @override
+  String get errorNetworkOffline => 'Sem conexão com internet';
+
+  @override
+  String get errorTimeout => 'A requisição demorou muito tempo';
+
+  @override
+  String get errorAuthenticationGeneric => 'Erro de autenticação';
+
+  @override
+  String get errorRegistrationConflictEmail => 'Email já cadastrado';
+
+  @override
+  String get errorEmailNotFound => 'Email não encontrado';
+
+  @override
+  String get errorUnexpected => 'Erro inesperado';
+
+  @override
+  String get errorResetPasswordGeneric => 'Erro ao redefinir senha';
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
@@ -140,4 +189,53 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   @override
   String get errorLoadingProducts =>
       'Falha ao carregar produtos. Tente novamente mais tarde.';
+
+  @override
+  String get loadingProducts => 'Carregando produtos...';
+
+  @override
+  String get errorLoadingLocations =>
+      'Falha ao carregar localizações. Tente novamente mais tarde.';
+
+  @override
+  String get stockLimitReached => 'Limite de estoque atingido.';
+
+  @override
+  String get close => 'Fechar';
+
+  @override
+  String get authSuccessRegistration => 'Cadastro realizado com sucesso!';
+
+  @override
+  String get actionClear => 'Limpar';
+
+  @override
+  String get passwordResetEmailSent => 'Email de recuperação enviado!';
+
+  @override
+  String get passwordChangedSuccess => 'Senha alterada com sucesso!';
+
+  @override
+  String get errorInvalidCredentials => 'Email ou senha inválidos';
+
+  @override
+  String get errorNetworkOffline => 'Sem conexão com internet';
+
+  @override
+  String get errorTimeout => 'A requisição demorou muito tempo';
+
+  @override
+  String get errorAuthenticationGeneric => 'Erro de autenticação';
+
+  @override
+  String get errorRegistrationConflictEmail => 'Email já cadastrado';
+
+  @override
+  String get errorEmailNotFound => 'Email não encontrado';
+
+  @override
+  String get errorUnexpected => 'Erro inesperado';
+
+  @override
+  String get errorResetPasswordGeneric => 'Erro ao redefinir senha';
 }

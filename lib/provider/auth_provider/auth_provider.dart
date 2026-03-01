@@ -44,18 +44,18 @@ class AuthProvider extends ChangeNotifier {
       );
       _tokenPair = tokenPair;
     } on UnauthorizedError {
-      _setError('Email ou senha inválidos');
+      _setError(LocalizationService.strings.errorInvalidCredentials);
     } on NetworkError {
-      _setError('Sem conexão com internet');
+      _setError(LocalizationService.strings.errorNetworkOffline);
     } on TimeoutError {
-      _setError('A requisição demorou muito tempo');
+      _setError(LocalizationService.strings.errorTimeout);
     } on HttpError catch (e) {
-      _setError('Erro de autenticação: ${e.message}');
+      _setError(LocalizationService.strings.errorAuthenticationGeneric);
       if (kDebugMode) {
         debugPrint('Login error: $e');
       }
     } catch (e) {
-      _setError('Erro inesperado durante login');
+      _setError(LocalizationService.strings.errorUnexpected);
       if (kDebugMode) {
         debugPrint('Unexpected login error: $e');
       }
@@ -91,28 +91,28 @@ class AuthProvider extends ChangeNotifier {
         messenger.clearSnackBars();
         messenger.showSnackBar(
           SnackBar(
-            content: Text('Cadastro realizado com sucesso!'),
+            content: Text(LocalizationService.strings.authSuccessRegistration),
             backgroundColor: Colors.green,
             action: SnackBarAction(
-              label: 'Limpar',
+              label: LocalizationService.strings.actionClear,
               onPressed: () => messenger.hideCurrentSnackBar(),
             ),
           ),
         );
       }
     } on ConflictError {
-      _setError('Email já cadastrado');
+      _setError(LocalizationService.strings.errorRegistrationConflictEmail);
     } on NetworkError {
-      _setError('Sem conexão com internet');
+      _setError(LocalizationService.strings.errorNetworkOffline);
     } on TimeoutError {
-      _setError('A requisição demorou muito tempo');
+      _setError(LocalizationService.strings.errorTimeout);
     } on HttpError catch (e) {
-      _setError('Erro no cadastro: ${e.message}');
+      _setError(LocalizationService.strings.errorUnexpected);
       if (kDebugMode) {
         debugPrint('Register error: $e');
       }
     } catch (e) {
-      _setError('Erro inesperado durante cadastro');
+      _setError(LocalizationService.strings.errorUnexpected);
       if (kDebugMode) {
         debugPrint('Unexpected register error: $e');
       }
@@ -136,28 +136,28 @@ class AuthProvider extends ChangeNotifier {
         messenger.clearSnackBars();
         messenger.showSnackBar(
           SnackBar(
-            content: Text('Email de recuperação enviado!'),
+            content: Text(LocalizationService.strings.passwordResetEmailSent),
             backgroundColor: Colors.green,
             action: SnackBarAction(
-              label: 'Limpar',
+              label: LocalizationService.strings.actionClear,
               onPressed: () => messenger.hideCurrentSnackBar(),
             ),
           ),
         );
       }
     } on NotFoundError {
-      _setError('Email não encontrado');
+      _setError(LocalizationService.strings.errorEmailNotFound);
     } on NetworkError {
-      _setError('Sem conexão com internet');
+      _setError(LocalizationService.strings.errorNetworkOffline);
     } on TimeoutError {
-      _setError('A requisição demorou muito tempo');
+      _setError(LocalizationService.strings.errorTimeout);
     } on HttpError catch (e) {
-      _setError('Erro: ${e.message}');
+      _setError(LocalizationService.strings.errorUnexpected);
       if (kDebugMode) {
         debugPrint('Password reset error: $e');
       }
     } catch (e) {
-      _setError('Erro inesperado');
+      _setError(LocalizationService.strings.errorUnexpected);
       if (kDebugMode) {
         debugPrint('Unexpected password reset error: $e');
       }
@@ -185,22 +185,22 @@ class AuthProvider extends ChangeNotifier {
         messenger.clearSnackBars();
         messenger.showSnackBar(
           SnackBar(
-            content: Text('Senha alterada com sucesso!'),
+            content: Text(LocalizationService.strings.passwordChangedSuccess),
             backgroundColor: Colors.green,
             action: SnackBarAction(
-              label: 'Limpar',
+              label: LocalizationService.strings.actionClear,
               onPressed: () => messenger.hideCurrentSnackBar(),
             ),
           ),
         );
       }
     } on HttpError catch (e) {
-      _setError('Erro ao redefinir senha: ${e.message}');
+      _setError(LocalizationService.strings.errorResetPasswordGeneric);
       if (kDebugMode) {
         debugPrint('Reset password error: $e');
       }
     } catch (e) {
-      _setError('Erro inesperado');
+      _setError(LocalizationService.strings.errorUnexpected);
       if (kDebugMode) {
         debugPrint('Unexpected reset password error: $e');
       }

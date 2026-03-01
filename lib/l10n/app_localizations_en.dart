@@ -71,4 +71,53 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get errorLoadingProducts =>
       'Failed to load products. Please try again later.';
+
+  @override
+  String get loadingProducts => 'Loading products...';
+
+  @override
+  String get errorLoadingLocations =>
+      'Failed to load locations. Please try again later.';
+
+  @override
+  String get stockLimitReached => 'Stock limit reached.';
+
+  @override
+  String get close => 'Close';
+
+  @override
+  String get authSuccessRegistration => 'Registration successful!';
+
+  @override
+  String get actionClear => 'Clear';
+
+  @override
+  String get passwordResetEmailSent => 'Recovery email sent!';
+
+  @override
+  String get passwordChangedSuccess => 'Password changed successfully!';
+
+  @override
+  String get errorInvalidCredentials => 'Invalid email or password';
+
+  @override
+  String get errorNetworkOffline => 'No internet connection';
+
+  @override
+  String get errorTimeout => 'The request took too long';
+
+  @override
+  String get errorAuthenticationGeneric => 'Authentication error';
+
+  @override
+  String get errorRegistrationConflictEmail => 'Email already registered';
+
+  @override
+  String get errorEmailNotFound => 'Email not found';
+
+  @override
+  String get errorUnexpected => 'Unexpected error';
+
+  @override
+  String get errorResetPasswordGeneric => 'Error resetting password';
 }
