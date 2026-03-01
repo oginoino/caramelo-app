@@ -102,26 +102,45 @@ class _ProductDetailsContent extends StatelessWidget {
           ),
         ),
         SizedBox(height: UiToken.spacing8),
-        Row(
-          children: [
-            Icon(Icons.star_rounded, size: 18, color: colorScheme.secondary),
-            SizedBox(width: UiToken.spacing4),
-            Text(
-              product.rating.toStringAsFixed(1),
-              style: TextStyle(
-                fontWeight: FontWeight.w600,
-                color: colorScheme.onSurface,
+        if (product.rating > 0 || product.salesCount > 0)
+          Row(
+            children: [
+              Icon(Icons.star_rounded, size: 18, color: colorScheme.secondary),
+              SizedBox(width: UiToken.spacing4),
+              Text(
+                product.rating.toStringAsFixed(1),
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  color: colorScheme.onSurface,
+                ),
               ),
-            ),
-            SizedBox(width: UiToken.spacing4),
-            Text(
-              '• ${product.salesCount} vendas',
-              style: TextStyle(
-                color: colorScheme.onSurface.withValues(alpha: 0.6),
+              SizedBox(width: UiToken.spacing4),
+              Text(
+                '• ${product.salesCount} vendas',
+                style: TextStyle(
+                  color: colorScheme.onSurface.withValues(alpha: 0.6),
+                ),
               ),
-            ),
-          ],
-        ),
+            ],
+          )
+        else
+          Row(
+            children: [
+              Icon(
+                Icons.new_releases_outlined,
+                size: 18,
+                color: colorScheme.secondary,
+              ),
+              SizedBox(width: UiToken.spacing4),
+              Text(
+                'Novo',
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  color: colorScheme.onSurface.withValues(alpha: 0.8),
+                ),
+              ),
+            ],
+          ),
         SizedBox(height: UiToken.spacing16),
         Text(
           product.formattedPrice,
@@ -134,6 +153,56 @@ class _ProductDetailsContent extends StatelessWidget {
         Text(
           product.unit,
           style: TextStyle(color: colorScheme.onSurfaceVariant),
+        ),
+        SizedBox(height: UiToken.spacing8),
+        Builder(
+          builder: (context) {
+            if (!product.stock.isAvailable) {
+              return Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: UiToken.spacing12,
+                  vertical: UiToken.spacing8,
+                ),
+                decoration: BoxDecoration(
+                  color: colorScheme.error.withValues(alpha: 0.12),
+                  borderRadius: BorderRadius.circular(UiToken.borderRadiusFull),
+                  border: Border.all(
+                    color: colorScheme.error.withValues(alpha: 0.4),
+                  ),
+                ),
+                child: Text(
+                  'Sem estoque',
+                  style: TextStyle(
+                    color: colorScheme.error,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              );
+            }
+            if (product.stock.isLowStock) {
+              return Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: UiToken.spacing12,
+                  vertical: UiToken.spacing8,
+                ),
+                decoration: BoxDecoration(
+                  color: colorScheme.tertiary.withValues(alpha: 0.12),
+                  borderRadius: BorderRadius.circular(UiToken.borderRadiusFull),
+                  border: Border.all(
+                    color: colorScheme.tertiary.withValues(alpha: 0.4),
+                  ),
+                ),
+                child: Text(
+                  'Poucas unidades',
+                  style: TextStyle(
+                    color: colorScheme.tertiary,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              );
+            }
+            return const SizedBox.shrink();
+          },
         ),
         SizedBox(height: UiToken.spacing24),
         Text(
@@ -275,6 +344,9 @@ class _ProductDetailsBottomBarState extends State<_ProductDetailsBottomBar> {
         ),
         decoration: BoxDecoration(
           color: colorScheme.surface,
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(UiToken.borderRadius16),
+          ),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withValues(alpha: 0.05),
@@ -286,8 +358,10 @@ class _ProductDetailsBottomBarState extends State<_ProductDetailsBottomBar> {
         child: Row(
           children: [
             Container(
+              padding: EdgeInsets.symmetric(horizontal: UiToken.spacing8),
               decoration: BoxDecoration(
-                border: Border.all(color: colorScheme.outline),
+                color: colorScheme.surfaceContainerHighest,
+                border: Border.all(color: colorScheme.outlineVariant),
                 borderRadius: BorderRadius.circular(UiToken.borderRadiusFull),
               ),
               child: Row(
@@ -296,9 +370,7 @@ class _ProductDetailsBottomBarState extends State<_ProductDetailsBottomBar> {
                   IconButton(
                     onPressed: _decrease,
                     icon: Icon(
-                      _selectedQuantity == 1
-                          ? Icons.remove_rounded
-                          : Icons.remove_rounded,
+                      Icons.remove_rounded,
                       size: 18,
                       color: colorScheme.onSurface,
                     ),
@@ -375,10 +447,15 @@ class _ProductDetailsBottomBarState extends State<_ProductDetailsBottomBar> {
                     ),
                   ),
                 ),
-                child: Text(
-                  currentCartQuantity > 0
-                      ? 'Adicionar mais ($currentCartQuantity no carrinho)'
-                      : LocalizationService.strings.cartAddProducts,
+                child: Expanded(
+                  child: Text(
+                    currentCartQuantity > 0
+                        ? 'Adicionar mais'
+                        : 'Adicionar ao carrinho',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    softWrap: false,
+                  ),
                 ),
               ),
             ),
