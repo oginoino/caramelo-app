@@ -152,6 +152,16 @@ class _AddButtonState extends State<_AddButton> {
       return;
     }
     widget.cart.addItem(widget.product);
+    final itemCount = widget.cart.itemCount;
+    UiHelper.showSnackBar(
+      context,
+      message: LocalizationService.strings.cartAddProducts,
+      actionLabel: LocalizationService.strings.goToCart(itemCount),
+      onAction: () {
+        context.go('/cart');
+      },
+      backgroundColor: Theme.of(context).colorScheme.primary,
+    );
     setState(() {
       _isExpanded = true;
     });
