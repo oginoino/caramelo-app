@@ -4,6 +4,7 @@ import '../../util/import/packages.dart';
 import '../../util/import/provider.dart';
 import '../../util/import/service.dart';
 import '../../util/ui_helper.dart';
+import 'custom_image.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({required this.product, super.key});
@@ -32,11 +33,14 @@ class ProductCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(
                         UiToken.borderRadius12,
                       ),
-                      child: CachedNetworkImage(
+                      child: CustomImage(
                         imageUrl: product.mainImage,
                         fit: BoxFit.cover,
                         width: double.infinity,
                         height: double.infinity,
+                        borderRadius: BorderRadius.circular(
+                          UiToken.borderRadius12,
+                        ),
                       ),
                     ),
                     Positioned(

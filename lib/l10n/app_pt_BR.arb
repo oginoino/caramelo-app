@@ -220,6 +220,10 @@
             "type": "int",
             "example": "3"
         }
+    },
+    "imageLoadError": "Erro ao carregar imagem",
+    "@imageLoadError": {
+        "description": "Mensagem exibida quando uma imagem falha ao carregar"
     }
-  }
+}
 }

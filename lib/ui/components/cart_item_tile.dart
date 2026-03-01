@@ -3,6 +3,7 @@ import '../../util/import/domain.dart';
 import '../../util/import/service.dart';
 import '../../util/const/ui/ui_token.dart';
 import 'cart_quantity_controller.dart';
+import 'custom_image.dart';
 
 final _currencyFormat = NumberFormat.currency(symbol: 'R\$');
 
@@ -23,11 +24,12 @@ class CartItemTile extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(UiToken.borderRadius8),
-            child: CachedNetworkImage(
+            child: CustomImage(
               imageUrl: item.product.mainImage,
               width: 64,
               height: 64,
               fit: BoxFit.cover,
+              borderRadius: BorderRadius.circular(UiToken.borderRadius8),
             ),
           ),
           SizedBox(width: UiToken.spacing12),
