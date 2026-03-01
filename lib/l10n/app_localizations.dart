@@ -322,6 +322,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Error resetting password'**
   String get errorResetPasswordGeneric;
+
+  /// Floating action button label to navigate to cart with item count
+  ///
+  /// In en, this message translates to:
+  /// **'Go to cart ({count})'**
+  String goToCart(int count);
 }
 
 class _AppLocalizationsDelegate

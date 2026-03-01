@@ -147,5 +147,15 @@
   "errorResetPasswordGeneric": "Error al restablecer la contraseña",
   "@errorResetPasswordGeneric": {
     "description": "Error genérico cuando falla el restablecimiento"
+  },
+  "goToCart": "Ir al carrito ({count})",
+  "@goToCart": {
+    "description": "Etiqueta del botón flotante para ir al carrito con conteo de ítems",
+    "placeholders": {
+        "count": {
+            "type": "int",
+            "example": "3"
+        }
+    }
   }
 }

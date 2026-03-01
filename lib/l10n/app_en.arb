@@ -147,5 +147,15 @@
   "errorResetPasswordGeneric": "Error resetting password",
   "@errorResetPasswordGeneric": {
     "description": "Generic error when resetting password fails"
+  },
+  "goToCart": "Go to cart ({count})",
+  "@goToCart": {
+    "description": "Floating action button label to navigate to cart with item count",
+    "placeholders": {
+        "count": {
+            "type": "int",
+            "example": "3"
+        }
+    }
   }
 }

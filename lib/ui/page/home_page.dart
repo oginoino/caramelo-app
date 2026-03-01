@@ -40,7 +40,7 @@ class Home extends StatelessWidget {
               // TODO: navegar para a tela do carrinho
             },
             label: Text(
-              'Ir para o carrinho (${cart.itemCount})',
+              LocalizationService.strings.goToCart(cart.itemCount),
               style: TextStyle(
                 color: isLight
                     ? Theme.of(context).colorScheme.onPrimary

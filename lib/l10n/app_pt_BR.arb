@@ -147,5 +147,15 @@
   "errorResetPasswordGeneric": "Erro ao redefinir senha",
   "@errorResetPasswordGeneric": {
     "description": "Erro genérico quando a redefinição falha"
+  },
+  "goToCart": "Ir para o carrinho ({count})",
+  "@goToCart": {
+    "description": "Rótulo do botão flutuante para ir ao carrinho com contagem de itens",
+    "placeholders": {
+        "count": {
+            "type": "int",
+            "example": "3"
+        }
+    }
   }
 }

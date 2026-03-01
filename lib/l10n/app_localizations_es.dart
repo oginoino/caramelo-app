@@ -120,4 +120,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get errorResetPasswordGeneric => 'Error al restablecer la contraseña';
+
+  @override
+  String goToCart(int count) {
+    return 'Ir al carrito ($count)';
+  }
 }

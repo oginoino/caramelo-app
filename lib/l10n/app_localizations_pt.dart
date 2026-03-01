@@ -120,6 +120,11 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get errorResetPasswordGeneric => 'Erro ao redefinir senha';
+
+  @override
+  String goToCart(int count) {
+    return 'Ir para o carrinho ($count)';
+  }
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
@@ -238,4 +243,9 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get errorResetPasswordGeneric => 'Erro ao redefinir senha';
+
+  @override
+  String goToCart(int count) {
+    return 'Ir para o carrinho ($count)';
+  }
 }
