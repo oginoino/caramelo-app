@@ -204,7 +204,42 @@ class _ProductDetailsBottomBar extends StatefulWidget {
 }
 
 class _ProductDetailsBottomBarState extends State<_ProductDetailsBottomBar> {
-  int _selectedQuantity = 1;
+  late int _selectedQuantity;
+
+  @override
+  void initState() {
+    super.initState();
+    _updateQuantityFromCart();
+  }
+
+  @override
+  void didUpdateWidget(_ProductDetailsBottomBar oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    // Update quantity when cart changes (e.g., from other pages)
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _updateQuantityFromCart();
+    });
+  }
+
+  void _updateQuantityFromCart() {
+    final cart = Provider.of<CartProvider>(context, listen: false);
+    final currentQuantity = cart.getQuantity(widget.product.id);
+
+    setState(() {
+      // Initialize with current cart quantity + 1 (for adding more)
+      _selectedQuantity = currentQuantity + 1;
+
+      // Ensure we don't exceed available stock
+      if (_selectedQuantity > widget.product.stock.available) {
+        _selectedQuantity = widget.product.stock.available;
+      }
+
+      // Ensure minimum is 1
+      if (_selectedQuantity < 1) {
+        _selectedQuantity = 1;
+      }
+    });
+  }
 
   void _decrease() {
     if (_selectedQuantity > 1) {
@@ -225,10 +260,11 @@ class _ProductDetailsBottomBarState extends State<_ProductDetailsBottomBar> {
 
   @override
   Widget build(BuildContext context) {
-    final cart = Provider.of<CartProvider>(context, listen: false);
+    final cart = Provider.of<CartProvider>(context, listen: true);
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
+    final currentCartQuantity = cart.getQuantity(widget.product.id);
     final canAdd = widget.product.stock.available > 0;
 
     return SafeArea(
@@ -275,13 +311,27 @@ class _ProductDetailsBottomBarState extends State<_ProductDetailsBottomBar> {
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     ),
                   ),
-                  Text(
-                    '$_selectedQuantity',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14,
-                      color: colorScheme.onSurface,
-                    ),
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        '$_selectedQuantity',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                          color: colorScheme.onSurface,
+                        ),
+                      ),
+                      if (currentCartQuantity > 0)
+                        Text(
+                          'no carrinho: $currentCartQuantity',
+                          style: TextStyle(
+                            fontSize: 10,
+                            color: colorScheme.primary,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                    ],
                   ),
                   IconButton(
                     onPressed: _increase,
@@ -325,7 +375,11 @@ class _ProductDetailsBottomBarState extends State<_ProductDetailsBottomBar> {
                     ),
                   ),
                 ),
-                child: Text(LocalizationService.strings.cartAddProducts),
+                child: Text(
+                  currentCartQuantity > 0
+                      ? 'Adicionar mais ($currentCartQuantity no carrinho)'
+                      : LocalizationService.strings.cartAddProducts,
+                ),
               ),
             ),
           ],
