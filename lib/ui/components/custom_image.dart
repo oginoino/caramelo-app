@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import '../../util/const/ui/ui_token.dart';
 
 class CustomImage extends StatefulWidget {
   const CustomImage({
@@ -73,62 +72,7 @@ class _CustomImageState extends State<CustomImage> {
     }
   }
 
-  Widget _buildErrorWidget(BuildContext context, Color backgroundColor) {
-    final theme = Theme.of(context);
-
-    return Container(
-      width: widget.width,
-      height: widget.height,
-      decoration: BoxDecoration(
-        color: backgroundColor,
-        borderRadius: widget.borderRadius,
-        border: Border.all(
-          color: theme.colorScheme.error.withValues(alpha: 0.3),
-          width: 1,
-        ),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            widget.errorIcon ?? Icons.broken_image_outlined,
-            color: theme.colorScheme.error,
-            size: _computeIconSize(fraction: 0.4, defaultSize: 32),
-          ),
-          if (widget.showErrorMessage) ...[
-            SizedBox(height: UiToken.spacing4),
-            Text(
-              'Erro ao carregar imagem',
-              style:
-                  widget.errorMessageStyle ??
-                  TextStyle(
-                    color: theme.colorScheme.error,
-                    fontSize: UiToken.textSize12,
-                  ),
-              textAlign: TextAlign.center,
-            ),
-          ],
-          SizedBox(height: UiToken.spacing8),
-          IconButton(
-            onPressed: _retryLoadingImage,
-            icon: Icon(
-              Icons.refresh_rounded,
-              color: theme.colorScheme.error,
-              size: 20,
-            ),
-            style: IconButton.styleFrom(
-              backgroundColor: theme.colorScheme.error.withValues(alpha: 0.1),
-              padding: EdgeInsets.all(UiToken.spacing8),
-              minimumSize: Size(32, 32),
-            ),
-            tooltip: 'Tentar novamente',
-          ),
-        ],
-      ),
-    );
-  }
-
-  void _retryLoadingImage() {
+  void _handleRetryTap() {
     if (_isRetrying) return;
 
     setState(() {
@@ -143,6 +87,33 @@ class _CustomImageState extends State<CustomImage> {
         });
       }
     });
+  }
+
+  Widget _buildErrorWidget(BuildContext context, Color backgroundColor) {
+    final theme = Theme.of(context);
+
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: _handleRetryTap,
+        borderRadius: widget.borderRadius,
+        child: Container(
+          width: widget.width,
+          height: widget.height,
+          decoration: BoxDecoration(
+            color: backgroundColor,
+            borderRadius: widget.borderRadius,
+          ),
+          child: Center(
+            child: Icon(
+              widget.errorIcon ?? Icons.image_outlined,
+              color: theme.colorScheme.onSurface.withValues(alpha: 0.35),
+              size: _computeIconSize(fraction: 0.36, defaultSize: 28),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 
   @override
@@ -164,6 +135,7 @@ class _CustomImageState extends State<CustomImage> {
       width: widget.width,
       height: widget.height,
       fit: widget.fit,
+      fadeInDuration: const Duration(milliseconds: 200),
       imageBuilder: (context, imageProvider) {
         return Container(
           decoration: BoxDecoration(
@@ -183,65 +155,14 @@ class _CustomImageState extends State<CustomImage> {
           child: Center(
             child: Icon(
               widget.placeholderIcon ?? Icons.image_outlined,
-              color: theme.colorScheme.onSurface.withValues(alpha: 0.3),
-              size: _computeIconSize(fraction: 0.3, defaultSize: 24),
+              color: theme.colorScheme.onSurface.withValues(alpha: 0.25),
+              size: _computeIconSize(fraction: 0.32, defaultSize: 24),
             ),
           ),
         );
       },
       errorWidget: (context, url, error) {
-        return Container(
-          width: widget.width,
-          height: widget.height,
-          decoration: BoxDecoration(
-            color: effectiveBackgroundColor,
-            borderRadius: widget.borderRadius,
-            border: Border.all(
-              color: theme.colorScheme.error.withValues(alpha: 0.3),
-              width: 1,
-            ),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                widget.errorIcon ?? Icons.broken_image_outlined,
-                color: theme.colorScheme.error,
-                size: _computeIconSize(fraction: 0.4, defaultSize: 32),
-              ),
-              if (widget.showErrorMessage) ...[
-                SizedBox(height: UiToken.spacing4),
-                Text(
-                  'Erro ao carregar imagem',
-                  style:
-                      widget.errorMessageStyle ??
-                      TextStyle(
-                        color: theme.colorScheme.error,
-                        fontSize: UiToken.textSize12,
-                      ),
-                  textAlign: TextAlign.center,
-                ),
-              ],
-              SizedBox(height: UiToken.spacing8),
-              IconButton(
-                onPressed: _retryLoadingImage,
-                icon: Icon(
-                  Icons.refresh_rounded,
-                  color: theme.colorScheme.error,
-                  size: 20,
-                ),
-                style: IconButton.styleFrom(
-                  backgroundColor: theme.colorScheme.error.withValues(
-                    alpha: 0.1,
-                  ),
-                  padding: EdgeInsets.all(UiToken.spacing8),
-                  minimumSize: Size(32, 32),
-                ),
-                tooltip: 'Tentar novamente',
-              ),
-            ],
-          ),
-        );
+        return _buildErrorWidget(context, effectiveBackgroundColor);
       },
     );
   }
