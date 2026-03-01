@@ -171,7 +171,7 @@ class _ProductDetailsContent extends StatelessWidget {
               ),
               SizedBox(width: UiToken.spacing4),
               Text(
-                'Novo',
+                LocalizationService.strings.newProduct,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   color: colorScheme.onSurface.withValues(alpha: 0.8),
@@ -211,7 +211,7 @@ class _ProductDetailsContent extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  'Sem estoque',
+                  LocalizationService.strings.outOfStock,
                   style: TextStyle(
                     color: colorScheme.error,
                     fontWeight: FontWeight.w600,
@@ -233,7 +233,7 @@ class _ProductDetailsContent extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  'Poucas unidades',
+                  LocalizationService.strings.lowStock,
                   style: TextStyle(
                     color: colorScheme.tertiary,
                     fontWeight: FontWeight.w600,
@@ -246,7 +246,7 @@ class _ProductDetailsContent extends StatelessWidget {
         ),
         SizedBox(height: UiToken.spacing24),
         Text(
-          'Descrição',
+          LocalizationService.strings.description,
           style: theme.textTheme.titleMedium?.copyWith(
             fontWeight: FontWeight.w600,
           ),
@@ -258,7 +258,7 @@ class _ProductDetailsContent extends StatelessWidget {
         ),
         SizedBox(height: UiToken.spacing24),
         Text(
-          'Produtos Relacionados',
+          LocalizationService.strings.relatedProducts,
           style: theme.textTheme.titleMedium?.copyWith(
             fontWeight: FontWeight.w600,
           ),
@@ -415,7 +415,9 @@ class _ProductDetailsBottomBarState extends State<_ProductDetailsBottomBar> {
                       ),
                       if (currentCartQuantity > 0)
                         Text(
-                          'no carrinho: $currentCartQuantity',
+                          LocalizationService.strings.inCartCount(
+                            currentCartQuantity,
+                          ),
                           style: TextStyle(
                             fontSize: 10,
                             color: colorScheme.primary,

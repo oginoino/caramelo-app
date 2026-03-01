@@ -164,4 +164,24 @@ class AppLocalizationsEn extends AppLocalizations {
   String goToCart(int count) {
     return 'Go to cart ($count)';
   }
+
+  @override
+  String get newProduct => 'New';
+
+  @override
+  String get outOfStock => 'Out of stock';
+
+  @override
+  String get lowStock => 'Low stock';
+
+  @override
+  String get description => 'Description';
+
+  @override
+  String get relatedProducts => 'Related Products';
+
+  @override
+  String inCartCount(int count) {
+    return 'in cart: $count';
+  }
 }

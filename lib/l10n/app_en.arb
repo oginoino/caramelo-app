@@ -221,5 +221,35 @@
             "example": "3"
         }
     }
+  },
+  "newProduct": "New",
+  "@newProduct": {
+    "description": "Badge for new products"
+  },
+  "outOfStock": "Out of stock",
+  "@outOfStock": {
+    "description": "Stock status when unavailable"
+  },
+  "lowStock": "Low stock",
+  "@lowStock": {
+    "description": "Stock status when low"
+  },
+  "description": "Description",
+  "@description": {
+    "description": "Section title for description"
+  },
+  "relatedProducts": "Related Products",
+  "@relatedProducts": {
+    "description": "Section title for related products"
+  },
+  "inCartCount": "in cart: {count}",
+  "@inCartCount": {
+    "description": "Label showing how many units of this product are in the cart",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "2"
+      }
+    }
   }
 }

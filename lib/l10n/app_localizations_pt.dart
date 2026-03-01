@@ -164,6 +164,26 @@ class AppLocalizationsPt extends AppLocalizations {
   String goToCart(int count) {
     return 'Ir para o carrinho ($count)';
   }
+
+  @override
+  String get newProduct => 'Novo';
+
+  @override
+  String get outOfStock => 'Sem estoque';
+
+  @override
+  String get lowStock => 'Poucas unidades';
+
+  @override
+  String get description => 'Descrição';
+
+  @override
+  String get relatedProducts => 'Produtos Relacionados';
+
+  @override
+  String inCartCount(int count) {
+    return 'no carrinho: $count';
+  }
 }
 
 /// The translations for Portuguese, as used in Brazil (`pt_BR`).
@@ -325,5 +345,25 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
   @override
   String goToCart(int count) {
     return 'Ir para o carrinho ($count)';
+  }
+
+  @override
+  String get newProduct => 'Novo';
+
+  @override
+  String get outOfStock => 'Sem estoque';
+
+  @override
+  String get lowStock => 'Poucas unidades';
+
+  @override
+  String get description => 'Descrição';
+
+  @override
+  String get relatedProducts => 'Produtos Relacionados';
+
+  @override
+  String inCartCount(int count) {
+    return 'no carrinho: $count';
   }
 }

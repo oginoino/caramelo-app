@@ -221,5 +221,35 @@
         "example": "3"
       }
     }
+  },
+  "newProduct": "Novo",
+  "@newProduct": {
+    "description": "Etiqueta para produto novo"
+  },
+  "outOfStock": "Sem estoque",
+  "@outOfStock": {
+    "description": "Status de estoque quando indisponível"
+  },
+  "lowStock": "Poucas unidades",
+  "@lowStock": {
+    "description": "Status de estoque quando restam poucas unidades"
+  },
+  "description": "Descrição",
+  "@description": {
+    "description": "Título da seção de descrição"
+  },
+  "relatedProducts": "Produtos Relacionados",
+  "@relatedProducts": {
+    "description": "Título da seção de produtos relacionados"
+  },
+  "inCartCount": "no carrinho: {count}",
+  "@inCartCount": {
+    "description": "Rótulo com a quantidade deste produto no carrinho",
+    "placeholders": {
+      "count": {
+        "type": "int",
+        "example": "2"
+      }
+    }
   }
 }

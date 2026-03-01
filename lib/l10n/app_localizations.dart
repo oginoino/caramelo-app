@@ -394,6 +394,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Go to cart ({count})'**
   String goToCart(int count);
+
+  /// Badge for new products
+  ///
+  /// In en, this message translates to:
+  /// **'New'**
+  String get newProduct;
+
+  /// Stock status when unavailable
+  ///
+  /// In en, this message translates to:
+  /// **'Out of stock'**
+  String get outOfStock;
+
+  /// Stock status when low
+  ///
+  /// In en, this message translates to:
+  /// **'Low stock'**
+  String get lowStock;
+
+  /// Section title for description
+  ///
+  /// In en, this message translates to:
+  /// **'Description'**
+  String get description;
+
+  /// Section title for related products
+  ///
+  /// In en, this message translates to:
+  /// **'Related Products'**
+  String get relatedProducts;
+
+  /// Label showing how many units of this product are in the cart
+  ///
+  /// In en, this message translates to:
+  /// **'in cart: {count}'**
+  String inCartCount(int count);
 }
 
 class _AppLocalizationsDelegate
