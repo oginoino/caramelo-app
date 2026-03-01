@@ -15,7 +15,7 @@ class CartQuantityController extends StatelessWidget {
 
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(color: colorScheme.outlineVariant),
+        border: Border.all(color: colorScheme.outline),
         borderRadius: BorderRadius.circular(UiToken.borderRadiusFull),
       ),
       child: Row(
@@ -26,7 +26,9 @@ class CartQuantityController extends StatelessWidget {
             icon: Icon(
               item.quantity == 1 ? Icons.delete_outline : Icons.remove,
               size: 18,
-              color: item.quantity == 1 ? colorScheme.error : colorScheme.primary,
+              color: item.quantity == 1
+                  ? colorScheme.error
+                  : colorScheme.onSurface,
             ),
             padding: EdgeInsets.zero,
             constraints: const BoxConstraints(minWidth: 36, minHeight: 36),
@@ -36,11 +38,15 @@ class CartQuantityController extends StatelessWidget {
           ),
           Text(
             '${item.quantity}',
-            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 14,
+              color: colorScheme.onSurface,
+            ),
           ),
           IconButton(
             onPressed: () => cart.addItem(item.product),
-            icon: Icon(Icons.add, size: 18, color: colorScheme.primary),
+            icon: Icon(Icons.add, size: 18, color: colorScheme.onSurface),
             padding: EdgeInsets.zero,
             constraints: const BoxConstraints(minWidth: 36, minHeight: 36),
             style: IconButton.styleFrom(

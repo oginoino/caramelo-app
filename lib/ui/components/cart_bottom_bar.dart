@@ -28,7 +28,7 @@ class CartBottomBar extends StatelessWidget {
           color: colorScheme.surface,
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withValues(alpha: 0.05),
+              color: Colors.black.withAlpha((255 * 0.05).round()),
               offset: const Offset(0, -4),
               blurRadius: 16,
             ),
@@ -43,7 +43,7 @@ class CartBottomBar extends StatelessWidget {
                 Text(
                   LocalizationService.strings.cartTotal,
                   style: TextStyle(
-                    color: textTheme.bodySmall?.color,
+                    color: colorScheme.onSurfaceVariant,
                     fontSize: UiToken.textSize12,
                   ),
                 ),
@@ -75,6 +75,14 @@ class CartBottomBar extends StatelessWidget {
                       ),
               ),
               style: FilledButton.styleFrom(
+                foregroundColor: colorScheme.onPrimary,
+                backgroundColor: colorScheme.primary,
+                disabledForegroundColor: colorScheme.onSurface.withAlpha(
+                  (255 * 0.38).round(),
+                ),
+                disabledBackgroundColor: colorScheme.onSurface.withAlpha(
+                  (255 * 0.12).round(),
+                ),
                 padding: EdgeInsets.symmetric(
                   horizontal: UiToken.spacing24,
                   vertical: UiToken.spacing12,

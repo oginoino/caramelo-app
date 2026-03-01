@@ -48,7 +48,7 @@ class CartPage extends StatelessWidget {
                         ),
                         label: Text(LocalizationService.strings.cartClear),
                         style: TextButton.styleFrom(
-                          foregroundColor: theme.colorScheme.primary,
+                          foregroundColor: theme.colorScheme.error,
                         ),
                       ),
                     ),
@@ -101,7 +101,12 @@ class CartPage extends StatelessWidget {
                             padding: EdgeInsets.symmetric(
                               vertical: UiToken.spacing16,
                             ),
-                            side: BorderSide(color: theme.colorScheme.primary),
+                            foregroundColor: theme.colorScheme.onSurface,
+                            backgroundColor:
+                                theme.colorScheme.surfaceContainerHighest,
+                            side: BorderSide(
+                              color: theme.colorScheme.outlineVariant,
+                            ),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(
                                 UiToken.borderRadiusFull,
