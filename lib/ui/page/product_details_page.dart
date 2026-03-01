@@ -459,13 +459,15 @@ class _ProductDetailsBottomBarState extends State<_ProductDetailsBottomBar> {
                     ),
                   ),
                 ),
-                child: Text(
-                  currentCartQuantity > 0
-                      ? 'Adicionar mais'
-                      : 'Adicionar ao carrinho',
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  softWrap: false,
+                child: Center(
+                  child: Text(
+                    currentCartQuantity > 0
+                        ? 'Adicionar mais ($_selectedQuantity)'
+                        : 'Adicionar ($_selectedQuantity)',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    softWrap: false,
+                  ),
                 ),
               ),
             ),
