@@ -91,6 +91,7 @@ class AuthProvider extends ChangeNotifier {
         messenger.clearSnackBars();
         messenger.showSnackBar(
           SnackBar(
+            duration: const Duration(seconds: 3),
             content: Text(LocalizationService.strings.authSuccessRegistration),
             backgroundColor: Colors.green,
             action: SnackBarAction(
@@ -136,6 +137,7 @@ class AuthProvider extends ChangeNotifier {
         messenger.clearSnackBars();
         messenger.showSnackBar(
           SnackBar(
+            duration: const Duration(seconds: 3),
             content: Text(LocalizationService.strings.passwordResetEmailSent),
             backgroundColor: Colors.green,
             action: SnackBarAction(
@@ -185,6 +187,7 @@ class AuthProvider extends ChangeNotifier {
         messenger.clearSnackBars();
         messenger.showSnackBar(
           SnackBar(
+            duration: const Duration(seconds: 3),
             content: Text(LocalizationService.strings.passwordChangedSuccess),
             backgroundColor: Colors.green,
             action: SnackBarAction(

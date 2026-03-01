@@ -131,6 +131,7 @@ class _AddButtonState extends State<_AddButton> {
     messenger.clearSnackBars();
     messenger.showSnackBar(
       SnackBar(
+        duration: const Duration(seconds: 3),
         content: Text(LocalizationService.strings.stockLimitReached),
         action: SnackBarAction(
           label: LocalizationService.strings.close,
