@@ -15,6 +15,17 @@ class CartPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            if (context.canPop()) {
+              context.pop();
+            } else {
+              context.go('/home');
+            }
+          },
+          icon: const Icon(Icons.arrow_back_ios_rounded, size: 24),
+          tooltip: MaterialLocalizations.of(context).backButtonTooltip,
+        ),
         title: Text(
           LocalizationService.strings.cartTitle,
           style: theme.textTheme.titleMedium?.copyWith(

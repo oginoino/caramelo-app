@@ -1,5 +1,3 @@
-import 'package:intl/intl.dart';
-
 import '../../util/import/packages.dart';
 import '../../util/const/ui/ui_token.dart';
 import '../../util/import/provider.dart';
