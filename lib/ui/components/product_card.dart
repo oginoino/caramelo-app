@@ -3,6 +3,7 @@ import '../../util/const/ui/ui_token.dart';
 import '../../util/import/packages.dart';
 import '../../util/import/provider.dart';
 import '../../util/import/service.dart';
+import '../../util/ui_helper.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({required this.product, super.key});
@@ -127,17 +128,10 @@ class _AddButtonState extends State<_AddButton> {
   }
 
   void _showStockLimitMessage(BuildContext context) {
-    final messenger = ScaffoldMessenger.of(context);
-    messenger.clearSnackBars();
-    messenger.showSnackBar(
-      SnackBar(
-        duration: const Duration(seconds: 3),
-        content: Text(LocalizationService.strings.stockLimitReached),
-        action: SnackBarAction(
-          label: LocalizationService.strings.close,
-          onPressed: () => messenger.hideCurrentSnackBar(),
-        ),
-      ),
+    UiHelper.showSnackBar(
+      context,
+      message: LocalizationService.strings.stockLimitReached,
+      actionLabel: LocalizationService.strings.close,
     );
   }
 

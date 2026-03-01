@@ -3,6 +3,7 @@ import '../../util/import/http.dart';
 import '../../util/import/packages.dart';
 import '../../util/import/repository.dart';
 import '../../util/import/service.dart';
+import '../../util/ui_helper.dart';
 
 class AuthProvider extends ChangeNotifier {
   final AuthServiceRepository _authRepository;
@@ -87,18 +88,11 @@ class AuthProvider extends ChangeNotifier {
       );
 
       if (context.mounted) {
-        final messenger = ScaffoldMessenger.of(context);
-        messenger.clearSnackBars();
-        messenger.showSnackBar(
-          SnackBar(
-            duration: const Duration(seconds: 3),
-            content: Text(LocalizationService.strings.authSuccessRegistration),
-            backgroundColor: Colors.green,
-            action: SnackBarAction(
-              label: LocalizationService.strings.actionClear,
-              onPressed: () => messenger.hideCurrentSnackBar(),
-            ),
-          ),
+        UiHelper.showSnackBar(
+          context,
+          message: LocalizationService.strings.authSuccessRegistration,
+          backgroundColor: Colors.green,
+          actionLabel: LocalizationService.strings.actionClear,
         );
       }
     } on ConflictError {
@@ -133,18 +127,11 @@ class AuthProvider extends ChangeNotifier {
       await _authRepository.requestPasswordReset(email: email);
 
       if (context.mounted) {
-        final messenger = ScaffoldMessenger.of(context);
-        messenger.clearSnackBars();
-        messenger.showSnackBar(
-          SnackBar(
-            duration: const Duration(seconds: 3),
-            content: Text(LocalizationService.strings.passwordResetEmailSent),
-            backgroundColor: Colors.green,
-            action: SnackBarAction(
-              label: LocalizationService.strings.actionClear,
-              onPressed: () => messenger.hideCurrentSnackBar(),
-            ),
-          ),
+        UiHelper.showSnackBar(
+          context,
+          message: LocalizationService.strings.passwordResetEmailSent,
+          backgroundColor: Colors.green,
+          actionLabel: LocalizationService.strings.actionClear,
         );
       }
     } on NotFoundError {
@@ -183,18 +170,11 @@ class AuthProvider extends ChangeNotifier {
       );
 
       if (context.mounted) {
-        final messenger = ScaffoldMessenger.of(context);
-        messenger.clearSnackBars();
-        messenger.showSnackBar(
-          SnackBar(
-            duration: const Duration(seconds: 3),
-            content: Text(LocalizationService.strings.passwordChangedSuccess),
-            backgroundColor: Colors.green,
-            action: SnackBarAction(
-              label: LocalizationService.strings.actionClear,
-              onPressed: () => messenger.hideCurrentSnackBar(),
-            ),
-          ),
+        UiHelper.showSnackBar(
+          context,
+          message: LocalizationService.strings.passwordChangedSuccess,
+          backgroundColor: Colors.green,
+          actionLabel: LocalizationService.strings.actionClear,
         );
       }
     } on HttpError catch (e) {
