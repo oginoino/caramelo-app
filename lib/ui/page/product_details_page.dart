@@ -95,11 +95,47 @@ class _ProductDetailsContent extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          product.name,
-          style: theme.textTheme.titleLarge?.copyWith(
-            fontWeight: FontWeight.w700,
-          ),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Expanded(
+              child: Text(
+                product.name,
+                style: theme.textTheme.titleLarge?.copyWith(
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+            Consumer<CartProvider>(
+              builder: (context, cart, _) {
+                final qty = cart.getQuantity(product.id);
+                if (qty <= 0) {
+                  return const SizedBox.shrink();
+                }
+                final isLight = theme.brightness == Brightness.light;
+                return Container(
+                  width: 28,
+                  height: 28,
+                  decoration: BoxDecoration(
+                    color: isLight
+                        ? UiToken.primaryLight600
+                        : UiToken.primaryLight500,
+                    shape: BoxShape.circle,
+                  ),
+                  alignment: Alignment.center,
+                  child: Text(
+                    '$qty',
+                    style: TextStyle(
+                      color: isLight
+                          ? UiToken.primaryLight50
+                          : UiToken.primaryDark800,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                );
+              },
+            ),
+          ],
         ),
         SizedBox(height: UiToken.spacing8),
         if (product.rating > 0 || product.salesCount > 0)
@@ -283,43 +319,11 @@ class _ProductDetailsBottomBarState extends State<_ProductDetailsBottomBar> {
   void initState() {
     super.initState();
     _selectedQuantity = 1;
-    _updateQuantityFromCart();
   }
 
   @override
   void didUpdateWidget(_ProductDetailsBottomBar oldWidget) {
     super.didUpdateWidget(oldWidget);
-    // Update quantity when cart changes (e.g., from other pages)
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _updateQuantityFromCart();
-    });
-  }
-
-  void _updateQuantityFromCart() {
-    final cart = Provider.of<CartProvider>(context, listen: false);
-    final currentQuantity = cart.getQuantity(widget.product.id);
-
-    if (!mounted) {
-      return;
-    }
-
-    var nextSelectedQuantity = currentQuantity + 1;
-
-    if (nextSelectedQuantity > widget.product.stock.available) {
-      nextSelectedQuantity = widget.product.stock.available;
-    }
-
-    if (nextSelectedQuantity < 1) {
-      nextSelectedQuantity = 1;
-    }
-
-    if (_selectedQuantity == nextSelectedQuantity) {
-      return;
-    }
-
-    setState(() {
-      _selectedQuantity = nextSelectedQuantity;
-    });
   }
 
   void _decrease() {
@@ -331,8 +335,11 @@ class _ProductDetailsBottomBarState extends State<_ProductDetailsBottomBar> {
   }
 
   void _increase() {
-    final max = widget.product.stock.available;
-    if (_selectedQuantity < max) {
+    final cart = Provider.of<CartProvider>(context, listen: false);
+    final inCart = cart.getQuantity(widget.product.id);
+    final available = widget.product.stock.available;
+    final maxAddable = (available - inCart).clamp(0, available);
+    if (_selectedQuantity < maxAddable) {
       setState(() {
         _selectedQuantity++;
       });
@@ -445,6 +452,9 @@ class _ProductDetailsBottomBarState extends State<_ProductDetailsBottomBar> {
                           widget.product,
                           quantity: _selectedQuantity,
                         );
+                        setState(() {
+                          _selectedQuantity = 1;
+                        });
                         UiHelper.showSnackBar(
                           context,
                           message: LocalizationService.strings.cartAddProducts,
