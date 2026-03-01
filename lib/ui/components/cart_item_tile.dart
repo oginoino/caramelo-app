@@ -1,5 +1,3 @@
-import 'package:intl/intl.dart';
-
 import '../../util/import/packages.dart';
 import '../../util/import/domain.dart';
 import '../../util/import/service.dart';
