@@ -22,25 +22,22 @@ class ProductCard extends StatelessWidget {
         cart.getQuantity(product.id);
 
         return Card(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              AspectRatio(
-                aspectRatio: 1.15,
-                child: Stack(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(
-                        UiToken.borderRadius12,
-                      ),
-                      child: GestureDetector(
-                        behavior: HitTestBehavior.opaque,
-                        onTap: () {
-                          context.push(
-                            '/product',
-                            extra: product,
-                          );
-                        },
+          clipBehavior: Clip.antiAlias,
+          child: InkWell(
+            onTap: () {
+              context.push('/product', extra: product);
+            },
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                AspectRatio(
+                  aspectRatio: 1.15,
+                  child: Stack(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(
+                          UiToken.borderRadius12,
+                        ),
                         child: CustomImage(
                           imageUrl: product.mainImage,
                           fit: BoxFit.cover,
@@ -51,56 +48,56 @@ class ProductCard extends StatelessWidget {
                           ),
                         ),
                       ),
-                    ),
-                    Positioned(
-                      top: UiToken.spacing4,
-                      right: UiToken.spacing4,
-                      child: _AddButton(product: product, cart: cart),
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: 6),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      product.unit,
-                      style: TextStyle(
-                        color: textColor.withValues(alpha: 0.7),
-                        fontSize: 11,
+                      Positioned(
+                        top: UiToken.spacing4,
+                        right: UiToken.spacing4,
+                        child: _AddButton(product: product, cart: cart),
                       ),
-                    ),
-                    SizedBox(height: 2),
-                    SizedBox(
-                      height: 13 * 1.2 * 2,
-                      child: Text(
-                        product.name,
+                    ],
+                  ),
+                ),
+                SizedBox(height: 6),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        product.unit,
+                        style: TextStyle(
+                          color: textColor.withValues(alpha: 0.7),
+                          fontSize: 11,
+                        ),
+                      ),
+                      SizedBox(height: 2),
+                      SizedBox(
+                        height: 13 * 1.2 * 2,
+                        child: Text(
+                          product.name,
+                          style: TextStyle(
+                            color: textColor,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 13,
+                            height: 1.2,
+                          ),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      SizedBox(height: 2),
+                      Text(
+                        product.formattedPrice,
                         style: TextStyle(
                           color: textColor,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 13,
-                          height: 1.2,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
                         ),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
                       ),
-                    ),
-                    SizedBox(height: 2),
-                    Text(
-                      product.formattedPrice,
-                      style: TextStyle(
-                        color: textColor,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         );
       },
