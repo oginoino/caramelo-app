@@ -64,7 +64,7 @@ class _CustomSliverAppBarState extends State<CustomSliverAppBar> {
         CartActionButton(
           tooltip: 'Carrinho',
           onPressed: () {
-            // TODO: navegar para a tela do carrinho
+            context.go('/cart');
           },
         ),
       ],

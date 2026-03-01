@@ -4,6 +4,8 @@ import '../../util/import/domain.dart';
 class CartProvider extends ChangeNotifier {
   final Map<String, CartItem> _items = {};
 
+  static const double minOrderValue = 10.0;
+
   Map<String, CartItem> get items => {..._items};
 
   int get itemCount => _items.length;

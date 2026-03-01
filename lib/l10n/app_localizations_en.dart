@@ -86,6 +86,45 @@ class AppLocalizationsEn extends AppLocalizations {
   String get close => 'Close';
 
   @override
+  String get cartTitle => 'Your Cart';
+
+  @override
+  String get cartEmpty => 'Your cart is empty';
+
+  @override
+  String get cartClear => 'Clear cart';
+
+  @override
+  String get cartAddProducts => 'Add products';
+
+  @override
+  String get cartAddMoreProducts => 'Add more products';
+
+  @override
+  String get cartAddOtherProducts => 'Add other products';
+
+  @override
+  String cartMinOrder(String value) {
+    return 'Min. order $value';
+  }
+
+  @override
+  String cartMinOrderWarning(String value) {
+    return 'Add $value more to reach minimum order.';
+  }
+
+  @override
+  String get cartTotal => 'Total';
+
+  @override
+  String get cartOrderNow => 'Order now';
+
+  @override
+  String cartItemUnit(int quantity, String price) {
+    return '$quantity unit(s) for $price';
+  }
+
+  @override
   String get authSuccessRegistration => 'Registration successful!';
 
   @override

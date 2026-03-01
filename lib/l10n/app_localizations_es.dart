@@ -86,6 +86,45 @@ class AppLocalizationsEs extends AppLocalizations {
   String get close => 'Cerrar';
 
   @override
+  String get cartTitle => 'Tu carrito';
+
+  @override
+  String get cartEmpty => 'Tu carrito está vacío';
+
+  @override
+  String get cartClear => 'Vaciar carrito';
+
+  @override
+  String get cartAddProducts => 'Agregar productos';
+
+  @override
+  String get cartAddMoreProducts => 'Agregar más productos';
+
+  @override
+  String get cartAddOtherProducts => 'Agregar otros productos';
+
+  @override
+  String cartMinOrder(String value) {
+    return 'Pedido mín. $value';
+  }
+
+  @override
+  String cartMinOrderWarning(String value) {
+    return 'Agrega $value más para alcanzar el mínimo.';
+  }
+
+  @override
+  String get cartTotal => 'Total';
+
+  @override
+  String get cartOrderNow => 'Pedir ahora';
+
+  @override
+  String cartItemUnit(int quantity, String price) {
+    return '$quantity unidad(es) por $price';
+  }
+
+  @override
   String get authSuccessRegistration => '¡Registro realizado con éxito!';
 
   @override

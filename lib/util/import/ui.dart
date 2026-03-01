@@ -5,6 +5,7 @@ export '../../ui/components/product_sections.dart';
 export '../../ui/components/product_carousel.dart';
 export '../../ui/components/product_card.dart';
 export '../../ui/page/home_page.dart';
+export '../../ui/page/cart_page.dart';
 
 export '../../ui/components/custom_sliver_app_bar.dart';
 export '../../ui/components/search.dart';

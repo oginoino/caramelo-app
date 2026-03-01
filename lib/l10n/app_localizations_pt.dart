@@ -86,6 +86,45 @@ class AppLocalizationsPt extends AppLocalizations {
   String get close => 'Fechar';
 
   @override
+  String get cartTitle => 'Seu carrinho';
+
+  @override
+  String get cartEmpty => 'Seu carrinho está vazio';
+
+  @override
+  String get cartClear => 'Limpar carrinho';
+
+  @override
+  String get cartAddProducts => 'Adicionar produtos';
+
+  @override
+  String get cartAddMoreProducts => 'Adicionar mais produtos';
+
+  @override
+  String get cartAddOtherProducts => 'Adicionar outros produtos';
+
+  @override
+  String cartMinOrder(String value) {
+    return 'Pedido min. $value';
+  }
+
+  @override
+  String cartMinOrderWarning(String value) {
+    return 'Adicione mais $value para atingir o valor mínimo.';
+  }
+
+  @override
+  String get cartTotal => 'Total';
+
+  @override
+  String get cartOrderNow => 'Pedir agora';
+
+  @override
+  String cartItemUnit(int quantity, String price) {
+    return '$quantity unidade(s) por $price';
+  }
+
+  @override
   String get authSuccessRegistration => 'Cadastro realizado com sucesso!';
 
   @override
@@ -207,6 +246,45 @@ class AppLocalizationsPtBr extends AppLocalizationsPt {
 
   @override
   String get close => 'Fechar';
+
+  @override
+  String get cartTitle => 'Seu carrinho';
+
+  @override
+  String get cartEmpty => 'Seu carrinho está vazio';
+
+  @override
+  String get cartClear => 'Limpar carrinho';
+
+  @override
+  String get cartAddProducts => 'Adicionar produtos';
+
+  @override
+  String get cartAddMoreProducts => 'Adicionar mais produtos';
+
+  @override
+  String get cartAddOtherProducts => 'Adicionar outros produtos';
+
+  @override
+  String cartMinOrder(String value) {
+    return 'Pedido min. $value';
+  }
+
+  @override
+  String cartMinOrderWarning(String value) {
+    return 'Adicione mais $value para atingir o valor mínimo.';
+  }
+
+  @override
+  String get cartTotal => 'Total';
+
+  @override
+  String get cartOrderNow => 'Pedir agora';
+
+  @override
+  String cartItemUnit(int quantity, String price) {
+    return '$quantity unidade(s) por $price';
+  }
 
   @override
   String get authSuccessRegistration => 'Cadastro realizado com sucesso!';

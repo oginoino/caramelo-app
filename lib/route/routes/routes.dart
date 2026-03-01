@@ -6,7 +6,10 @@ class RouteInfo {
 }
 
 class Routes {
-  static List<RouteInfo> routes = [RouteInfo(name: 'Início', path: '/home')];
+  static List<RouteInfo> routes = [
+    RouteInfo(name: 'Início', path: '/home'),
+    RouteInfo(name: 'Carrinho', path: '/cart'),
+  ];
 
   static String getPathByName(String name) {
     return routes.firstWhere((element) => element.name == name).path;
@@ -16,4 +19,7 @@ class Routes {
 
   static String get home =>
       routes.firstWhere((element) => element.name == 'Início').path;
+
+  static String get cart =>
+      routes.firstWhere((element) => element.name == 'Carrinho').path;
 }

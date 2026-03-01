@@ -98,7 +98,71 @@
   },
   "close": "Close",
   "@close": {
-    "description": "Label for closing actions like SnackBar"
+    "description": "Close button label"
+  },
+  "cartTitle": "Your Cart",
+  "@cartTitle": {
+    "description": "Cart page title"
+  },
+  "cartEmpty": "Your cart is empty",
+  "@cartEmpty": {
+    "description": "Message when cart is empty"
+  },
+  "cartClear": "Clear cart",
+  "@cartClear": {
+    "description": "Button to clear the cart"
+  },
+  "cartAddProducts": "Add products",
+  "@cartAddProducts": {
+    "description": "Button to add products"
+  },
+  "cartAddMoreProducts": "Add more products",
+  "@cartAddMoreProducts": {
+    "description": "Button to add more products"
+  },
+  "cartAddOtherProducts": "Add other products",
+  "@cartAddOtherProducts": {
+    "description": "Button to add other products"
+  },
+  "cartMinOrder": "Min. order {value}",
+  "@cartMinOrder": {
+    "description": "Minimum order value",
+    "placeholders": {
+      "value": {
+        "type": "String",
+        "example": "$10.00"
+      }
+    }
+  },
+  "cartMinOrderWarning": "Add {value} more to reach minimum order.",
+  "@cartMinOrderWarning": {
+    "description": "Warning when minimum order is not reached",
+    "placeholders": {
+      "value": {
+        "type": "String",
+        "example": "$4.40"
+      }
+    }
+  },
+  "cartTotal": "Total",
+  "@cartTotal": {
+    "description": "Cart total label"
+  },
+  "cartOrderNow": "Order now",
+  "@cartOrderNow": {
+    "description": "Button to complete the order"
+  },
+  "cartItemUnit": "{quantity} unit(s) for {price}",
+  "@cartItemUnit": {
+    "description": "Cart item description (unit)",
+    "placeholders": {
+      "quantity": {
+        "type": "int"
+      },
+      "price": {
+        "type": "String"
+      }
+    }
   },
   "authSuccessRegistration": "Registration successful!",
   "@authSuccessRegistration": {

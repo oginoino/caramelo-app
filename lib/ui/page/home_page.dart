@@ -37,7 +37,7 @@ class Home extends StatelessWidget {
           final isLight = Theme.of(context).brightness == Brightness.light;
           return FloatingActionButton.extended(
             onPressed: () {
-              // TODO: navegar para a tela do carrinho
+              context.go('/cart');
             },
             label: Text(
               LocalizationService.strings.goToCart(cart.itemCount),

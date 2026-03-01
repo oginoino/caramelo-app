@@ -15,6 +15,12 @@ final GoRouter appRouter = GoRouter(
           padding: EdgeInsets.zero,
           hasScrollBody: true,
         ),
+        AppRoute(
+          Routes.cart,
+          (context, state) => const CartPage(),
+          padding: EdgeInsets.zero,
+          hasScrollBody: true,
+        ),
       ],
     ),
   ],

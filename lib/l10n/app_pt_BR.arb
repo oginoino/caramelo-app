@@ -98,7 +98,71 @@
   },
   "close": "Fechar",
   "@close": {
-    "description": "Rótulo para fechar ações como SnackBar"
+    "description": "Rótulo do botão fechar"
+  },
+  "cartTitle": "Seu carrinho",
+  "@cartTitle": {
+    "description": "Título da página do carrinho"
+  },
+  "cartEmpty": "Seu carrinho está vazio",
+  "@cartEmpty": {
+    "description": "Mensagem quando o carrinho está vazio"
+  },
+  "cartClear": "Limpar carrinho",
+  "@cartClear": {
+    "description": "Botão para limpar o carrinho"
+  },
+  "cartAddProducts": "Adicionar produtos",
+  "@cartAddProducts": {
+    "description": "Botão para adicionar produtos"
+  },
+  "cartAddMoreProducts": "Adicionar mais produtos",
+  "@cartAddMoreProducts": {
+    "description": "Botão para adicionar mais produtos"
+  },
+  "cartAddOtherProducts": "Adicionar outros produtos",
+  "@cartAddOtherProducts": {
+    "description": "Botão para adicionar outros produtos"
+  },
+  "cartMinOrder": "Pedido min. {value}",
+  "@cartMinOrder": {
+    "description": "Valor mínimo do pedido",
+    "placeholders": {
+      "value": {
+        "type": "String",
+        "example": "R$ 10,00"
+      }
+    }
+  },
+  "cartMinOrderWarning": "Adicione mais {value} para atingir o valor mínimo.",
+  "@cartMinOrderWarning": {
+    "description": "Aviso de pedido mínimo não atingido",
+    "placeholders": {
+      "value": {
+        "type": "String",
+        "example": "R$ 4,40"
+      }
+    }
+  },
+  "cartTotal": "Total",
+  "@cartTotal": {
+    "description": "Rótulo do total do carrinho"
+  },
+  "cartOrderNow": "Pedir agora",
+  "@cartOrderNow": {
+    "description": "Botão para finalizar o pedido"
+  },
+  "cartItemUnit": "{quantity} unidade(s) por {price}",
+  "@cartItemUnit": {
+    "description": "Descrição do item no carrinho (unidade)",
+    "placeholders": {
+      "quantity": {
+        "type": "int"
+      },
+      "price": {
+        "type": "String"
+      }
+    }
   },
   "authSuccessRegistration": "Cadastro realizado com sucesso!",
   "@authSuccessRegistration": {

@@ -100,6 +100,70 @@
   "@close": {
     "description": "Etiqueta para cerrar acciones como SnackBar"
   },
+  "cartTitle": "Tu carrito",
+  "@cartTitle": {
+    "description": "Título de la página del carrito"
+  },
+  "cartEmpty": "Tu carrito está vacío",
+  "@cartEmpty": {
+    "description": "Mensaje cuando el carrito está vacío"
+  },
+  "cartClear": "Vaciar carrito",
+  "@cartClear": {
+    "description": "Botón para vaciar el carrito"
+  },
+  "cartAddProducts": "Agregar productos",
+  "@cartAddProducts": {
+    "description": "Botón para agregar productos"
+  },
+  "cartAddMoreProducts": "Agregar más productos",
+  "@cartAddMoreProducts": {
+    "description": "Botón para agregar más productos"
+  },
+  "cartAddOtherProducts": "Agregar otros productos",
+  "@cartAddOtherProducts": {
+    "description": "Botón para agregar otros productos"
+  },
+  "cartMinOrder": "Pedido mín. {value}",
+  "@cartMinOrder": {
+    "description": "Valor mínimo del pedido",
+    "placeholders": {
+      "value": {
+        "type": "String",
+        "example": "$10.00"
+      }
+    }
+  },
+  "cartMinOrderWarning": "Agrega {value} más para alcanzar el mínimo.",
+  "@cartMinOrderWarning": {
+    "description": "Aviso cuando no se alcanza el pedido mínimo",
+    "placeholders": {
+      "value": {
+        "type": "String",
+        "example": "$4.40"
+      }
+    }
+  },
+  "cartTotal": "Total",
+  "@cartTotal": {
+    "description": "Etiqueta del total del carrito"
+  },
+  "cartOrderNow": "Pedir ahora",
+  "@cartOrderNow": {
+    "description": "Botón para finalizar el pedido"
+  },
+  "cartItemUnit": "{quantity} unidad(es) por {price}",
+  "@cartItemUnit": {
+    "description": "Descripción del artículo en el carrito (unidad)",
+    "placeholders": {
+      "quantity": {
+        "type": "int"
+      },
+      "price": {
+        "type": "String"
+      }
+    }
+  },
   "authSuccessRegistration": "¡Registro realizado con éxito!",
   "@authSuccessRegistration": {
     "description": "Se muestra tras un registro exitoso"

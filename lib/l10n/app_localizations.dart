@@ -245,11 +245,77 @@ abstract class AppLocalizations {
   /// **'Stock limit reached.'**
   String get stockLimitReached;
 
-  /// Label for closing actions like SnackBar
+  /// Close button label
   ///
   /// In en, this message translates to:
   /// **'Close'**
   String get close;
+
+  /// Cart page title
+  ///
+  /// In en, this message translates to:
+  /// **'Your Cart'**
+  String get cartTitle;
+
+  /// Message when cart is empty
+  ///
+  /// In en, this message translates to:
+  /// **'Your cart is empty'**
+  String get cartEmpty;
+
+  /// Button to clear the cart
+  ///
+  /// In en, this message translates to:
+  /// **'Clear cart'**
+  String get cartClear;
+
+  /// Button to add products
+  ///
+  /// In en, this message translates to:
+  /// **'Add products'**
+  String get cartAddProducts;
+
+  /// Button to add more products
+  ///
+  /// In en, this message translates to:
+  /// **'Add more products'**
+  String get cartAddMoreProducts;
+
+  /// Button to add other products
+  ///
+  /// In en, this message translates to:
+  /// **'Add other products'**
+  String get cartAddOtherProducts;
+
+  /// Minimum order value
+  ///
+  /// In en, this message translates to:
+  /// **'Min. order {value}'**
+  String cartMinOrder(String value);
+
+  /// Warning when minimum order is not reached
+  ///
+  /// In en, this message translates to:
+  /// **'Add {value} more to reach minimum order.'**
+  String cartMinOrderWarning(String value);
+
+  /// Cart total label
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get cartTotal;
+
+  /// Button to complete the order
+  ///
+  /// In en, this message translates to:
+  /// **'Order now'**
+  String get cartOrderNow;
+
+  /// Cart item description (unit)
+  ///
+  /// In en, this message translates to:
+  /// **'{quantity} unit(s) for {price}'**
+  String cartItemUnit(int quantity, String price);
 
   /// Shown after successful user registration
   ///
