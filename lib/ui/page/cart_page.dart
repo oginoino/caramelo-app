@@ -1,25 +1,28 @@
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:go_router/go_router.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:intl/intl.dart';
 
+import '../../util/import/packages.dart';
 import '../../util/import/domain.dart';
 import '../../util/const/ui/ui_token.dart';
 import '../../util/import/provider.dart';
 import '../../util/import/service.dart';
 import '../../util/ui_helper.dart';
 
+final _currencyFormat = NumberFormat.currency(symbol: 'R\$');
+
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
           LocalizationService.strings.cartTitle,
-          style: const TextStyle(fontWeight: FontWeight.bold),
+          style: theme.textTheme.titleMedium?.copyWith(
+            fontWeight: FontWeight.w700,
+          ),
         ),
         centerTitle: true,
       ),
@@ -33,38 +36,55 @@ class CartPage extends StatelessWidget {
             children: [
               Expanded(
                 child: ListView(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: UiToken.spacing16,
+                    vertical: UiToken.spacing16,
+                  ),
                   children: [
                     Align(
                       alignment: Alignment.centerRight,
                       child: TextButton.icon(
                         onPressed: () => _confirmClearCart(context, cart),
-                        icon: const Icon(Icons.remove_shopping_cart_outlined, size: 18),
+                        icon: const Icon(
+                          Icons.remove_shopping_cart_outlined,
+                          size: 18,
+                        ),
                         label: Text(LocalizationService.strings.cartClear),
                         style: TextButton.styleFrom(
-                          foregroundColor: Theme.of(context).colorScheme.primary,
+                          foregroundColor: theme.colorScheme.primary,
                         ),
                       ),
                     ),
-                    ...cart.items.values.map((item) => _CartItemTile(item: item)),
-                    const SizedBox(height: 16),
+                    ...cart.items.values.map(
+                      (item) => _CartItemTile(item: item),
+                    ),
+                    SizedBox(height: UiToken.spacing16),
                     if (cart.totalPrice < CartProvider.minOrderValue)
-                       Padding(
-                         padding: const EdgeInsets.only(bottom: 16),
-                         child: _MinOrderWarning(currentTotal: cart.totalPrice),
-                       ),
-                    
+                      Padding(
+                        padding: EdgeInsets.only(
+                          top: UiToken.spacing8,
+                          bottom: UiToken.spacing16,
+                        ),
+                        child: _MinOrderWarning(currentTotal: cart.totalPrice),
+                      ),
+
                     if (cart.totalPrice < CartProvider.minOrderValue)
                       SizedBox(
                         width: double.infinity,
                         child: FilledButton.icon(
-                          onPressed: () => context.go('/'),
+                          onPressed: () => context.go('/home'),
                           icon: const Icon(Icons.add_shopping_cart),
-                          label: Text(LocalizationService.strings.cartAddMoreProducts),
+                          label: Text(
+                            LocalizationService.strings.cartAddMoreProducts,
+                          ),
                           style: FilledButton.styleFrom(
-                            padding: const EdgeInsets.symmetric(vertical: 16),
+                            padding: EdgeInsets.symmetric(
+                              vertical: UiToken.spacing16,
+                            ),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(UiToken.borderRadiusFull),
+                              borderRadius: BorderRadius.circular(
+                                UiToken.borderRadiusFull,
+                              ),
                             ),
                           ),
                         ),
@@ -73,19 +93,25 @@ class CartPage extends StatelessWidget {
                       SizedBox(
                         width: double.infinity,
                         child: OutlinedButton.icon(
-                          onPressed: () => context.go('/'),
+                          onPressed: () => context.go('/home'),
                           icon: const Icon(Icons.add_shopping_cart),
-                          label: Text(LocalizationService.strings.cartAddOtherProducts),
+                          label: Text(
+                            LocalizationService.strings.cartAddOtherProducts,
+                          ),
                           style: OutlinedButton.styleFrom(
-                            padding: const EdgeInsets.symmetric(vertical: 16),
-                            side: BorderSide(color: Theme.of(context).colorScheme.primary),
+                            padding: EdgeInsets.symmetric(
+                              vertical: UiToken.spacing16,
+                            ),
+                            side: BorderSide(color: theme.colorScheme.primary),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(UiToken.borderRadiusFull),
+                              borderRadius: BorderRadius.circular(
+                                UiToken.borderRadiusFull,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    const SizedBox(height: 24),
+                    SizedBox(height: UiToken.spacing24),
                   ],
                 ),
               ),
@@ -108,6 +134,8 @@ class _EmptyCartView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -115,25 +143,24 @@ class _EmptyCartView extends StatelessWidget {
           Icon(
             Icons.shopping_basket_outlined,
             size: 64,
-            color: Theme.of(context).disabledColor,
+            color: theme.disabledColor,
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: UiToken.spacing16),
           Text(
             LocalizationService.strings.cartEmpty,
-            style: TextStyle(
-              fontSize: 18,
-              color: Theme.of(context).textTheme.bodyLarge?.color,
+            style: theme.textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.w600,
             ),
           ),
-          const SizedBox(height: 32),
+          SizedBox(height: UiToken.spacing32),
           SizedBox(
             width: 200,
             child: FilledButton.icon(
-              onPressed: () => context.go('/'),
+              onPressed: () => context.go('/home'),
               icon: const Icon(Icons.add_shopping_cart),
               label: Text(LocalizationService.strings.cartAddProducts),
               style: FilledButton.styleFrom(
-                padding: const EdgeInsets.symmetric(vertical: 16),
+                padding: EdgeInsets.symmetric(vertical: UiToken.spacing16),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(UiToken.borderRadiusFull),
                 ),
@@ -153,10 +180,11 @@ class _CartItemTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final currencyFormat = NumberFormat.currency(symbol: 'R\$');
-    
+    final theme = Theme.of(context);
+    final textTheme = theme.textTheme;
+
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 12),
+      padding: EdgeInsets.symmetric(vertical: UiToken.spacing12),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -176,36 +204,34 @@ class _CartItemTile extends StatelessWidget {
               children: [
                 Text(
                   item.product.name,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 14,
+                  style: textTheme.bodyMedium?.copyWith(
+                    fontWeight: FontWeight.w600,
                   ),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
-                const SizedBox(height: 4),
+                SizedBox(height: UiToken.spacing4),
                 Text(
                   LocalizationService.strings.cartItemUnit(
                     item.quantity,
-                    currencyFormat.format(item.product.price.current),
+                    _currencyFormat.format(item.product.price.current),
                   ),
                   style: TextStyle(
-                    color: Theme.of(context).textTheme.bodySmall?.color,
-                    fontSize: 12,
+                    color: textTheme.bodySmall?.color,
+                    fontSize: UiToken.textSize12,
                   ),
                 ),
-                const SizedBox(height: 4),
+                SizedBox(height: UiToken.spacing4),
                 Text(
-                  currencyFormat.format(item.total),
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14,
+                  _currencyFormat.format(item.total),
+                  style: textTheme.titleSmall?.copyWith(
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
               ],
             ),
           ),
-          const SizedBox(width: 12),
+          SizedBox(width: UiToken.spacing12),
           _CartQuantityController(item: item),
         ],
       ),
@@ -222,7 +248,7 @@ class _CartQuantityController extends StatelessWidget {
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context, listen: false);
     final colorScheme = Theme.of(context).colorScheme;
-    
+
     return Container(
       decoration: BoxDecoration(
         border: Border.all(color: colorScheme.outlineVariant),
@@ -236,7 +262,9 @@ class _CartQuantityController extends StatelessWidget {
             icon: Icon(
               item.quantity == 1 ? Icons.delete_outline : Icons.remove,
               size: 18,
-              color: item.quantity == 1 ? colorScheme.error : colorScheme.primary,
+              color: item.quantity == 1
+                  ? colorScheme.error
+                  : colorScheme.primary,
             ),
             padding: EdgeInsets.zero,
             constraints: const BoxConstraints(minWidth: 36, minHeight: 36),
@@ -246,18 +274,11 @@ class _CartQuantityController extends StatelessWidget {
           ),
           Text(
             '${item.quantity}',
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 14,
-            ),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
           ),
           IconButton(
             onPressed: () => cart.addItem(item.product),
-            icon: Icon(
-              Icons.add,
-              size: 18,
-              color: colorScheme.primary,
-            ),
+            icon: Icon(Icons.add, size: 18, color: colorScheme.primary),
             padding: EdgeInsets.zero,
             constraints: const BoxConstraints(minWidth: 36, minHeight: 36),
             style: IconButton.styleFrom(
@@ -278,26 +299,28 @@ class _MinOrderWarning extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final remaining = CartProvider.minOrderValue - currentTotal;
-    final currencyFormat = NumberFormat.currency(symbol: 'R\$');
-    
+    final theme = Theme.of(context);
+    final isLight = theme.brightness == Brightness.light;
+    final bgColor = isLight ? UiToken.alertLight100 : UiToken.alertLight900;
+    final iconColor = isLight ? UiToken.alertLight600 : UiToken.alertLight200;
+
     return Container(
-      padding: const EdgeInsets.all(12),
+      padding: EdgeInsets.all(UiToken.spacing12),
       decoration: BoxDecoration(
-        color: Colors.amber.withValues(alpha: 0.1),
+        color: bgColor,
         borderRadius: BorderRadius.circular(UiToken.borderRadius8),
       ),
       child: Row(
         children: [
-          const Icon(Icons.warning_amber_rounded, color: Colors.amber),
-          const SizedBox(width: 12),
+          Icon(Icons.warning_amber_rounded, color: iconColor),
+          SizedBox(width: UiToken.spacing12),
           Expanded(
             child: Text(
               LocalizationService.strings.cartMinOrderWarning(
-                currencyFormat.format(remaining),
+                _currencyFormat.format(remaining),
               ),
-              style: const TextStyle(
-                color: Colors.amber,
-                fontSize: 12,
+              style: theme.textTheme.bodySmall?.copyWith(
+                color: iconColor,
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -315,14 +338,17 @@ class _CartBottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final currencyFormat = NumberFormat.currency(symbol: 'R\$');
-    final canOrder = cart.totalPrice >= CartProvider.minOrderValue && cart.itemCount > 0;
-    
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    final textTheme = theme.textTheme;
+    final canOrder =
+        cart.totalPrice >= CartProvider.minOrderValue && cart.itemCount > 0;
+
     return SafeArea(
       child: Container(
-        padding: const EdgeInsets.all(16),
+        padding: EdgeInsets.all(UiToken.spacing16),
         decoration: BoxDecoration(
-          color: Theme.of(context).scaffoldBackgroundColor,
+          color: colorScheme.surface,
           boxShadow: [
             BoxShadow(
               color: Colors.black.withValues(alpha: 0.05),
@@ -340,41 +366,41 @@ class _CartBottomBar extends StatelessWidget {
                 Text(
                   LocalizationService.strings.cartTotal,
                   style: TextStyle(
-                    color: Theme.of(context).textTheme.bodySmall?.color,
-                    fontSize: 12,
+                    color: textTheme.bodySmall?.color,
+                    fontSize: UiToken.textSize12,
                   ),
                 ),
                 Text(
-                  currencyFormat.format(cart.totalPrice),
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
+                  _currencyFormat.format(cart.totalPrice),
+                  style: textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
               ],
             ),
             const Spacer(),
             FilledButton.icon(
-              onPressed: canOrder ? () {
-                // TODO: Implement checkout
-                UiHelper.showSnackBar(
-                  context,
-                  message: 'Checkout not implemented yet',
-                  backgroundColor: Colors.orange,
-                );
-              } : null,
+              onPressed: canOrder
+                  ? () {
+                      UiHelper.showSnackBar(
+                        context,
+                        message: 'Checkout not implemented yet',
+                        backgroundColor: UiToken.alertLight500,
+                      );
+                    }
+                  : null,
               icon: const Icon(Icons.shopping_bag_outlined),
               label: Text(
                 canOrder
                     ? LocalizationService.strings.cartOrderNow
                     : LocalizationService.strings.cartMinOrder(
-                        currencyFormat.format(CartProvider.minOrderValue),
+                        _currencyFormat.format(CartProvider.minOrderValue),
                       ),
               ),
               style: FilledButton.styleFrom(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 24,
-                  vertical: 12,
+                padding: EdgeInsets.symmetric(
+                  horizontal: UiToken.spacing24,
+                  vertical: UiToken.spacing12,
                 ),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(UiToken.borderRadiusFull),
