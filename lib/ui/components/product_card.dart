@@ -134,17 +134,10 @@ class _AddButtonState extends State<_AddButton> {
       SnackBar(
         content: Text(
           'Só temos ${widget.product.stock.available} unidades em estoque.',
-          style: TextStyle(
-            color: isLight ? UiToken.primaryLight50 : UiToken.primaryDark800,
-            fontWeight: FontWeight.w600,
-          ),
         ),
-        backgroundColor: isLight
-            ? UiToken.secondaryLight800
-            : UiToken.primaryLight500,
-        behavior: SnackBarBehavior.floating,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(UiToken.borderRadius8),
+        action: SnackBarAction(
+          label: 'Fechar',
+          onPressed: () => messenger.hideCurrentSnackBar(),
         ),
       ),
     );

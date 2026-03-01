@@ -93,6 +93,10 @@ class AuthProvider extends ChangeNotifier {
           SnackBar(
             content: Text('Cadastro realizado com sucesso!'),
             backgroundColor: Colors.green,
+            action: SnackBarAction(
+              label: 'Limpar',
+              onPressed: () => messenger.hideCurrentSnackBar(),
+            ),
           ),
         );
       }
@@ -134,6 +138,10 @@ class AuthProvider extends ChangeNotifier {
           SnackBar(
             content: Text('Email de recuperação enviado!'),
             backgroundColor: Colors.green,
+            action: SnackBarAction(
+              label: 'Limpar',
+              onPressed: () => messenger.hideCurrentSnackBar(),
+            ),
           ),
         );
       }
@@ -179,6 +187,10 @@ class AuthProvider extends ChangeNotifier {
           SnackBar(
             content: Text('Senha alterada com sucesso!'),
             backgroundColor: Colors.green,
+            action: SnackBarAction(
+              label: 'Limpar',
+              onPressed: () => messenger.hideCurrentSnackBar(),
+            ),
           ),
         );
       }

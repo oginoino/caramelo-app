@@ -193,6 +193,7 @@ ThemeData _lightTheme = ThemeData(
       fontSize: UiToken.textSize14,
       fontWeight: FontWeight.w600,
     ),
+    actionTextColor: UiToken.secondaryLight50,
     behavior: SnackBarBehavior.floating,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(UiToken.borderRadius8),

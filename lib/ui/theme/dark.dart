@@ -187,12 +187,13 @@ ThemeData _darkTheme = ThemeData(
     ),
   ),
   snackBarTheme: SnackBarThemeData(
-    backgroundColor: UiToken.secondaryDark800,
+    backgroundColor: UiToken.primaryLight500,
     contentTextStyle: TextStyle(
-      color: UiToken.secondaryLight300,
+      color: UiToken.primaryDark800,
       fontSize: UiToken.textSize14,
       fontWeight: FontWeight.w600,
     ),
+    actionTextColor: UiToken.primaryDark800,
     behavior: SnackBarBehavior.floating,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(UiToken.borderRadius8),
