@@ -129,7 +129,9 @@ class _ProductDetailsContent extends StatelessWidget {
               Icon(
                 Icons.new_releases_outlined,
                 size: 18,
-                color: colorScheme.secondary,
+                color: theme.brightness == Brightness.light
+                    ? colorScheme.secondary
+                    : UiToken.secondaryLight100,
               ),
               SizedBox(width: UiToken.spacing4),
               Text(
@@ -145,7 +147,9 @@ class _ProductDetailsContent extends StatelessWidget {
         Text(
           product.formattedPrice,
           style: theme.textTheme.headlineSmall?.copyWith(
-            color: colorScheme.primary,
+            color: theme.brightness == Brightness.light
+                ? colorScheme.primary
+                : UiToken.primaryLight100,
             fontWeight: FontWeight.w700,
           ),
         ),
