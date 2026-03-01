@@ -278,6 +278,7 @@ class _ProductDetailsBottomBarState extends State<_ProductDetailsBottomBar> {
   @override
   void initState() {
     super.initState();
+    _selectedQuantity = 1;
     _updateQuantityFromCart();
   }
 
@@ -294,19 +295,26 @@ class _ProductDetailsBottomBarState extends State<_ProductDetailsBottomBar> {
     final cart = Provider.of<CartProvider>(context, listen: false);
     final currentQuantity = cart.getQuantity(widget.product.id);
 
+    if (!mounted) {
+      return;
+    }
+
+    var nextSelectedQuantity = currentQuantity + 1;
+
+    if (nextSelectedQuantity > widget.product.stock.available) {
+      nextSelectedQuantity = widget.product.stock.available;
+    }
+
+    if (nextSelectedQuantity < 1) {
+      nextSelectedQuantity = 1;
+    }
+
+    if (_selectedQuantity == nextSelectedQuantity) {
+      return;
+    }
+
     setState(() {
-      // Initialize with current cart quantity + 1 (for adding more)
-      _selectedQuantity = currentQuantity + 1;
-
-      // Ensure we don't exceed available stock
-      if (_selectedQuantity > widget.product.stock.available) {
-        _selectedQuantity = widget.product.stock.available;
-      }
-
-      // Ensure minimum is 1
-      if (_selectedQuantity < 1) {
-        _selectedQuantity = 1;
-      }
+      _selectedQuantity = nextSelectedQuantity;
     });
   }
 
@@ -447,15 +455,13 @@ class _ProductDetailsBottomBarState extends State<_ProductDetailsBottomBar> {
                     ),
                   ),
                 ),
-                child: Expanded(
-                  child: Text(
-                    currentCartQuantity > 0
-                        ? 'Adicionar mais'
-                        : 'Adicionar ao carrinho',
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    softWrap: false,
-                  ),
+                child: Text(
+                  currentCartQuantity > 0
+                      ? 'Adicionar mais'
+                      : 'Adicionar ao carrinho',
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  softWrap: false,
                 ),
               ),
             ),
