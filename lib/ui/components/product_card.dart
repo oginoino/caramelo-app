@@ -12,12 +12,11 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isLight = Theme.of(context).brightness == Brightness.light;
     final textColor = Theme.of(context).colorScheme.onSurface;
 
     return Consumer<CartProvider>(
       builder: (context, cart, child) {
-        final quantity = cart.getQuantity(product.id);
+        cart.getQuantity(product.id);
 
         return Card(
           child: Column(
@@ -127,7 +126,6 @@ class _AddButtonState extends State<_AddButton> {
   }
 
   void _showStockLimitMessage(BuildContext context) {
-    final isLight = Theme.of(context).brightness == Brightness.light;
     final messenger = ScaffoldMessenger.of(context);
     messenger.clearSnackBars();
     messenger.showSnackBar(
