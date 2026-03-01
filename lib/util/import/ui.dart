@@ -24,3 +24,4 @@ export '../../ui/components/app_tooltip.dart';
 export '../../ui/components/location_bottom_sheet.dart';
 export '../../ui/components/profile_avatar.dart';
 export '../../ui/components/profile_bottom_sheet.dart';
+export '../../ui/page/product_details_page.dart';

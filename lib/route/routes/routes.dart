@@ -9,6 +9,7 @@ class Routes {
   static List<RouteInfo> routes = [
     RouteInfo(name: 'Início', path: '/home'),
     RouteInfo(name: 'Carrinho', path: '/cart'),
+    RouteInfo(name: 'Detalhes do Produto', path: '/product'),
   ];
 
   static String getPathByName(String name) {
@@ -22,4 +23,8 @@ class Routes {
 
   static String get cart =>
       routes.firstWhere((element) => element.name == 'Carrinho').path;
+
+  static String get productDetails => routes
+      .firstWhere((element) => element.name == 'Detalhes do Produto')
+      .path;
 }

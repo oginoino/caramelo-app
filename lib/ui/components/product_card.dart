@@ -33,13 +33,22 @@ class ProductCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(
                         UiToken.borderRadius12,
                       ),
-                      child: CustomImage(
-                        imageUrl: product.mainImage,
-                        fit: BoxFit.cover,
-                        width: double.infinity,
-                        height: double.infinity,
-                        borderRadius: BorderRadius.circular(
-                          UiToken.borderRadius12,
+                      child: GestureDetector(
+                        behavior: HitTestBehavior.opaque,
+                        onTap: () {
+                          context.push(
+                            '/product',
+                            extra: product,
+                          );
+                        },
+                        child: CustomImage(
+                          imageUrl: product.mainImage,
+                          fit: BoxFit.cover,
+                          width: double.infinity,
+                          height: double.infinity,
+                          borderRadius: BorderRadius.circular(
+                            UiToken.borderRadius12,
+                          ),
                         ),
                       ),
                     ),
