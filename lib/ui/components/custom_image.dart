@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
+import '../../util/const/ui/ui_assets.dart';
+
 class CustomImage extends StatefulWidget {
   const CustomImage({
     required this.imageUrl,
@@ -16,6 +18,7 @@ class CustomImage extends StatefulWidget {
     this.maxRetries = 3,
     this.retryDelay = const Duration(seconds: 2),
     this.timeout = const Duration(seconds: 30),
+    this.useLogoAsPlaceholder = true,
     super.key,
   });
 
@@ -32,6 +35,7 @@ class CustomImage extends StatefulWidget {
   final int maxRetries;
   final Duration retryDelay;
   final Duration timeout;
+  final bool useLogoAsPlaceholder;
 
   @override
   State<CustomImage> createState() => _CustomImageState();
@@ -89,9 +93,41 @@ class _CustomImageState extends State<CustomImage> {
     });
   }
 
-  Widget _buildErrorWidget(BuildContext context, Color backgroundColor) {
+  Widget _buildPlaceholderContent(BuildContext context, bool isError) {
     final theme = Theme.of(context);
 
+    if (widget.useLogoAsPlaceholder) {
+      return Center(
+        child: Opacity(
+          opacity: isError ? 0.15 : 0.08,
+          child: Image.asset(
+            UiAssets.logo,
+            width: _computeIconSize(fraction: 0.5, defaultSize: 40),
+            height: _computeIconSize(fraction: 0.5, defaultSize: 40),
+            fit: BoxFit.contain,
+            color: theme.colorScheme.onSurface,
+          ),
+        ),
+      );
+    }
+
+    return Center(
+      child: Icon(
+        isError
+            ? (widget.errorIcon ?? Icons.image_outlined)
+            : (widget.placeholderIcon ?? Icons.image_outlined),
+        color: theme.colorScheme.onSurface.withValues(
+          alpha: isError ? 0.35 : 0.25,
+        ),
+        size: _computeIconSize(
+          fraction: isError ? 0.36 : 0.32,
+          defaultSize: 28,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildErrorWidget(BuildContext context, Color backgroundColor) {
     return Material(
       color: Colors.transparent,
       child: InkWell(
@@ -104,13 +140,7 @@ class _CustomImageState extends State<CustomImage> {
             color: backgroundColor,
             borderRadius: widget.borderRadius,
           ),
-          child: Center(
-            child: Icon(
-              widget.errorIcon ?? Icons.image_outlined,
-              color: theme.colorScheme.onSurface.withValues(alpha: 0.35),
-              size: _computeIconSize(fraction: 0.36, defaultSize: 28),
-            ),
-          ),
+          child: _buildPlaceholderContent(context, true),
         ),
       ),
     );
@@ -152,13 +182,7 @@ class _CustomImageState extends State<CustomImage> {
             color: effectiveBackgroundColor,
             borderRadius: widget.borderRadius,
           ),
-          child: Center(
-            child: Icon(
-              widget.placeholderIcon ?? Icons.image_outlined,
-              color: theme.colorScheme.onSurface.withValues(alpha: 0.25),
-              size: _computeIconSize(fraction: 0.32, defaultSize: 24),
-            ),
-          ),
+          child: _buildPlaceholderContent(context, false),
         );
       },
       errorWidget: (context, url, error) {
